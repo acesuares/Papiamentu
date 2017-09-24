@@ -31,8 +31,8 @@ set :use_sudo,    false
 
 set :deploy_to,   "/var/www/ror/#{application}"
 
-set :repository,  "file:///home/#{user}/git-repos/#{application}.git"
-set :local_repository, "ssh://#{user}@#{domain}/home/#{user}/git-repos/#{application}.git"
+set :repository,  "file:///home/#{user}/git-repos/#{application}"
+set :local_repository, "ssh://#{user}@#{domain}/home/#{user}/git-repos/#{application}"
 set :scm,         "git"
 
 
