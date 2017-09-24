@@ -34,6 +34,9 @@ class User < ActiveRecord::Base
   has_paper_trail
 
   # scopes
+
+  default_scope order('name ASC')
+
   scope :active, -> { where(active: 1) }
   scope :new_words_immediately, -> { where(new_words: 2) }
   scope :new_words_daily, -> { where(new_words: 3) }
