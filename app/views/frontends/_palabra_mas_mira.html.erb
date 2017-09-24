@@ -1,0 +1,25 @@
+<ul>
+  <% Word.most_viewed(@palabra_mas_mira_limit, @palabra_mas_mira_offset).each do |word| %>
+    <li>
+      <%= word.views %>: <%= link_to_word word %>
+    </li>
+  <% end %>
+  <%= link_to image_tag("back.png", :size => "24x24", :border => 0, :alt => "Atras", :title => "Atras" ),
+      { update: "palabra_mas_mira",
+        action: "_palabra_mas_mira",
+        palabra_mas_mira_limit: @palabra_mas_mira_limit,
+        palabra_mas_mira_offset: @palabra_mas_mira_offset,
+        direction: 'back',
+      },
+      remote: true
+    %>
+    <%= link_to image_tag("forward.png", :size => "24x24", :border => 0, :alt => "Dilanti", :title => "Dilanti" ),
+        { update: "palabra_mas_mira",
+          action: "_palabra_mas_mira",
+          palabra_mas_mira_limit: @palabra_mas_mira_limit,
+          palabra_mas_mira_offset: @palabra_mas_mira_offset,
+          direction: 'forward',
+        },
+        remote: true
+      %>
+</ul>

@@ -1,0 +1,60 @@
+<div class="column text-left small-6">
+  <%= link_to @thumbs_word.word_max_length(20), "/palabra/#{@thumbs_word.name}", :title => @thumbs_word.name  %>
+</div>
+<% if @thumbs_word.approved? %>
+  <div class="column text-left small-6">
+    <%= image_tag "yes.png", :size => "16x16", :border => 0, :alt => "E palabra '#{@thumbs_word.name}' ta den e Buki di Oro", :title => "E palabra '#{@thumbs_word.name}' ta den e Buki di Oro" %>
+  </div>
+<% else %>
+  <% if current_user %>
+    <% if current_user.voted_on?(@thumbs_word) %>
+      <div class="column text-left small-2">
+        <%= image_tag("thumbs-up.png", :size => "24x24", :border => 0, :alt => "Ami a vota Si, e palabra '#{@thumbs_word.name}' ta korrekto", :title => "Ami a vota Si, e palabra '#{@thumbs_word.name}' ta korrekto") if current_user.voted_for?(@thumbs_word) %>
+        &nbsp;
+      </div>
+      <div class="column text-left small-2">
+        <%= image_tag("thumbs-down.png", :size => "24x24", :border => 0, :alt => "Ami a vota No, e palabra '#{@thumbs_word.name}' no ta korrekto", :title => "Ami a vota No, e palabra '#{@thumbs_word.name}' no ta korrekto" ) if current_user.voted_against?(@thumbs_word) %>
+        &nbsp;
+      </div>
+      <div class="column text-left small-2">
+        <%= link_to image_tag("reset.png", :size => "24x24", :border => 0, :alt => "Primi aki pa reset", :title => "Primi aki pa reset." ),
+            { update: "votes_thumbs_#{@thumbs_word.id}",
+              action: "_vote_reset_thumbs",
+              controller: :words,
+              id: @thumbs_word.id,
+              thumbs: true
+            },
+            remote: true
+          %>
+      </div>
+    <% else %>
+      <div class="column text-left small-2">
+        <%= link_to image_tag("thumbs-up.png", :size => "24x24", :border => 0, :alt => "Primi aki pa indika e palabra '#{@thumbs_word.name}' si ta korrekto.", :title => "Primi aki pa indika e palabra '#{@thumbs_word.name}' si ta korrekto." ),
+            { update: "votes_thumbs_#{@thumbs_word.id}",
+              action: "_vote_for_thumbs",
+              controller: :words,
+              id: @thumbs_word.id,
+              thumbs: true
+            },
+            remote: true
+          %>
+        &nbsp;
+      </div>
+      <div class="column text-left small-2">
+        <%= link_to image_tag("thumbs-down.png", :size => "24x24", :border => 0, :alt => "Prima aki pa indika e palabra '#{@thumbs_word.name}' no ta korrekto.", :title => "Prima aki pa indika e palabra '#{@thumbs_word.name}' no ta korrekto." ),
+        { update: "votes_thumbs_#{@thumbs_word.id}",
+          action: "_vote_against_thumbs",
+          controller: :words,
+          id: @thumbs_word.id,
+          thumbs: true
+        },
+        remote: true
+        %>
+        &nbsp;
+      </div>
+      <div class="column text-left small-2">
+        &nbsp;
+      </div>
+    <%  end %>
+  <% end %>
+<% end %>

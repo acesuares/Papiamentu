@@ -1,0 +1,5 @@
+<p>Welkom <%= @email %>!</p>
+
+<p>Om toegang te krijgen tot papiamentu dient u op de volgende link te klikken:</p>
+
+<p><%= link_to 'Toegang tot papiamentu', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -1,0 +1,71 @@
+<div id="index">
+  <% @logo_right = 'papiamentu-home.png' %>
+  <%= render "/frontends/papiamentu_header" %>
+  <% if params[:state] == "confirmed" %>
+    <div class="row" id="info">
+      <div class="columns small-12 large-12 topper">
+        <h2>U heeft nu toegang tot papiamentu!</h2>
+        Vanaf nu kunt u op deze site inloggen met uw emailadres en uw wachtwoord.
+      </div>
+    </div>
+  <% end %>
+
+  <% if params[:state] == "password_changed" %>
+    <div class="row" id="info">
+      <div class="columns small-12 large-12 topper">
+        <h2>U heeft uw wachtwoord gewijzigd!</h2>
+        Vanaf nu kunt u op deze site inloggen met uw emailadres en uw nieuwe wachtwoord.
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="columns small-12 medium-8 large-8 topper" id="left-side">
+      <h2>papiamentu</h2>
+      <p>
+        Papiamentu ta un lenga krioyo ku ta papia na islanan Aruba, Boneiru i Kòrsou.
+        Un parti di nos poblashon ta biba tambe den eksterior: na Hulanda i na Estadonan Uni i otro partinan di mundu.
+        Lenganan afrikano i ibériko (portugues ku spañó) a laga nan marka atras i ta manifestá nan presensia den nos lenga kontinuamente.
+        Despues na komienso di siglo binti persona di vários nashonalidat i rasa étniko a bin establesé nan mes na nos islanan, atraé pa aventura, negoshi i ekonomia petrolero (Lago na Aruba i Shell na Kòrsou) i mas resien pa nos klima plasentero i ambiente trankil.
+        Nos vokabulario ta kresiendo ketu bai ku kantidatnan grandi di palabra nobo adoptá for di spañó, hulandes i ingles pero tambe palabra nobo ku nos mes ta inventá diariamente.
+        Wood 1971 ta konsiderá prosedensia di palabranan na Papiamentu komo 90% ibériko (spañó/portugues), 9% hulandes i 1% ingles, miéntras ku resientemente Van Buurt & Joubert 1997 a deskubrí un kantidat basta grandi di palabra di orígen Arawak.
+      </p>
+      <h2>buska un palabra</h2>
+      <p>
+        <%= render 'search_form' %>
+      </p>
+      <h2>palabra di dia: <%= link_to_word Word.random %></h2>
+      <h2>chèk un teksto pa missing palabra</h2>
+      <p>
+        maksimo 1 mega bait
+        <%= render 'search_form_text' %>
+      </p>
+
+    </div>
+
+    <div class="columns small-12 medium-4 large-4 topper" id="right-side">
+      <h3><%= current_user.name %></h3>
+      <div id='user'>
+        <%= render 'user' %>
+      </div>
+      <h3>lenk importante</h3>
+      <div id='lenk_importante'>
+        <%= render 'lenk' %>
+      </div>
+      <h3>lenk importante</h3>
+      <div id='lenk_importante'>
+        <%= render 'lenk' %>
+      </div>
+      <h3>palabranan mas resien</h3>
+      <div id='palabra_mas_resien'>
+        <%= render 'palabra_mas_resien' %>
+      </div>
+      <h3>palabranan mas mirá</h3>
+      <div id='palabra_mas_mira'>
+        <%= render 'palabra_mas_mira' %>
+      </div>
+    </div>
+  </div>
+
+</div>
+<%= render "/frontends/papiamentu_footer" %>

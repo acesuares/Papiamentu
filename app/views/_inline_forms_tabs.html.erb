@@ -1,0 +1,53 @@
+<div class="contain-to-grid fixed" id="inline_forms_model_top_bar_container">
+  <nav id="inline_forms_model_top_bar" class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name" id="inline_forms_menu">
+      <h1>
+        <a>
+          <%= t(controller_name) %>
+          <% if current_tab == :word %>
+          <% @total_objects = Word.count %>
+             - <span<%= raw " class='red_count'" if @objects.count < @total_objects %>><%= @objects.count %></span> palabra di <%= @total_objects %>
+          <% end %>
+          </a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <% if current_tab == :word %>
+        <li class="has-form">
+          <%= form_tag request.path, :method => 'get' do %>
+            <div class="row">
+              <div class="large-2 small-2 columns">
+                <%= check_box_tag :only_standardized, true, params[:only_standardized] %><label for="only_standardized">std</label>
+              </div>
+              <div class="large-2 small-2 columns">
+                <%= check_box_tag :only_buki_di_oro, true, params[:only_buki_di_oro] %><label for="only_buki_di_oro">oro</label>
+              </div>
+              <div class="large-2 small-2 columns">
+                <%= check_box_tag :only_deleted, true, params[:only_deleted] %><label for="only_deleted">del</label>
+              </div>
+              <div class="large-1 small-1 columns">
+                <%= link_to "<i class='fi-x'></i>".html_safe, '/', :title => 'reset', :class => "button expand inline_forms_model_top_bar_buttons" %>
+              </div>
+              <div class="large-3 small-3 columns">
+                <%= text_field_tag :search,  params[:search], :placeholder => 'buska palabra...', :id => 'input_search' %>
+              </div>
+              <div class="large-2 small-2 columns">
+                <%= submit_tag 'buska', :class => "button expand inline_forms_model_top_bar_buttons" %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+      <li>
+      <%= link_to_new_record(@Klass, "new_#{@Klass.to_s.singularize.underscore}_path", @Klass.to_s.pluralize.downcase + '_list') %>
+      </li>
+    </ul>
+  </section>
+</nav>
+</div>

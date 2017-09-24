@@ -1,0 +1,32 @@
+<div id="palabra">
+  <% @logo_right = 'papiamentu-home.png' %>
+  <%= render "/frontends/papiamentu_header" %>
+  <div class="row" id="left-side">
+    <div class="columns small-12">
+      <h2>E palabra <em><%= @search_word %></em> no ta den e banko di palabra!</h2>
+      <p>
+        E palabra no ta den e banko di palabra: esei no ke men e palabra no ta bon òf ku e no ta bon skirbí.
+      </p>
+      <p>
+        Bo tin chèns pa añadí un palabra nobo na e banko di palabra.
+        Pero pensa bon!
+        Bo ta sigur ku e palabra aki meresé un entrada den e base di dato?
+        Bo ta responsabel pa yena e palabra den e banko, pero sea kouteloso i no yena kos pa loko.
+      </p>
+      <p>
+        Si bo ta sigur, djis primi riba e boton aki bou.
+      </p>
+      <%= form_tag '/tra_palabra', method: :post do %>
+        <%= hidden_field_tag :word, @search_word %>
+        <div class="row">
+          <div class="column large-6 medium-6 small-9 text-left">
+            <%= submit_tag 'nò, mi ke bai bèk na e página inisio', class: 'button alert' %>
+          </div>
+          <div class="column large-6 medium-6 small-3 text-left">
+            <%= submit_tag 'si, mi ke añadí e palabra', class: 'button' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<%= render "/frontends/papiamentu_footer" %>

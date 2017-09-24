@@ -1,0 +1,10 @@
+<%= form_tag '/check_text', method: :post do %>
+  <div class="row">
+    <div class="column large-6 medium-6 small-9 text-left">
+      <%= text_area_tag :text, nil, rows: 10 %>
+    </div>
+    <div class="column large-6 medium-6 small-3 text-left">
+      <%= submit_tag 'chèck', class: 'button search_form_button' %>
+    </div>
+  </div>
+<% end %>

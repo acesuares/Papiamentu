@@ -1,0 +1,51 @@
+rails g inline_forms Word \
+    name:string \
+    synonym:text \
+    wordtypes:habtm \
+    source:dropdown \
+    goals:habtm \
+    attested:integer \
+    attested_on:date \
+    countable:check_box \
+    specific:integer \
+    school_language:integer \
+    description_nl:text \
+    description_pap_cw:text \
+    tr_nl:string \
+    tr_en:string \
+    tr_es:string \
+    tr_pap_cw:string \
+    tr_pap_aw:string \
+    educatiegebeid:string \
+    _enabled:yes \
+    _presentation:'#{name}'
+
+rails g inline_forms Wordtype \
+    name:string \
+    title_nl:string \
+    title_en:string \
+    title_es:string \
+    title_pap:string \
+    words:habtm \
+    comment:text \
+    _enabled:yes \
+    _presentation:'#{name}'
+
+rails g inline_forms Source \
+    name:string \
+    words:has_many \
+    comment:text \
+    _enabled:yes \
+    _presentation:'#{name}'
+
+rails g inline_forms Goal \
+    name:string \
+    title_nl:string \
+    title_en:string \
+    title_es:string \
+    title_pap:string \
+    words:habtm \
+    comment:text \
+    _enabled:yes \
+    _presentation:'#{name}'
+

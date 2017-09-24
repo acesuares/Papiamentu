@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Papiamentu: Votes This Week:</h1>
+    <ul>
+      <% @words.each do |word| %>
+        <li>
+          <%= link_to_word(word, true) %>
+          <ul>
+            <% word.votes.where("'#{1.week.ago.to_date.to_s(:db)}' < created_at").each do |vote| %>
+              <li>
+                <%= time_ago_in_words(vote.updated_at) %> pasá: <%= vote.vote ? "+1" : "-1" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

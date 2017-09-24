@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Papiamentu: Bo palabra <%= @word.name %> a hanja un view of un like!</h1>
+    <p>
+      E palabra: <%= @word.name %> tin <%= @word.views %> now!
+    </p>
+    <p>
+      E palabra: <%= @word.name %> tin <%= @word.votes_for %> positif!
+    </p>
+    <p>
+      E palabra: <%= @word.name %> tin <%= @word.votes_against %> negatif!
+    </p>
+    <p>
+      Por fabor bishitá <%= link_to_word(@word, true) %> pa wak e!
+    </p>
+    <p>Danki pa partisipá pasa un dushi dia!</p>
+  </body>
+</html>

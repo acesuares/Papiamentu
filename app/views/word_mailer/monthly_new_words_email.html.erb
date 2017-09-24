@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Papiamentu: <%= @words.length %> New Words Created This Month:</h1>
+    <ul>
+      <% @words.each do |word| %>
+        <li>
+          <%= link_to_word(word, true) %>
+        </li>
+      <% end %>
+    </ul>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

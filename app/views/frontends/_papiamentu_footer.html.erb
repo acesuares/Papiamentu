@@ -1,0 +1,19 @@
+<div class="row footer">
+  <hr>
+  <div class="column small-12 medium-6 large-6 text-left">
+    <% unless (controller_name == "frontends" && action_name  == "index") ||
+              (controller_name == "sessions" && action_name  == "new") %>
+        <%= link_to "#{image_tag('back.png')} bai bèk na página inisio".html_safe, '/' %><br />
+      <% end %>
+    <em>no por derivá ningun derechi di uzo for di e wèpsait aki</em>
+  </div>
+  <div class="column small-12 medium-5 large-5 text-right">
+    &nbsp;
+    <% if signed_in? %>
+      <%= link_to "finalisá seshon", destroy_user_session_path, :method => :delete, class: [:button, :rounded] %>
+    <% end %>
+  </div>
+  <div class="column small-12 medium-1 large-1 text-right">
+    &nbsp;
+  </div>
+</div>

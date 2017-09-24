@@ -1,0 +1,25 @@
+<ul>
+  <% Word.recently_updated(@palabra_mas_resien_limit, @palabra_mas_resien_offset).each do |word| %>
+    <li>
+      <%= link_to_word word %>: <%= time_ago_in_words(word.updated_at) %> pasá
+    </li>
+  <% end %>
+  <%= link_to image_tag("back.png", :size => "24x24", :border => 0, :alt => "Atras", :title => "Atras" ),
+      { update: "palabra_mas_resien",
+        action: "_palabra_mas_resien",
+        palabra_mas_resien_limit: @palabra_mas_resien_limit,
+        palabra_mas_resien_offset: @palabra_mas_resien_offset,
+        direction: 'back',
+      },
+      remote: true
+    %>
+    <%= link_to image_tag("forward.png", :size => "24x24", :border => 0, :alt => "Dilanti", :title => "Dilanti" ),
+        { update: "palabra_mas_resien",
+          action: "_palabra_mas_resien",
+          palabra_mas_resien_limit: @palabra_mas_resien_limit,
+          palabra_mas_resien_offset: @palabra_mas_resien_offset,
+          direction: 'forward',
+        },
+        remote: true
+      %>
+</ul>
