@@ -1,8 +1,8 @@
 development:
   adapter: mysql2
-  database: Papiamentu_d
-  username: Papiamentu
-  password: Papiamentu
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
 
 production:
   adapter: mysql2
