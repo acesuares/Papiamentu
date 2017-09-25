@@ -1,0 +1,2 @@
+class VariantsController < InlineFormsController
+end
