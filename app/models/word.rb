@@ -135,6 +135,10 @@ class Word < ActiveRecord::Base
     specific > 0
   end
 
+  def varies?
+    variants.count > 1
+  end
+
   def self.find_by_variant(search_variant)
     Word.joins(:variants).where(variants: { lemma: search_variant }).first
   end
