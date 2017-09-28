@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Word < ActiveRecord::Base
+  before_create :add_variant
   acts_as_voteable
   acts_as_commontable
   attr_reader :per_page
@@ -15,6 +16,7 @@ class Word < ActiveRecord::Base
   has_and_belongs_to_many :goals
   has_and_belongs_to_many :sources
   has_and_belongs_to_many :fshp_categories
+  has_many :variants
   belongs_to :user
   belongs_to :deleter, foreign_key: :deleted_by, class_name: User
 
@@ -39,6 +41,7 @@ class Word < ActiveRecord::Base
       [ :deleted , "name", :info, DELETED ],
       [ :deleter , "name", :info ],
       [ :synonym , "synonym", :text_area_without_ckeditor ],
+      [ :variants , "variants", :associated ],
       [ :header_gramma, '', :header ],
       [ :wordtypes, '', :check_list ],
       [ :countable , "countable", :radio_button, { 0 => 'nò', 1 => 'si', 2 => 'unknown' } ],
@@ -181,5 +184,10 @@ class Word < ActiveRecord::Base
     self.deleted_by = nil
     self.save
   end
+
+  protected
+    def add_variant
+      variants << Variant.create(lemma: name, orthographic_type: 'cw')
+    end
 
 end

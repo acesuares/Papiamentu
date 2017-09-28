@@ -1,5 +1,10 @@
 Papiamentu::Application.routes.draw do
 
+  resources :variants do
+  post 'revert', :on => :member
+end
+
+
   resources :fshp_categories do
   post 'revert', :on => :member
 end
