@@ -21,6 +21,7 @@
       <% end %>
 
       <div class="pap_description bordered">
+        <%= content_tag :p, @word.variants_nice unless @word.variants.count <= 1 %>
         <%= content_tag :p, @word.description_pap_cw_nice %>
         <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
         <%= content_tag(:p, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>

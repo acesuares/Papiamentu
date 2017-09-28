@@ -109,6 +109,12 @@ class Word < ActiveRecord::Base
     end
   end
 
+  def variants_nice
+    variants_nice = 'Variante ortográfiko: '
+    variants_nice << variants.map { |variant| "#{variant.orthographic_type}: #{variant.lemma}" }.join(', ')
+    variants_nice
+  end
+
   def approved?
    buki_di_oro == 1
   end
@@ -127,6 +133,10 @@ class Word < ActiveRecord::Base
 
   def specific?
     specific > 0
+  end
+
+  def self.find_by_variant(search_variant)
+    Variant.find_by_lemma(search_variant) && Variant.find_by_lemma(search_variant).word
   end
 
   # see http://stackoverflow.com/questions/861448/is-there-a-way-to-avoid-automatically-updating-rails-timestamp-fields
