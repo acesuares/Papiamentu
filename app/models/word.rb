@@ -136,7 +136,7 @@ class Word < ActiveRecord::Base
   end
 
   def self.find_by_variant(search_variant)
-    Variant.find_by_lemma(search_variant) && Variant.find_by_lemma(search_variant).word
+    Word.joins(:variants).where(variants: { lemma: search_variant }).first
   end
 
   # see http://stackoverflow.com/questions/861448/is-there-a-way-to-avoid-automatically-updating-rails-timestamp-fields
