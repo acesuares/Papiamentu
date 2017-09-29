@@ -110,9 +110,7 @@ class Word < ActiveRecord::Base
   end
 
   def variants_nice
-    variants_nice = 'Variante ortográfiko: '
-    variants_nice << variants.map { |variant| "#{variant.orthographic_type}: #{variant.lemma}" }.join(', ')
-    variants_nice
+    "Variante ortográfiko: #{variants.map(&:_presentation).join(', ')}"
   end
 
   def approved?
