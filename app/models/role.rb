@@ -8,7 +8,7 @@ class Role < ActiveRecord::Base
 
   has_and_belongs_to_many :users
 
-  default_scope order('name DESC')
+  default_scope { order('name DESC') }
 
 
   def _presentation

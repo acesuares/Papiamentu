@@ -4,8 +4,6 @@ class Variant < ActiveRecord::Base
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
-  attr_accessible :lemma, :orthographic_type
-
   belongs_to :word
 
   def _presentation

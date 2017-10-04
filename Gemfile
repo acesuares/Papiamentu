@@ -1,23 +1,23 @@
 source 'https://rubygems.org'
 
-  gem 'rails', '3.2.22'
+  gem 'rails', '~> 5.0.2'
   gem 'rake'
   gem 'capistrano'
-  gem 'will_paginate', :git => 'https://github.com/acesuares/will_paginate.git'
+  gem 'will_paginate'
   gem 'tabs_on_rails', :git => 'https://github.com/acesuares/tabs_on_rails.git', :branch => 'update_remote'
   gem 'cancan', :git => 'https://github.com/acesuares/cancan.git', :branch => '2.0'
   gem 'carrierwave'
   gem 'remotipart', '~> 1.0'
   gem 'paper_trail'
   gem 'devise'
-  gem 'inline_forms', '3.2.1'
+  gem 'inline_forms', '>=5'
   gem 'validation_hints'
   gem 'mini_magick'
   gem 'rails-i18n'
   gem 'i18n-active_record', :git => 'https://github.com/acesuares/i18n-active_record.git'
   gem 'unicorn'
   gem 'rvm'
-  gem 'mysql2', '~> 0.3.19'
+  gem 'mysql2'
   gem 'omniauth-github'
   gem 'omniauth-facebook'
   gem 'thumbs_up'
@@ -33,6 +33,8 @@ source 'https://rubygems.org'
   gem 'coffee-rails'
   gem 'compass-rails'
   gem 'figaro'
+  gem 'therubyracer'
+  gem 'uglifier'
 
   # Include everything needed to run rake, tests, features, etc.
   group :development do
@@ -48,11 +50,10 @@ source 'https://rubygems.org'
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'capistrano-sidekiq'
-    gem 'rails3-before_action'
 end
 
  # these are just for production
- group :production do
-   gem 'therubyracer'
-   gem 'uglifier'
- end
+ # group :production do
+ #   gem 'therubyracer'
+ # gem 'uglifier'
+ # end

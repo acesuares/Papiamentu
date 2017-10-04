@@ -1,8 +1,14 @@
-Papiamentu::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
   config.cache_classes = true
+
+  # Eager load code on boot. This eager loads most of Rails and
+  # your application in memory, allowing both threaded web servers
+  # and those relying on copy on write to perform better.
+  # Rake tasks automatically ignore this option for performance.
+  config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
@@ -66,15 +72,14 @@ Papiamentu::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-# for devise
+  # for devise
   config.action_mailer.default_url_options = { :protocol => 'https', :host => 'www.papiamentu.info' }
 
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :enable_starttls_auto => true,
-      :address => ENV["ACTION_MAILER_SMTP_SETTINGS_ADDRESS"],
-      :user_name => ENV["ACTION_MAILER_SMTP_SETTINGS_USERNAME"],
-      :password => ENV["ACTION_MAILER_SMTP_SETTINGS_PASSWORD"],
-    }
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => ENV["ACTION_MAILER_SMTP_SETTINGS_ADDRESS"],
+    :user_name => ENV["ACTION_MAILER_SMTP_SETTINGS_USERNAME"],
+    :password => ENV["ACTION_MAILER_SMTP_SETTINGS_PASSWORD"],
+  }
 end

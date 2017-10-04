@@ -8,9 +8,7 @@ class Word < ActiveRecord::Base
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
-  attr_accessible :name, :user_id, :source_id
-
-  default_scope order(:name)
+  default_scope { order(:name) }
 
   has_and_belongs_to_many :wordtypes
   has_and_belongs_to_many :goals
