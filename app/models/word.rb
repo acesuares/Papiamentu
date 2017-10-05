@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Word < ActiveRecord::Base
+class Word < ApplicationRecord
   before_create :add_variant
   acts_as_voteable
   acts_as_commontable
@@ -8,9 +8,7 @@ class Word < ActiveRecord::Base
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
-  attr_accessible :name, :user_id, :source_id
-
-  default_scope order(:name)
+  default_scope { order(:name) }
 
   has_and_belongs_to_many :wordtypes
   has_and_belongs_to_many :goals
@@ -109,6 +107,10 @@ class Word < ActiveRecord::Base
     end
   end
 
+  def variants_nice
+    "Variante ortográfiko: #{variants.map(&:_presentation).join(', ')}"
+  end
+
   def approved?
    buki_di_oro == 1
   end
@@ -127,6 +129,14 @@ class Word < ActiveRecord::Base
 
   def specific?
     specific > 0
+  end
+
+  def varies?
+    variants.count > 1
+  end
+
+  def self.find_by_variant(search_variant)
+    Word.joins(:variants).where(variants: { lemma: search_variant }).first
   end
 
   # see http://stackoverflow.com/questions/861448/is-there-a-way-to-avoid-automatically-updating-rails-timestamp-fields

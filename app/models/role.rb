@@ -1,4 +1,4 @@
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list
@@ -8,7 +8,7 @@ class Role < ActiveRecord::Base
 
   has_and_belongs_to_many :users
 
-  default_scope order('name DESC')
+  default_scope { order('name DESC') }
 
 
   def _presentation

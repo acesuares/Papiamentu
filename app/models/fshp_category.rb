@@ -1,4 +1,4 @@
-class FshpCategory < ActiveRecord::Base
+class FshpCategory < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list

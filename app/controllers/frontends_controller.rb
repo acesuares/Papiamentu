@@ -1,4 +1,5 @@
 class FrontendsController < InlineFormsController
+  layout 'application'
   def index
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit] || 10
     @palabra_mas_resien_offset = params[:palabra_mas_resien_offset] || 0
@@ -11,7 +12,7 @@ class FrontendsController < InlineFormsController
       redirect_to '/'
     else
       @search_word = params[:word].squish.gsub(CHARACTER_REGEX,'')
-      @word = Word.find_by_name(@search_word)
+      @word = Word.find_by_variant(@search_word)
       if @word.nil?
         render 'palabra_nobo' and return
       end
