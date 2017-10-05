@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   before_create :add_guest_role
   acts_as_voter
   has_karma :words, :as => :submitter, :weight => [ 0.2, 0.2 ]

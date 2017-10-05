@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Word < ActiveRecord::Base
+class Word < ApplicationRecord
   before_create :add_variant
   acts_as_voteable
   acts_as_commontable

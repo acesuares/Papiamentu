@@ -50,10 +50,5 @@ source 'https://rubygems.org'
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'capistrano-sidekiq'
+    gem 'listen'    
 end
-
- # these are just for production
- # group :production do
- #   gem 'therubyracer'
- # gem 'uglifier'
- # end

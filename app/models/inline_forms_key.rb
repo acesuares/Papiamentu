@@ -1,4 +1,4 @@
-class InlineFormsKey < ActiveRecord::Base
+class InlineFormsKey < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list
@@ -13,8 +13,8 @@ class InlineFormsKey < ActiveRecord::Base
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
-      [ :name , "name", :text_field ], 
-      [ :inline_forms_translations , "inline_forms_translations", :associated ], 
+      [ :name , "name", :text_field ],
+      [ :inline_forms_translations , "inline_forms_translations", :associated ],
     ]
   end
 
