@@ -1,10 +1,8 @@
-class Variant < ActiveRecord::Base
+class Variant < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list
   has_paper_trail
-
-  attr_accessible :lemma, :orthographic_type
 
   belongs_to :word
 

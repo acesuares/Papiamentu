@@ -1,4 +1,4 @@
-Papiamentu::Application.routes.draw do
+Rails.application.routes.draw do
 
   resources :variants do
   post 'revert', :on => :member

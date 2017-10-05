@@ -1,4 +1,4 @@
-class InlineFormsTranslation < ActiveRecord::Base
+class InlineFormsTranslation < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list
@@ -14,10 +14,10 @@ class InlineFormsTranslation < ActiveRecord::Base
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
-      [ :inline_forms_locale , "inline_forms_locale", :dropdown ], 
-      [ :value , "value", :text_area ], 
-      [ :interpolations , "interpolations", :text_area ], 
-      [ :is_proc , "is_proc", :check_box ], 
+      [ :inline_forms_locale , "inline_forms_locale", :dropdown ],
+      [ :value , "value", :text_area ],
+      [ :interpolations , "interpolations", :text_area ],
+      [ :is_proc , "is_proc", :check_box ],
     ]
   end
 

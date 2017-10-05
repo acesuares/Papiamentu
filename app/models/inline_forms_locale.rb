@@ -1,4 +1,4 @@
-class InlineFormsLocale < ActiveRecord::Base
+class InlineFormsLocale < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list
@@ -13,7 +13,7 @@ class InlineFormsLocale < ActiveRecord::Base
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
-      [ :name , "name", :text_field ], 
+      [ :name , "name", :text_field ],
     ]
   end
 

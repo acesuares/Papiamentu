@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   before_create :add_guest_role
   acts_as_voter
   has_karma :words, :as => :submitter, :weight => [ 0.2, 0.2 ]
@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :locale
   attr_writer :inline_forms_attribute_list
-  attr_accessible :email, :password, :password_confirmation, :name, :remember_me
 
   has_and_belongs_to_many :roles
   has_many :words
