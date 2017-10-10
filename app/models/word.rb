@@ -21,10 +21,11 @@ class Word < ApplicationRecord
   validates :name, :presence => true
   validates :name, :uniqueness => true, on: :create
 
-  scope :standardized, -> {where(attested: 1)}
   scope :buki_di_oro, -> {where(buki_di_oro: 1)}
-  scope :deleted, -> {where(deleted: 2)}
 
+  enum buki_di_oro: { pending: 0, approved: 1 }
+  enum attested: { not_standarized: 0, standarized: 1 }
+  enum deleted: { active: 1, deleted: 2 }
 
   def _presentation
     ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
@@ -109,18 +110,6 @@ class Word < ApplicationRecord
 
   def variants_nice
     "Variante ortográfiko: #{variants.map(&:_presentation).join(', ')}"
-  end
-
-  def approved?
-   buki_di_oro == 1
-  end
-
-  def standarized?
-   attested == 1
-  end
-
-  def deleted?
-    deleted == 2
   end
 
   def countable?
