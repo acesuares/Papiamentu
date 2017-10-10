@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   # scopes
 
-  default_scope order('name ASC')
+  default_scope  { order(name: 'ASC') }
 
   scope :active, -> { where(active: 1) }
   scope :new_words_immediately, -> { where(new_words: 2) }
