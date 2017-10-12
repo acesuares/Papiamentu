@@ -18,6 +18,9 @@ class Word < ApplicationRecord
   belongs_to :user
   belongs_to :deleter, foreign_key: :deleted_by, class_name: User
 
+  IMMUTABLE = %w{buki_di_oro}
+
+  validate :force_immutable
   validates :name, :presence => true
   validates :name, :uniqueness => true, on: :create
 
@@ -188,5 +191,17 @@ class Word < ApplicationRecord
     def add_variant
       variants << Variant.create(lemma: name, orthographic_type: 'cw')
     end
+
+  private
+
+  def force_immutable
+    if self.persisted?
+      IMMUTABLE.each do |attr|
+        self.changed.include?(attr) &&
+          errors.add(attr, :immutable) &&
+          self[attr] = self.changed_attributes[attr]
+      end
+    end
+  end
 
 end
