@@ -26,7 +26,7 @@ class Word < ApplicationRecord
 
   scope :buki_di_oro, -> {where(buki_di_oro: 1)}
 
-  enum buki_di_oro: { pending: 0, approved: 1 }
+  enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
   enum deleted: { active: 1, deleted: 2 }
 
@@ -49,7 +49,7 @@ class Word < ApplicationRecord
       [ :countable , "countable", :radio_button, { 0 => 'nò', 1 => 'si', 2 => 'unknown' } ],
       [ :specific , "specific", :radio_button, { 0 => 'nò', 1 => 'si' } ],
       [ :school_language , "school_language", :radio_button, { 0 => 'nò', 1 => 'si' } ],
-      [ :attested , "attested", :radio_button, { 0 => 'nò', 1 => 'si' } ],
+      [ :attested , "attested", :radio_button, { 'not_standarized' => 'nò', 'standarized' => 'si' } ],
       [ :attested_on , "attested_on", :date_select ],
       [ :user, '', :info ],
       [ :created_at, '', :info ],
@@ -193,7 +193,7 @@ class Word < ApplicationRecord
     end
 
   private
-
+begin
   def force_immutable
     if self.persisted?
       IMMUTABLE.each do |attr|
@@ -203,5 +203,5 @@ class Word < ApplicationRecord
       end
     end
   end
-
+end
 end
