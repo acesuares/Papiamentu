@@ -193,7 +193,7 @@ class Word < ApplicationRecord
     end
 
   private
-begin
+
   def force_immutable
     if self.persisted?
       IMMUTABLE.each do |attr|
@@ -203,5 +203,4 @@ begin
       end
     end
   end
-end
 end
