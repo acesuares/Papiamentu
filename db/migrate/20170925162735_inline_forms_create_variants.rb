@@ -1,6 +1,6 @@
-class InlineFormsCreateVariants < ActiveRecord::Migration
+class InlineFormsCreateVariants < ActiveRecord::Migration[5.0]
   def self.up
-    create_table :variants, :id => true do |t|
+    create_table :variants do |t|
       t.string :lemma
       t.string :orthographic_type
       t.belongs_to :word
