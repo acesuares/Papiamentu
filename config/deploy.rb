@@ -1,5 +1,6 @@
 set :application, ENV['DEPLOY_APPLICATION']
 set :repo_url, ENV['DEPLOY_REPO_URL']
+set :branch, ENV['DEPLOY_BRANCH']
 set :bundle_binstubs, nil
 
 # Default deploy_to directory is /var/www/my_app_name
