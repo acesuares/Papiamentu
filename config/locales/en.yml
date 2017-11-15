@@ -44,3 +44,9 @@ en:
         created_at: created
         buki_di_oro: Buki di Oro
         buki_di_oro_text: Tekst volgens Buki di Oro
+    errors:
+      models:
+        word:
+          attributes:
+            buki_di_oro:
+              immutable: 'attribute is immutable'

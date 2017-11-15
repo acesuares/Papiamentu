@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  # API
+  namespace :api do
+    namespace :v1 do
+      get 'palabra/:word', to: 'endpoints#palabra'
+    end
+  end
+
   resources :variants do
   post 'revert', :on => :member
 end
