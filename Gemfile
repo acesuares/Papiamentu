@@ -4,7 +4,7 @@ source 'https://rubygems.org'
   gem 'rake'
   gem 'capistrano'
   gem 'will_paginate'
-  gem 'tabs_on_rails', :git => 'https://github.com/acesuares/tabs_on_rails.git', :branch => 'update_remote'
+  gem 'tabs_on_rails'
   gem 'cancan', :git => 'https://github.com/acesuares/cancan.git', :branch => '2.0'
   gem 'carrierwave'
   gem 'remotipart', '~> 1.0'
@@ -35,6 +35,7 @@ source 'https://rubygems.org'
   gem 'figaro'
   gem 'therubyracer'
   gem 'uglifier'
+  gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
 
   # Include everything needed to run rake, tests, features, etc.
   group :development do
@@ -50,5 +51,5 @@ source 'https://rubygems.org'
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'capistrano-sidekiq'
-    gem 'listen'    
+    gem 'listen'
 end

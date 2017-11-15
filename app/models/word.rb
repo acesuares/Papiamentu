@@ -18,13 +18,17 @@ class Word < ApplicationRecord
   belongs_to :user
   belongs_to :deleter, foreign_key: :deleted_by, class_name: User
 
+  IMMUTABLE = %w{buki_di_oro}
+
+  validate :force_immutable
   validates :name, :presence => true
   validates :name, :uniqueness => true, on: :create
 
-  scope :standardized, -> {where(attested: 1)}
   scope :buki_di_oro, -> {where(buki_di_oro: 1)}
-  scope :deleted, -> {where(deleted: 2)}
 
+  enum buki_di_oro: { not_approved: 0, approved: 1 }
+  enum attested: { not_standarized: 0, standarized: 1 }
+  enum deleted: { active: 1, deleted: 2 }
 
   def _presentation
     ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
@@ -45,7 +49,7 @@ class Word < ApplicationRecord
       [ :countable , "countable", :radio_button, { 0 => 'nò', 1 => 'si', 2 => 'unknown' } ],
       [ :specific , "specific", :radio_button, { 0 => 'nò', 1 => 'si' } ],
       [ :school_language , "school_language", :radio_button, { 0 => 'nò', 1 => 'si' } ],
-      [ :attested , "attested", :radio_button, { 0 => 'nò', 1 => 'si' } ],
+      [ :attested , "attested", :radio_button, { 'not_standarized' => 'nò', 'standarized' => 'si' } ],
       [ :attested_on , "attested_on", :date_select ],
       [ :user, '', :info ],
       [ :created_at, '', :info ],
@@ -109,18 +113,6 @@ class Word < ApplicationRecord
 
   def variants_nice
     "Variante ortográfiko: #{variants.map(&:_presentation).join(', ')}"
-  end
-
-  def approved?
-   buki_di_oro == 1
-  end
-
-  def standarized?
-   attested == 1
-  end
-
-  def deleted?
-    deleted == 2
   end
 
   def countable?
@@ -200,4 +192,15 @@ class Word < ApplicationRecord
       variants << Variant.create(lemma: name, orthographic_type: 'cw')
     end
 
+  private
+
+  def force_immutable
+    if self.persisted?
+      IMMUTABLE.each do |attr|
+        self.changed.include?(attr) &&
+          errors.add(attr, :immutable) &&
+          self[attr] = self.changed_attributes[attr]
+      end
+    end
+  end
 end
