@@ -1,5 +1,4 @@
 set :user, ENV["DEPLOY_USER"]
-set :deploy_via, :remote_cache
 set :conditionally_migrate, true
 set :rails_env, "production"
 
