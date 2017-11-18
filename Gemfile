@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-  gem 'rails', '~> 5.0.2'
+  gem 'rails', '~> 5.1.4'
   gem 'rake'
   gem 'will_paginate'
   gem 'tabs_on_rails'
@@ -34,7 +34,7 @@ source 'https://rubygems.org'
   gem 'figaro'
   gem 'therubyracer'
   gem 'uglifier'
-  gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
+  gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers', branch: '0-9-stable'
 
   # Include everything needed to run rake, tests, features, etc.
   group :development do
