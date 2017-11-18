@@ -31,6 +31,7 @@ namespace :figaro do
   task :upload do
     on roles(:all) do
       execute "mkdir -p #{shared_path}/config"
+
       upload! 'config/application.yml', "#{shared_path}/config/application.yml"
     end
   end
