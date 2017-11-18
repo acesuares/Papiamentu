@@ -93,9 +93,6 @@ GEM
     capistrano-rails (1.3.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
     capistrano-sidekiq (0.20.0)
       capistrano (>= 3.9.0)
       sidekiq (>= 3.4)
@@ -318,6 +315,9 @@ GEM
     rvm (1.11.3.9)
     rvm-capistrano (1.5.0)
       capistrano (>= 2.15.4)
+    rvm1-capistrano3 (1.4.0)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2)
     sass (3.4.25)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -398,7 +398,6 @@ DEPENDENCIES
   capistrano (~> 3.6)
   capistrano-bundler (~> 1.3)
   capistrano-rails (~> 1.3)
-  capistrano-rvm
   capistrano-sidekiq
   capistrano3-unicorn
   carrierwave
@@ -427,6 +426,7 @@ DEPENDENCIES
   rspec-rails
   rvm
   rvm-capistrano
+  rvm1-capistrano3
   sass-rails
   seed_dump!
   shoulda
