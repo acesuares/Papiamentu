@@ -24,8 +24,7 @@ Commontator.configure do |config|
   # through the view object (for example, view.flash)
   # However, the view does not include the main application's helpers
   # Default: lambda { |view| '$("#error_explanation").remove();' }
-  config.javascript_proc = lambda { |view|
-                                    '$("#error_explanation").remove();' }
+  config.javascript_proc = lambda { |view| '$("#error_explanation").remove();' }
 
 
 
@@ -99,7 +98,7 @@ Commontator.configure do |config|
   # thread_read_proc
   # Type: Proc
   # Arguments: a thread (Commontator::Thread), a user (acts_as_commontator)
-  # Returns: a Boolean, true iif the user should be allowed to read that thread
+  # Returns: a Boolean, true if and only if the user should be allowed to read that thread
   # Note: can be called with a user object that is nil (if they are not logged in)
   # Default: lambda { |thread, user| true } (anyone can read any thread)
   config.thread_read_proc = lambda { |thread, user| true }
@@ -107,7 +106,7 @@ Commontator.configure do |config|
   # thread_moderator_proc
   # Type: Proc
   # Arguments: a thread (Commontator::Thread), a user (acts_as_commontator)
-  # Returns: a Boolean, true iif the user is a moderator for that thread
+  # Returns: a Boolean, true if and only if the user is a moderator for that thread
   # If you want global moderators, make this proc true for them regardless of thread
   # Default: lambda { |thread, user| false } (no moderators)
   config.thread_moderator_proc = lambda { |thread, user| false }
@@ -234,16 +233,47 @@ Commontator.configure do |config|
   config.commontable_name_proc = lambda { |thread|
     "#{thread.commontable.class.name} ##{thread.commontable.id}" }
 
-  # commontable_url_proc
+  # comment_url_proc
   # Type: Proc
-  # Arguments: a thread (Commontator::Thread),
+  # Arguments: a comment (Commontator::Comment),
   #            the app_routes (ActionDispatch::Routing::RoutesProxy)
-  # Returns: a String containing the url of the view that displays the given thread
+  # Returns: a String containing the url of the view that displays the given comment
   # This usually is the commontable's "show" page
   # The main application's routes can be accessed through the app_routes object
-  # Default: lambda { |commontable, app_routes|
-  #            app_routes.polymorphic_url(commontable) }
-  # (defaults to the commontable's show url)
-  config.commontable_url_proc = lambda { |thread, app_routes|
-    app_routes.polymorphic_url(thread.commontable) }
+  # Default: lambda { |comment, app_routes|
+  #                   app_routes.polymorphic_url(comment.thread.commontable,
+  #                                              anchor: "comment_#{comment.id}_div") }
+  # (defaults to the commontable's show url with an anchor pointing to the comment's div)
+  config.comment_url_proc = lambda { |comment, app_routes|
+    app_routes.polymorphic_url(comment.thread.commontable, anchor: "comment_#{comment.id}_div") }
+
+  # mentions_enabled
+  # Type: Boolean
+  # Whether users can mention other users to subscribe them to the thread
+  # Valid options:
+  #   false (no mentions)
+  #   true  (mentions enabled)
+  # Default: false
+  config.mentions_enabled = false
+
+  # user_mentions_proc
+  # Type: Proc
+  # Arguments:
+  #   the current user (acts_as_commontator)
+  #   the search query inputted by user (String)
+  # Returns: an ActiveRecord Relation object
+  # Important notes:
+  #
+  #  - The proc will be called internally with an empty search string.
+  #    In that case, it MUST return all users that can be mentioned.
+  #
+  #  - With mentions enabled, any registered user in your app is able
+  #    to call this proc with any search query >= 3 characters.
+  #    Make sure to handle SQL escaping properly and that the
+  #    attribute being searched does not contain sensitive information.
+  #
+  # Default: lambda { |current_user, query|
+  #                   current_user.class.where('username LIKE ?', "#{query}%") }
+  config.user_mentions_proc = lambda { |current_user, query|
+    current_user.class.where('username LIKE ?', "#{query}%") }
 end

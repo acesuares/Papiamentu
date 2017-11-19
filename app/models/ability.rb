@@ -10,7 +10,7 @@ class Ability
 
     # roles
     if user.role?(:superadmin)
-      can :access, :all
+      can :manage, :all
     elsif user.role? :admin
       can :access_but_not_delete,  [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
       can [:destroy, :revert],      :words

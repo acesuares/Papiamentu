@@ -5,13 +5,12 @@ class ApplicationController < InlineFormsApplicationController
   before_action :authenticate_user!
 
   # Comment next 6 lines if you want CanCan authorization
-  enable_authorization :unless => :devise_controller?
+  check_authorization unless: :devise_controller?
 
-  rescue_from CanCan::Unauthorized do |exception|
+  rescue_from CanCan::AccessDenied do |exception|
     sign_out :user if user_signed_in?
     redirect_to new_user_session_path, :alert => exception.message
   end
-
 
   # Uncomment next line if you want I18n (based on subdomain)
   # before_filter :set_locale
