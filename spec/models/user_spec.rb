@@ -1,5 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "Create" do
+    it "has the viewer role" do
+      user = create(:user)
+      expect(user.role?(:viewer)).to eq(true)
+    end
+  end
 end
