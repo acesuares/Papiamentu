@@ -260,12 +260,9 @@ vendor
   subdirectory. If the app has frozen rails, those gems also go here, under
   vendor/rails/. This directory is in the load path.
 
-== Getting Started
+== Run the tests with:
 
-```
-git clone git@github.com:ortegacmanuel/consulnetwork.git
-cd consulnetwork
-bundle
-rackup
-open http://localhost:9292 to check the project on your browser
-```
+  bundle install
+  rails RACK_ENV=test db:create
+  rails RACK_ENV=test db:schema:load
+  bundle exec rspec
