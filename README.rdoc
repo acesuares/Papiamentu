@@ -259,3 +259,13 @@ vendor
   External libraries that the application depends on. Also includes the plugins
   subdirectory. If the app has frozen rails, those gems also go here, under
   vendor/rails/. This directory is in the load path.
+
+== Getting Started
+
+```
+git clone git@github.com:ortegacmanuel/consulnetwork.git
+cd consulnetwork
+bundle
+rackup
+open http://localhost:9292 to check the project on your browser
+```
