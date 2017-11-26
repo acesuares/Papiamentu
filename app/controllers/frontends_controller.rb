@@ -1,4 +1,6 @@
-class FrontendsController < InlineFormsController
+class FrontendsController < ApplicationController
+  authorize_resource :class => false
+
   layout 'application'
   def index
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit] || 10
@@ -123,7 +125,4 @@ class FrontendsController < InlineFormsController
       redirect_to "/palabra/#{params[:word]}"
     end
   end
-
-
-
 end
