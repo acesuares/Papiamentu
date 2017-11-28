@@ -8,8 +8,7 @@ class ApplicationController < InlineFormsApplicationController
   check_authorization unless: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    sign_out :user if user_signed_in?
-    redirect_to new_user_session_path, :alert => exception.message
+    redirect_to root_path, alert: exception.message
   end
 
   # Uncomment next line if you want I18n (based on subdomain)
