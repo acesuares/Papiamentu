@@ -26,6 +26,11 @@ development:
 
   SECRET_KEY_BASE:
 
+test:
+  DATABASE_NAME:
+  DATABASE_USER:
+  DATABASE_PASSWORD:
+
 production:
   DATABASE_NAME:
   DATABASE_USER:
