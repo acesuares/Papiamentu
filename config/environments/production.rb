@@ -83,7 +83,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   # for devise
-  config.action_mailer.default_url_options = { :protocol => 'https', :host => 'www.papiamentu.info' }
+  config.action_mailer.default_url_options = { :protocol => 'https', :host => 'palabra.papiamentu.info' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
