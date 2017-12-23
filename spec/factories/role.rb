@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :superadmin_role, class: Role do
     name 'superadmin'
     description 'Super Admin can access all.'

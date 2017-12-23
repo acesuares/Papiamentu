@@ -16,7 +16,7 @@ class Word < ApplicationRecord
   has_and_belongs_to_many :fshp_categories
   has_many :variants
   belongs_to :user
-  belongs_to :deleter, foreign_key: :deleted_by, class_name: User
+  belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User'
 
   IMMUTABLE = %w{buki_di_oro}
 

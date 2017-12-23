@@ -62,7 +62,7 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'launchy'
   gem 'rails-controller-testing'
 end
