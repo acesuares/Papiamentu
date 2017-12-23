@@ -42,6 +42,7 @@ class Ability
       can :vote,                    :words
       can :access_but_not_delete,   :users,                               id: user.id
       cannot :update,   :users,                               [:roles, :email]
+      can [:read, :update], User, id: user.id
     end
   end
 end
