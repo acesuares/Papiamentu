@@ -40,9 +40,8 @@ class Ability
       can :create,                  :words
       can :do_frontend_stuff,       :frontend
       can :vote,                    :words
-      can :access_but_not_delete,   :users,                               id: user.id
+      can :access_but_not_delete,   User,                               id: user.id
       cannot :update,   :users,                               [:roles, :email]
-      can [:read, :update], User, id: user.id
     end
   end
 end
