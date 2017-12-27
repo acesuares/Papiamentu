@@ -183,7 +183,7 @@ GEM
     highline (1.7.8)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
-    inline_forms (5.0.21)
+    inline_forms (5.0.22)
       rails (>= 5.0)
       rails-i18n
       rvm
@@ -272,7 +272,7 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
-    rack-test (0.7.0)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
