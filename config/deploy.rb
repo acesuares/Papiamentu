@@ -16,6 +16,12 @@ set :linked_dirs, fetch(:linked_dirs, [])
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+before :deploy do
+  system "bundle install"
+  system "git commit -a"
+  system "git push"
+end
+
 before 'rvm1:install:rvm', 'app:update_rvm_key'
 after 'rvm1:install:ruby', 'rvm1:install_bundler'
 
