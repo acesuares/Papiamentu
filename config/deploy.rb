@@ -66,6 +66,12 @@ namespace :git do
   task :push do
     on roles(:all) do
       run_locally do
+        # Check we are on the master branch, so we can't forget to merge before deploying
+        branch = %x(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/').chomp
+        if branch != "master" && !ENV["IGNORE_BRANCH"]
+          raise RuntimeError, "Not on master branch (set IGNORE_BRANCH=1 to ignore)"
+        end
+
         execute "bundle install"
         execute "git commit -a -m 'Auto commit before deploy'"
         execute "git push"
