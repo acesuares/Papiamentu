@@ -16,11 +16,7 @@ set :linked_dirs, fetch(:linked_dirs, [])
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-before :deploy do
-  system "bundle install"
-  system "git commit -a"
-  system "git push"
-end
+before :deploy, 'git:push'
 
 before 'rvm1:install:rvm', 'app:update_rvm_key'
 after 'rvm1:install:ruby', 'rvm1:install_bundler'
@@ -61,6 +57,19 @@ namespace :rvm1 do # https://github.com/rvm/rvm1-capistrano3/issues/45
   task :install_bundler do
     on release_roles :all do
       execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . gem install bundler"
+    end
+  end
+end
+
+namespace :git do
+  desc 'Commiting and pushing to the remote repository'
+  task :push do
+    on roles(:all) do
+      run_locally do
+        execute "bundle install"
+        execute "git commit -a -m 'Auto commit before deploy'"
+        execute "git push"
+      end
     end
   end
 end
