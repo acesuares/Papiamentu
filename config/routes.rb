@@ -8,13 +8,17 @@ Rails.application.routes.draw do
   end
 
   resources :variants do
-  post 'revert', :on => :member
-end
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+    get 'close_versions_list', :on => :member
+  end
 
 
   resources :fshp_categories do
-  post 'revert', :on => :member
-end
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+    get 'close_versions_list', :on => :member
+  end
 
 
   mount Commontator::Engine => '/commontator'
@@ -22,12 +26,16 @@ end
   MODEL_TABS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
+      get 'list_versions', :on => :member
+      get 'close_versions_list', :on => :member
     end
   end
 
   HIDDEN_MODELS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
+      get 'list_versions', :on => :member
+      get 'close_versions_list', :on => :member
     end
   end
 
@@ -37,6 +45,8 @@ end
                                                         passwords: 'passwords' }
   resources :users do
     post 'revert', :on => :member
+    get 'list_versions', :on => :member
+    get 'close_versions_list', :on => :member    
   end
 
   require 'sidekiq/web'
