@@ -5,6 +5,22 @@
 @import 'jquery.ui.all';
 @import 'foundation_and_overrides';
 
+body {
+  background-color: #885381 !important;
+  background-image: image-url("background.png");
+  background-position: center;
+}
+
+.row {
+  background-color: #fff;
+}
+
+.header {
+  text-align: right;
+  background-color: #dee512;
+  padding:0;
+}
+
 .contain-to-grid {
   background-color: $body-bg !important;
 }
@@ -23,6 +39,10 @@ select {
 select:hover, select:focus {
   background-color: lighten(#fff8e0, 2%) !important;
   border: 0 !important;
+}
+
+ul {
+  list-style-type: none;
 }
 
 #inline_forms_application_top_bar {
@@ -297,7 +317,7 @@ select:hover, select:focus {
 .ckeditor_area .glass_plate {
     position: absolute;
     top: -1px;
-    width: 98%;
+    width: 100%;
     height: 232px;
     border: 0;
 }
@@ -332,4 +352,28 @@ select:hover, select:focus {
 
 #inline_forms_model_top_bar .top-bar-section .inline_forms_model_top_bar_buttons {
   top: 6px !important;
+}
+
+.bordered {
+  border: 0px;
+}
+
+
+.yes_no {
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.search_form_button {
+  padding: .5em !important;
+}
+
+#left-side, #right-side {
+  padding: 1.5em;
+}
+
+#right-side {
+  padding-top: 3em;
 }
