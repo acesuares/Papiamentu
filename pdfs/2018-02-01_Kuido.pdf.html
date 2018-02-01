@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sazon</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Dosis:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic);
+/* Reset CSS. http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css  */
+/* line 6, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+html {
+  color: #000;
+  background: #FFF;
+}
+
+/* line 7, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 8, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* line 9, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+fieldset, img {
+  border: 0;
+}
+
+/* line 10, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 11, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+li {
+  list-style: none;
+}
+
+/* line 12, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+caption, th {
+  text-align: left;
+}
+
+/* line 13, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+/* line 14, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+q:before, q:after {
+  content: &#39;&#39;;
+}
+
+/* line 15, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+legend {
+  color: #000;
+}
+
+/* Page Breaks */
+/* line 18, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.pb_before {
+  page-break-before: always !important;
+}
+
+/* line 19, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.pb_after {
+  page-break-after: always !important;
+}
+
+/* line 20, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.pbi_avoid {
+  page-break-inside: avoid !important;
+}
+
+/* line 22, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#glossary_pdf_header {
+  background-color: #dee512;
+  padding: 10px;
+  text-align: right;
+  margin-bottom: 25rem;
+}
+
+/* line 29, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.title-margin {
+  margin-bottom: 30px;
+}
+
+/* line 33, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.sponser-area {
+  margin-top: 20rem;
+  text-align: right;
+}
+
+/* line 38, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.main-title {
+  font-size: 3rem !important;
+  text-align: center;
+}
+
+/* line 45, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container p, #sazon_pdf_outer_container div {
+  font-size: 0.85rem !important;
+  margin-bottom: 1.25rem;
+}
+/* line 50, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container .column {
+  padding: 40px !important;
+}
+/* line 54, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container h1 {
+  font-size: 1.8rem !important;
+}
+/* line 57, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container h2 {
+  font-size: 1.5rem !important;
+}
+/* line 61, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container h3 {
+  font-size: 1.2rem !important;
+}
+/* line 65, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container h4 {
+  font-size: 1rem !important;
+}
+/* line 69, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container h5 {
+  font-size: 0.9rem !important;
+}
+/* line 73, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container h1, #sazon_pdf_outer_container h2, #sazon_pdf_outer_container h3, #sazon_pdf_outer_container h4, #sazon_pdf_outer_container h5, #sazon_pdf_outer_container h6 {
+  font-family: &quot;Dosis&quot;;
+}
+/* line 77, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#sazon_pdf_outer_container ul, #sazon_pdf_outer_container ol, #sazon_pdf_outer_container dl {
+  font-family: inherit;
+  font-size: 0.8rem;
+}
+
+/* line 83, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.content_area.column.medium-8.large-9 {
+  background: white none repeat scroll 0 0;
+  padding-top: 0 !important;
+  margin-bottom: 0;
+  min-height: 100vh;
+}
+
+/* line 90, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.sidebar_area h3 {
+  color: #a60c8e;
+}
+
+/* line 94, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.row.sidebar {
+  background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
+  border-radius: 0;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* line 101, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.row.assignments {
+  background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
+  border: 4px solid #3a5182;
+  border-radius: 25px 25px 25px 0;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+/* line 109, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.row.begrippen {
+  background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
+  border: 4px solid #7a3372;
+  border-radius: 25px 25px 25px 0;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+/* line 117, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.quote {
+  border-left: 10px solid #3a5182;
+  margin-bottom: 35px;
+  min-height: 120px;
+  padding: 0 0 0 20px;
+}
+
+/* line 124, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.quote2 {
+  border-left: 10px solid #3a5182;
+  margin-bottom: 35px;
+  padding: 0 0 0 20px;
+  font-style: italic;
+}
+
+/* line 131, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.right {
+  margin: 0 -3%;
+  padding: 10px;
+  width: 106%;
+}
+
+/* line 137, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.word-content {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 142, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+.word-head {
+  font-weight: bold;
+}
+
+/* line 146, /home/manuel/kodo/Papiamentu/apphttp://127.0.0.1:3000/assets/stylesheets/pdf.scss */
+#glossary_pdf_footer {
+  margin-top: 40px;
+  color: lightgrey;
+  text-align: right;
+  font-size: 10px !important;
+  z-index: 100;
+  width: 100%;
+}
+
+    </style>
+    <script>/* foo */</script>
+  </head>
+
+  <body>
+    <div id="glossary_pdf_header">
+      <img src="http://127.0.0.1:3000/assets/papiamentu_info_logo-b59a19eb81179f767ca7ac381e81ee4f47d56368bee361737fc54df9dedd7ebe.png" alt="Papiamentu info logo" />
+    </div>
+    <div id="sazon_pdf_outer_container">
+      <div id="glosario">
+  <div class="row" id="left-side">
+    <div class="columns small-12 medium-6 large-8 topper  bordered">
+      <h1 class="main-title">
+        Glosario di Kuido
+      </h1>
+
+      <div class="sponser-area">
+        <p>A logra traha e glosario aki grásias na ayudo i finansamentu di:</p>
+        <ul>
+          <li>spònser 1</li>
+          <li>spònser 2</li>
+          <li>spònser 3</li>
+        </ul>
+      </div>
+
+      <div class="pap_description bordered pb_before">
+        <h1 class="title-margin">Tokante</h1>
+        <p>blba lblbalblalblalbalblalbalblalbal</p>
+      </div>
+
+      <div class="pb_before">
+            <h3 class="title-margin">h</h3>
+            <p>
+              <p class="word-head">hisakama</p>
+              <div class="word-content">
+                <p>deskripshon: un serie di kuater pata pa pone un kama riba dje i hisa e kama na un haltura ku e dunadó di kuido por hasi su trabou sin ku e tin ku dobla su lomba muchu.</p>
+                <p>kargadó di kama</p>
+                <p>hulandes: bedklossen, bedverhoger</p>
+                
+                
+              </div>
+            </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+    <div id="glossary_pdf_footer">
+      Teksto i Diseño : Copyright © 2011-2017 FMS / Papiamentu.info, Software: © 2011-2017 Suares &amp; Co, Licensed under the MIT license.
+    </div>
+  </body>
+</html>

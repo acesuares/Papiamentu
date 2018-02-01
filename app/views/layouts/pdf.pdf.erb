@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sazon</title>
+    <style>
+      <%= Rails.application.assets.find_asset('pdf.scss').to_s %>
+    </style>
+    <script>/* foo */</script>
+  </head>
+
+  <body>
+    <div id="glossary_pdf_header">
+      <%= image_tag 'papiamentu_info_logo.png' %>
+    </div>
+    <div id="sazon_pdf_outer_container">
+      <%= yield %>
+    </div>
+    <div id="glossary_pdf_footer">
+      Teksto i Diseño : Copyright © 2011-2017 FMS / Papiamentu.info, Software: © 2011-2017 Suares &amp; Co, Licensed under the MIT license.
+    </div>
+  </body>
+</html>
