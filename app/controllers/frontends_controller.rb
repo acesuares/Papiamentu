@@ -27,6 +27,40 @@ class FrontendsController < ApplicationController
     end
   end
 
+  def glosario
+    if params[:glossary].blank?
+      redirect_to '/'
+    else
+      @search_glossary = params[:glossary].squish.gsub(CHARACTER_REGEX,'')
+      @glossary = Glossary.find_by_name(@search_glossary)
+      if @glossary.nil?
+        redirect_to '/'
+      end
+    end
+    respond_to do |format|
+      format.html {
+      }
+      format.pdf {
+        html = render_to_string(layout: 'pdf')
+        filename = "#{Time.now.to_s(:db)[0..9]}_#{@glossary.name.strip}.pdf"
+        if Rails.env.production?
+         # generate the pdf
+         html = html.gsub(/\/assets\//, 'https://sazon.id-arte.net/assets/')
+         html = html.gsub(/\/uploads\//, 'https://sazon.id-arte.net/uploads/')
+         pdf = PDFKit.new(html).to_pdf
+         send_data(pdf, :filename => filename, :type => 'application/pdf')
+        else
+         # generate the pdf
+         html = html.gsub(/\/assets\//, 'http://127.0.0.1:3000/assets/')
+         html = html.gsub(/\/uploads\//, 'http://127.0.0.1:3000/uploads/')
+         File.open("#{Rails.root}/pdfs/#{filename}.html", "w+b") {|f| f.write(html)}
+         pdf = PDFKit.new(html).to_pdf
+         send_data(pdf, :filename => filename, :type => 'application/pdf')
+        end
+       }
+    end
+  end
+
   def tra_palabra
     if params[:word].blank? || params[:commit] == "nò, mi ke bai bèk na e pagina inisio"
       redirect_to '/'

@@ -28,6 +28,7 @@
         <%= content_tag(:p, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
         <%= content_tag(:p, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
         <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
+        <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe )%>
       </div>
 
       <div id='common_table'>
@@ -112,7 +113,7 @@
         </li>
       </ul>
 
-      <h3>palabranan mas resien</h3>
+      <h3>palabra mas resien</h3>
       <ul>
         <% Word.recently_updated.each do |word| %>
           <li>
@@ -124,7 +125,7 @@
         <% end %>
       </ul>
 
-      <h3>palabranan mas mirá</h3>
+      <h3>palabra mas mirá</h3>
       <ul>
         <% Word.most_viewed.each do |word| %>
           <li>

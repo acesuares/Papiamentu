@@ -1,0 +1,37 @@
+<div id="glosario">
+  <% @logo_right = 'papiamentu-home.png' %>
+  <%= render "/frontends/papiamentu_header" %>
+  <div class="row" id="left-side">
+    <div class="columns small-12 medium-6 large-8 topper  bordered">
+      <h2>
+        <%= @glossary.title %>
+      </h2>
+
+      <div class="pap_description bordered">
+        <%= content_tag :p, @glossary.description %>
+        <% alpha = @glossary.words.order("name ASC").group_by{|u| u.name[0]}
+           alpha.each do |letter, items| %>
+            <h3><%= letter %></h3>
+            <p>
+            <% items.each do |item| %>
+              <%= link_to_word item %>
+            <% end %>
+            </p>
+        <% end %>
+      </div>
+
+   </div>
+
+    <div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
+      <h3>Spònser</h3>
+      <p>A logra traha e glosario aki danki na ayudo i finansamentu di:</p>
+      <ul>
+        <li>spònser 1</li>
+        <li>spònser 2</li>
+        <li>spònser 3</li>
+      </ul>
+      <%= link_to('Baha dokumento PDF', "/glosario/#{@glossary.name.strip}.pdf") %>
+    </div>
+  </div>
+</div>
+<%= render "/frontends/papiamentu_footer" %>
