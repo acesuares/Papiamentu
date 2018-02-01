@@ -1,5 +1,5 @@
-MODEL_TABS = %w(clients sources wordtypes goals users roles)
-HIDDEN_MODELS = %w(words)
+MODEL_TABS = %w(words clients sources wordtypes goals users roles glossaries)
+HIDDEN_MODELS = %w()
 
 VIA_WEBSITE = 14 # this happens to be the source id for papiamentu.info
 

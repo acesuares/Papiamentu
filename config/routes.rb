@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :glossaries do
+  post 'revert', :on => :member
+end
+
   # API
   namespace :api do
     namespace :v1 do
@@ -53,6 +57,7 @@ end
   get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
+  get 'glosario/:glossary', to: 'frontends#glosario'  
 
   get 'my_profile', to: 'frontends#my_profile'
 
