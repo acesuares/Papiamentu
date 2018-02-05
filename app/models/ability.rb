@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     alias_action(:read, :create, :update, :to => :access_but_not_delete)
     alias_action(:_vote_reset_thumbs, :_vote_for_thumbs, :_vote_against_thumbs, :to => :vote)
-    alias_action(:read, :palabra, :tra_palabra, :search, :check_text, :my_profile, :to => :do_frontend_stuff)
+    alias_action(:read, :palabra, :tra_palabra, :search, :check_text, :my_profile, :glosario, :to => :do_frontend_stuff)
 
     user ||= User.new # guest user
 
