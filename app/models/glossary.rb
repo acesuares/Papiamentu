@@ -7,7 +7,7 @@ class Glossary < ApplicationRecord
   has_and_belongs_to_many :words
 
   def _presentation
-    "#{name}"
+    name
   end
 
 
@@ -26,8 +26,6 @@ class Glossary < ApplicationRecord
   end
 
   def self.order_by_clause
-    "name"
+    nil
   end
-
-
 end
