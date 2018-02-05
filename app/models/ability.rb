@@ -10,37 +10,34 @@ class Ability
 
     # roles
     if user.role?(:superadmin)
-      can :manage, :all
+      can :access, :all
     elsif user.role? :admin
-      can :access_but_not_delete,  [Word, Source, Wordtype, Goal, Role, FshpCategory]
-      can [:destroy, :revert],     Word
-      can :do_frontend_stuff,      :frontend
-      can :rapport,                :frontend
-      can :vote,                   Word
-      can :access_but_not_delete,  User, id: user.id
-      can :read,                   User#, [:name, :email, :roles]
-      #cannot :update,             Word #, [:buki_di_oro, :buki_di_oro_text]
-      #cannot :update,             User #, :roles
+      can :access_but_not_delete,  [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
+      can [:revert, :destroy, :vote], :words
+      can :do_frontend_stuff,      :frontends
+      can :rapport,                :frontends
+      can :access_but_not_delete,  :users, id: user.id
+      can :read,                   :users, [:name, :email,:roles]
+      cannot :update,              :words, [:buki_di_oro, :buki_di_oro_text]
+      cannot :update,              :users, :roles
     elsif user.role? :worker
-      can :read,                    [Word, Source, Wordtype, Goal, Role, FshpCategory]
-      can :create,                  Word
-      can :update,                  Word, user_id: user.id
-      #can :update,                 :words, [:attested, :attested_on]
-      #cannot :update,              :words, [:buki_di_oro, :buki_di_oro_text]
-      #can :update,                 :words, :views
-      can :do_frontend_stuff,       :frontend
-      can :vote,                    Word
-      can :read,                    User #, [:name, :email, :roles]
-      can :access_but_not_delete,   User, id: user.id
-      #cannot :update,              :users, :roles
+      can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
+      can [:create, :vote],         :words
+      can :update,                  :words, user_id: user.id
+      can :update,                  :words, [:attested, :attested_on]
+      can :update,                  :words, :views
+      can :do_frontend_stuff,       :frontends
+      can :read,                    :users, [:name, :email, :roles]
+      can :access_but_not_delete,   :users, id: user.id
+      cannot :update,               :words, [:buki_di_oro, :buki_di_oro_text]
+      cannot :update,               :users, :roles
     elsif user.role? :viewer
-      can :read,                    [Word, Source, Wordtype, Goal, Role]
-      can :update,                  Word#, :views
-      can :create,                  Word
-      can :do_frontend_stuff,       :frontend
-      can :vote,                    Word
-      #cannot :update,               User#, [:roles, :email]
-      can :access_but_not_delete,   User, id: user.id
+      can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
+      can [:create, :vote],         :words
+      can :update,                  :words, :views
+      can :do_frontend_stuff,       :frontends
+      can :access_but_not_delete,   :users, id: user.id
+      cannot :update,               :users, [:roles, :email]
     end
   end
 end
