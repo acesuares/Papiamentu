@@ -7,7 +7,7 @@
           <%= t(controller_name) %>
           <% if current_tab == :word %>
           <% @total_objects = Word.count %>
-             - <span<%= raw " class='red_count'" if (@objects ? @objects.count : 0) < @total_objects %>><%= @objects ? @objects.count : 0 %></span> palabra di <%= @total_objects %>
+             - <span<%= raw " class='red_count'" if @objects.count < @total_objects %>><%= @objects.count %></span> palabra di <%= @total_objects %>
           <% end %>
           </a>
       </h1>

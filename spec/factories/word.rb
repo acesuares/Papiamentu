@@ -3,9 +3,12 @@ FactoryBot.define do
     name 'palabra'
 
 
+
     after(:create) do |word|
-      word.user = create(:user, :superadmin)
-      word.save
+      if word.user.nil?
+        word.user = create(:user, :superadmin)
+        word.save
+      end
     end
   end
 end
