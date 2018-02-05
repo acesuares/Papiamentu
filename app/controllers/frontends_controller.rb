@@ -35,7 +35,7 @@ class FrontendsController < ApplicationController
       format.html {
       }
       format.pdf {
-        html = render_to_string(layout: 'pdf')
+        html = render_to_string(layout: 'glosario')
         filename = "#{Time.now.to_s(:db)[0..9]}_#{@glossary.name}.pdf"
         if Rails.env.production?
          # generate the pdf
