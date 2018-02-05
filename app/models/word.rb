@@ -68,7 +68,7 @@ class Word < ApplicationRecord
       [ :tr_pap_cw , "tr_pap_cw", :text_field ],
       [ :tr_pap_aw , "tr_pap_aw", :text_field ],
       [ :buki_di_oro_text, '', :info ],
-      [ :header_otro, '', :header ],
+      [ :header_glosario, '', :header ],
       [ :glossaries, '', :check_list ],
     ]
   end
@@ -117,7 +117,7 @@ class Word < ApplicationRecord
   def variants_nice
     "Variante ortográfiko: #{variants.map(&:_presentation).join(', ')}"
   end
-  
+
   def countable?
     countable > 0
   end
