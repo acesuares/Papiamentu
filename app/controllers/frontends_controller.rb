@@ -1,8 +1,7 @@
 class FrontendsController < ApplicationController
   layout 'application'
   include CancanConcern
-
-  authorize_resource :class => false
+  load_and_authorize_resource :class => false
 
   def index
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit] || 10

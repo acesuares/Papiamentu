@@ -5,9 +5,9 @@ class ApplicationController < InlineFormsApplicationController
   before_action :authenticate_user!
 
   # Comment next 6 lines if you want CanCan authorization
-  check_authorization unless: :devise_controller?
+  enable_authorization :unless => :devise_controller?
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::Unauthorized do |exception|
     redirect_to root_path, alert: exception.message
   end
 
