@@ -1,0 +1,153 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic);
+
+
+/* Reset CSS. http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css  */
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;width: 100%;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+legend{color:#000;}
+
+/* Page Breaks */
+.pb_before { page-break-before:always !important; }
+.pb_after  { page-break-after:always !important; }
+.pbi_avoid { page-break-inside:avoid !important; }
+
+#glossary_pdf_header {
+  background-color: #dee512;
+  padding: 10px;
+  text-align: right;
+  margin-bottom: 25rem;
+}
+
+.title-margin {
+  margin-bottom: 30px;
+}
+
+.sponser-area {
+  margin-top: 20rem;
+  text-align: right;
+}
+
+.main-title {
+  font-size: 3.0rem!important;
+  text-align: center;
+}
+
+#sazon_pdf_outer_container {
+
+  p, div {
+    font-size: 0.85rem!important;
+    margin-bottom: 1.25rem;
+  }
+
+  .column {
+    padding: 40px!important;
+  }
+
+  h1 {
+    font-size: 1.8rem!important}
+
+  h2 {
+    font-size: 1.5rem!important;
+  }
+
+  h3 {
+    font-size: 1.2rem!important;
+  }
+
+  h4 {
+    font-size: 1rem!important;
+  }
+
+  h5 {
+    font-size: 0.9rem!important;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: "Dosis";
+  }
+
+  ul, ol, dl {
+    font-family: inherit;
+    font-size: 0.8rem;
+  }
+}
+
+.content_area.column.medium-8.large-9 {
+  background: white none repeat scroll 0 0;
+  padding-top:0!important;
+  margin-bottom:0;
+  min-height: 100vh;
+}
+
+.sidebar_area h3 {
+  color: #a60c8e;
+}
+
+.row.sidebar {
+  background: rgba(255, 255, 255, 0.70) none repeat scroll 0 0;
+  border-radius: 0;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.row.assignments {
+  background: rgba(255, 255, 255, 0.70) none repeat scroll 0 0;
+  border: 4px solid #3a5182;
+  border-radius: 25px 25px 25px 0;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.row.begrippen {
+  background: rgba(255, 255, 255, 0.70) none repeat scroll 0 0;
+  border: 4px solid #7a3372;
+  border-radius: 25px 25px 25px 0;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.quote {
+  border-left: 10px solid #3a5182;
+  margin-bottom: 35px;
+  min-height: 120px;
+  padding: 0 0 0 20px;
+}
+
+.quote2 {
+  border-left: 10px solid #3a5182;
+  margin-bottom: 35px;
+  padding: 0 0 0 20px;
+  font-style: italic;
+}
+
+.right {
+  margin: 0 -3%;
+  padding: 10px;
+  width: 106%;
+}
+
+.word-content {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.word-head {
+  font-weight: bold;
+}
+
+#glossary_pdf_footer {
+  margin-top: 40px;
+  color: lightgrey;
+  text-align: right;
+  font-size: 10px!important;
+  z-index: 100;
+  width: 100%;
+}

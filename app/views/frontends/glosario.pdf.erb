@@ -1,0 +1,42 @@
+<div id="glosario">
+  <div class="row" id="left-side">
+    <div class="columns small-12 medium-6 large-8 topper  bordered">
+      <h1 class="main-title">
+        <%= @glossary.title %>
+      </h1>
+      <!--
+      <div class="sponser-area">
+        <p>A logra traha e glosario aki danki na ayudo i finansamentu di:</p>
+        <ul>
+          <li>spònser 1</li>
+          <li>spònser 2</li>
+          <li>spònser 3</li>
+        </ul>
+      </div>
+      -->
+      <div class="pap_description bordered pb_before">
+        <h1 class="title-margin">Tokante</h1>
+        <%= content_tag :p, @glossary.description %>
+      </div>
+
+      <div class="pb_before">
+        <% alpha = @glossary.words.order("name ASC").group_by{|u| u.name[0]}
+           alpha.each do |letter, items| %>
+            <h3 class="title-margin"><%= letter %></h3>
+            <p>
+            <% items.each do |item| %>
+              <p class="word-head"><%= item.name %></p>
+              <div class="word-content">
+                <%= content_tag :p, item.description_pap_cw_nice %>
+                <%= content_tag(:p, item.synonym) unless item.synonym.blank? %>
+                <%= content_tag(:p, "hulandes: #{item.tr_nl}") unless item.tr_nl.blank? %>
+                <%= content_tag(:p, "inglès: #{item.tr_en}") unless item.tr_en.blank? %>
+                <%= content_tag(:p, "spañjo: #{item.tr_es}") unless item.tr_es.blank? %>
+              </div>
+            <% end %>
+            </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

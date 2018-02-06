@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   # API
   namespace :api do
     namespace :v1 do
@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
+  get 'glosario/:glossary', to: 'frontends#glosario'
 
   get 'my_profile', to: 'frontends#my_profile'
 

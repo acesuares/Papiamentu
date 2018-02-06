@@ -16,6 +16,7 @@ en:
       user: usadó
       word: palabra
       wordtype: kategoria
+      glossary: glosario
       goal: aréa di edukashon
       source: fuente
     attributes:
@@ -24,6 +25,7 @@ en:
         synonym: sinonimo
         variants: Variante ortográfiko
         wordtypes: kategoria
+        glossaries: E palabra aki ta den e siguiente glosarionan
         goals: aréa di edukashon
         sources: fuente
         countable: telbaar
@@ -41,9 +43,12 @@ en:
         header_gramma: karakterístika gramatikal
         header_fuente: fuente
         header_splikashon: splikashon
+        header_glosario: glosario
         created_at: created
         buki_di_oro: Buki di Oro
         buki_di_oro_text: Tekst volgens Buki di Oro
+      glossary:
+        words: Lista di palabra den e glosario aki
     errors:
       models:
         word:
