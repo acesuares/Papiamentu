@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.integer "word_id"
   end
 
-  create_table "glossaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "glossaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "title"
     t.text "description"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "glossaries_words", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "glossaries_words", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "word_id"
     t.bigint "glossary_id"
     t.index ["glossary_id"], name: "index_glossaries_words_on_glossary_id"
@@ -170,12 +170,12 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "variants", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "variants", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "lemma"
     t.string "orthographic_type"
     t.integer "word_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "versions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

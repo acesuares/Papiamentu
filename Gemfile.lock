@@ -195,7 +195,7 @@ GEM
     highline (1.7.10)
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
-    inline_forms (5.0.23)
+    inline_forms (5.1.0)
       rails (>= 5.0)
       rails-i18n
       rvm
