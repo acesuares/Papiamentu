@@ -1,0 +1,22 @@
+@import 'foundation_and_overrides';
+
+body {
+  background-color: #885381 !important;
+  background-image: image-url("background.png");
+  background-position:center;
+}
+
+.row {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.header {
+  text-align: right;
+  background-color: #dee512;
+  padding:0;
+}
+
+#omniauth_options {
+  padding-bottom: 1em;
+}
