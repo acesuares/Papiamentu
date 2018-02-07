@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # API
   namespace :api do
     namespace :v1 do
@@ -10,14 +10,12 @@ Rails.application.routes.draw do
   resources :variants do
     post 'revert', :on => :member
     get 'list_versions', :on => :member
-    get 'close_versions_list', :on => :member
   end
 
 
   resources :fshp_categories do
     post 'revert', :on => :member
     get 'list_versions', :on => :member
-    get 'close_versions_list', :on => :member
   end
 
 
@@ -27,7 +25,6 @@ Rails.application.routes.draw do
     resources model.to_sym do
       post 'revert', :on => :member
       get 'list_versions', :on => :member
-      get 'close_versions_list', :on => :member
     end
   end
 
@@ -35,7 +32,6 @@ Rails.application.routes.draw do
     resources model.to_sym do
       post 'revert', :on => :member
       get 'list_versions', :on => :member
-      get 'close_versions_list', :on => :member
     end
   end
 
@@ -46,7 +42,6 @@ Rails.application.routes.draw do
   resources :users do
     post 'revert', :on => :member
     get 'list_versions', :on => :member
-    get 'close_versions_list', :on => :member
   end
 
   require 'sidekiq/web'
