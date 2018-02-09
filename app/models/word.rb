@@ -16,6 +16,8 @@ class Word < ApplicationRecord
   has_and_belongs_to_many :fshp_categories
   has_and_belongs_to_many :glossaries
   has_many :variants
+  has_many :pictures
+  has_many :recordings
   belongs_to :user
   belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User'
 
@@ -68,6 +70,8 @@ class Word < ApplicationRecord
       [ :tr_pap_cw , "tr_pap_cw", :text_field ],
       [ :tr_pap_aw , "tr_pap_aw", :text_field ],
       [ :buki_di_oro_text, '', :info ],
+      [ :pictures , "pictures", :associated ],
+      [ :recordings , "recordings", :associated ],
       [ :header_glosario, '', :header ],
       [ :glossaries, '', :check_list ],
     ]
