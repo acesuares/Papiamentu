@@ -22,4 +22,8 @@ module FrontendsHelper
       link_to glossary.name, "/glosario/#{glossary.name}" unless glossary.nil?
     end
   end
+
+  def image_generator(height, width)
+    image_tag "http://via.placeholder.com/#{height}x#{width}"
+  end
 end
