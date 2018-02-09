@@ -1,0 +1,5 @@
+<% if @word.pictures.first %>
+  <%= send("image_field_show", @word.pictures.first, :image) -%>
+<% else %>
+  <%= image_generator '300', '200' %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131204546) do
+ActiveRecord::Schema.define(version: 20180209155609) do
 
   create_table "commontator_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "creator_type"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.integer "word_id"
   end
 
-  create_table "glossaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "glossaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "title"
     t.text "description"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "glossaries_words", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "glossaries_words", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "word_id"
     t.bigint "glossary_id"
     t.index ["glossary_id"], name: "index_glossaries_words_on_glossary_id"
@@ -115,6 +115,27 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.boolean "is_proc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pictures", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "caption"
+    t.string "image"
+    t.text "description"
+    t.integer "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_pictures_on_word_id"
+  end
+
+  create_table "recordings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "author"
+    t.string "audio"
+    t.integer "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_recordings_on_word_id"
   end
 
   create_table "roles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -170,12 +191,12 @@ ActiveRecord::Schema.define(version: 20180131204546) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "variants", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "variants", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "lemma"
     t.string "orthographic_type"
     t.integer "word_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "versions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
