@@ -9,16 +9,16 @@ class Picture < ApplicationRecord
   belongs_to :word
 
   def _presentation
-    "#{name}"
+    name
   end
 
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
-      [ :name , "name", :text_field ], 
-      [ :caption , "caption", :text_field ], 
-      [ :image , "image", :image_field ], 
-      [ :description , "description", :text_area ], 
+      [ :name , "name", :text_field ],
+      [ :caption , "caption", :text_field ],
+      [ :image , "image", :image_field ],
+      [ :description , "description", :text_area ],
     ]
   end
 
@@ -28,8 +28,6 @@ class Picture < ApplicationRecord
   end
 
   def self.order_by_clause
-    "name"
+    nil
   end
-
-
 end

@@ -27,8 +27,6 @@ class Recording < ApplicationRecord
   end
 
   def self.order_by_clause
-    "name"
+    nil
   end
-
-
 end
