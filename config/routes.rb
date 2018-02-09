@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :recordings do
+  post 'revert', :on => :member
+  get 'list_versions', :on => :member
+end
+
+  resources :pictures do
+  post 'revert', :on => :member
+  get 'list_versions', :on => :member
+  get 'close_versions_list', :on => :member
+end
+
   # API
   namespace :api do
     namespace :v1 do

@@ -1,0 +1,2 @@
+class RecordingsController < InlineFormsController
+end
