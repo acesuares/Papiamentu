@@ -12,7 +12,8 @@ class Ability
     if user.role?(:superadmin)
       can :access, :all
     elsif user.role? :admin
-      can :access_but_not_delete,  [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
+      can :access_but_not_delete,  [:words, :sources, :wordtypes, :goals, :roles, :fshp_categories,
+                                    :pictures, :recordings]
       can [:revert, :destroy, :vote], :words
       can :do_frontend_stuff,      :frontends
       can :rapport,                :frontends
@@ -21,7 +22,8 @@ class Ability
       cannot :update,              :words, [:buki_di_oro, :buki_di_oro_text]
       cannot :update,              :users, :roles
     elsif user.role? :worker
-      can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
+      can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories,
+                                     :pictures, :recordings]
       can [:create, :vote],         :words
       can :update,                  :words, user_id: user.id
       can :update,                  :words, [:attested, :attested_on]
@@ -32,7 +34,8 @@ class Ability
       cannot :update,               :words, [:buki_di_oro, :buki_di_oro_text]
       cannot :update,               :users, :roles
     elsif user.role? :viewer
-      can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories]
+      can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories,
+                                     :pictures, :recordings]
       can [:create, :vote],         :words
       can :update,                  :words, :views
       can :do_frontend_stuff,       :frontends

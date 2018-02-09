@@ -16,6 +16,8 @@ describe Ability do
       it{ is_expected.to be_able_to(action.to_sym, Goal.new) }
       it{ is_expected.to be_able_to(action.to_sym, Role.new) }
       it{ is_expected.to be_able_to(action.to_sym, FshpCategory.new) }
+      it{ is_expected.to be_able_to(action.to_sym, Picture.new) }
+      it{ is_expected.to be_able_to(action.to_sym, Recording.new) }
     end
 
     # Also it is expected to be able to revert destroy, revert and vote words
@@ -63,6 +65,8 @@ describe Ability do
       it{ is_expected.to be_able_to(action.to_sym, Goal.new) }
       it{ is_expected.to be_able_to(action.to_sym, Role.new) }
       it{ is_expected.to be_able_to(action.to_sym, FshpCategory.new) }
+      it{ is_expected.to be_able_to(action.to_sym, Picture.new) }
+      it{ is_expected.to be_able_to(action.to_sym, Recording.new) }
     end
 
     # Can create :words
@@ -127,6 +131,8 @@ describe Ability do
       it{ is_expected.to be_able_to(action.to_sym, Goal.new) }
       it{ is_expected.to be_able_to(action.to_sym, Role.new) }
       it{ is_expected.to be_able_to(action.to_sym, FshpCategory.new) }
+      it{ is_expected.to be_able_to(action.to_sym, Picture.new) }
+      it{ is_expected.to be_able_to(action.to_sym, Recording.new) }      
     end
 
     # Can create and vote :words
