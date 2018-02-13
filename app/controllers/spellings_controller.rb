@@ -20,7 +20,7 @@ class SpellingsController < ApplicationController
   def check
     authorize!(:check, :spellings)
 
-    next_word = nil
+    next_word = ''
     word = Word.find params[:id]
     answer = params[:answer]
 
