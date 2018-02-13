@@ -5,6 +5,7 @@ class Ability
     alias_action(:read, :create, :update, to: :access_but_not_delete)
     alias_action(:_vote_reset_thumbs, :_vote_for_thumbs, :_vote_against_thumbs, :to => :vote)
     alias_action(:read, :palabra, :tra_palabra, :search, :check_text, :my_profile, :glosario, :to => :do_frontend_stuff)
+    alias_action(:index, :play, :check, :session_results, to: :can_play_spelling)
 
     user ||= User.new # guest user
 
@@ -19,6 +20,7 @@ class Ability
       can :rapport,                :frontends
       can :access_but_not_delete,  :users, id: user.id
       can :read,                   :users, [:name, :email,:roles]
+      can :can_play_spelling,      :spellings
       cannot :update,              :words, [:buki_di_oro, :buki_di_oro_text]
       cannot :update,              :users, :roles
     elsif user.role? :worker
@@ -31,6 +33,7 @@ class Ability
       can :do_frontend_stuff,       :frontends
       can :read,                    :users, [:name, :email, :roles]
       can :access_but_not_delete,   :users, id: user.id
+      can :can_play_spelling,      :spellings
       cannot :update,               :words, [:buki_di_oro, :buki_di_oro_text]
       cannot :update,               :users, :roles
     elsif user.role? :viewer
@@ -39,6 +42,7 @@ class Ability
       can [:create, :vote],         :words
       can :update,                  :words, :views
       can :do_frontend_stuff,       :frontends
+      can :can_play_spelling,      :spellings
       can :access_but_not_delete,   :users, id: user.id
       cannot :update,               :users, [:roles, :email]
     end

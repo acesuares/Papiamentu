@@ -16,3 +16,4 @@
 //= require foundation
 //= require jquery.remotipart
 //= require inline_forms
+//= require_tree .

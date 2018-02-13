@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209155609) do
+ActiveRecord::Schema.define(version: 20180213140932) do
 
   create_table "commontator_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "creator_type"
@@ -160,6 +160,41 @@ ActiveRecord::Schema.define(version: 20180209155609) do
   create_table "sources_words", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "source_id"
     t.integer "word_id"
+  end
+
+  create_table "spelling_groups", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "caption"
+    t.string "image"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spelling_groups_words", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "word_id"
+    t.bigint "spelling_group_id"
+    t.index ["spelling_group_id"], name: "index_spelling_groups_words_on_spelling_group_id"
+    t.index ["word_id"], name: "index_spelling_groups_words_on_word_id"
+  end
+
+  create_table "spelling_sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_spelling_sessions_on_user_id"
+  end
+
+  create_table "spelling_tries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "user_input"
+    t.boolean "correct"
+    t.integer "points"
+    t.bigint "spelling_session_id"
+    t.bigint "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spelling_session_id"], name: "index_spelling_tries_on_spelling_session_id"
+    t.index ["word_id"], name: "index_spelling_tries_on_word_id"
   end
 
   create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

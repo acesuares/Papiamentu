@@ -15,9 +15,11 @@ class Word < ApplicationRecord
   has_and_belongs_to_many :sources
   has_and_belongs_to_many :fshp_categories
   has_and_belongs_to_many :glossaries
+  has_and_belongs_to_many :spelling_groups
   has_many :variants
   has_many :pictures
   has_many :recordings
+  has_many :spelling_tries
   belongs_to :user
   belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User'
 
@@ -28,6 +30,8 @@ class Word < ApplicationRecord
   validates :name, :uniqueness => true, on: :create
 
   scope :buki_di_oro, -> {where(buki_di_oro: 1)}
+  scope :picture_ready, -> { joins(:pictures).where.not(pictures: {id: nil }) }
+  scope :recording_ready, -> { joins(:recordings).where.not(recordings: {id: nil }) }
 
   enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
@@ -74,6 +78,8 @@ class Word < ApplicationRecord
       [ :recordings , "recordings", :associated ],
       [ :header_glosario, '', :header ],
       [ :glossaries, '', :check_list ],
+      [ :header_spelspel_grupo, '', :header ],
+      [ :spelling_groups, '', :check_list ],
     ]
   end
 

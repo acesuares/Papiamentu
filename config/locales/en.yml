@@ -19,6 +19,7 @@ en:
       glossary: glosario
       goal: aréa di edukashon
       source: fuente
+      spelling_group: Grupo di palabra pa Spèl-spèl
     attributes:
       word:
         name: entrada
@@ -49,8 +50,12 @@ en:
         buki_di_oro_text: Tekst volgens Buki di Oro
         pictures: potrèt
         recordings: zonido
+        header_spelspel_grupo: Grupo di palabra pa Spèl-spèl
+        spelling_groups: E palabra aki ta den e siguiente gruponan
       glossary:
         words: Lista di palabra den e glosario aki
+      spelling_group:
+        words: Lista di palabra den e grupo aki
     errors:
       models:
         word:
