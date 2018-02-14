@@ -18,7 +18,7 @@ class SpellingGroup < ApplicationRecord
       [ :name , "name", :text_field ],
       [ :caption , "caption", :text_field ],
       [ :image , "image", :image_field ],
-      [ :description , "description", :text_area ],
+      [ :description , "description", :text_area_without_ckeditor ],
       [ :words, 'words_in_spelling_group', :info_list ],
     ]
   end

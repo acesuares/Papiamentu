@@ -15,7 +15,7 @@
           <%= image_tag spelling_group.image, class: 'spelling-group-picture' %>
           <h5><%= spelling_group.name %></h5>
           <p><%= spelling_group.words.count %> palabra</p>
-          <p><%= raw spelling_group.description %></p>
+          <p><%= spelling_group.description %></p>
           <%= link_to "Play", spelling_play_path(spelling_group: spelling_group.id), class: [:button, :rounded] %>
         </div>
       <% end %>
