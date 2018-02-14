@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :spelling_groups do
-  post 'revert', :on => :member
-  get 'list_versions', :on => :member
-end
-
   get 'spelling', to: 'spellings#index'
   get 'spelling/play', to: 'spellings#play'
   get 'spelling/session_results', to: 'spellings#session_results'
