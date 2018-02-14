@@ -23,7 +23,7 @@
               <td><%= try.word.name %></td>
               <td><%= try.user_input %></td>
               <td><%= raw try.correct ? '<i class="fi-check"></i>' : '<i class="fi-x"></i>' %></td>
-              <td><%= try.correct ? '+5' : '-5' %></td>
+              <td><%= try.points %></td>
             </tr>
           <% end %>
         </tbody>

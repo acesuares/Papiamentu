@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'spelling/play', to: 'spellings#play'
   get 'spelling/session_results', to: 'spellings#session_results'
   post 'spelling/check', to: 'spellings#check'
+  get 'spelling/siguiente', to: 'spellings#siguiente'
 
   resources :recordings do
   post 'revert', :on => :member

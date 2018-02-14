@@ -10,9 +10,46 @@ show_word = (word) ->
   $('#spelling_audio').attr('src', word['recording'])
   $('#id').attr('value', word['id'])
   $('#spelling_audio').trigger("play")
+  $("#answer").prop('disabled', false);
   $('#answer').val('')
   $('#answer').focus()
 
+next_word = (current) ->
+  $.ajax
+    type: 'GET'
+    url: '/spelling/siguiente'
+    dataType: 'JSON'
+    json: true
+    data: "id=" + current
+    success: (data, textStatus, jqXHR) ->
+      if data['next_word'] != ''
+        show_word data['next_word']
+      else
+        location.href = "session_results?session_id=" + $('#session_id').val()
+    error: ->
+      alert "Something went wrong"
+
+$('#modal-good').find('#siguiente-button').click (e) ->
+  $('#modal-good').foundation('reveal', 'close')
+  next_word ''
+
+$('#modal-wrong').find('#bon-button').click (e) ->
+  $('#modal-wrong').foundation('reveal', 'close')
+  $('#spelling_audio').trigger("play")
+  $("#answer").prop('disabled', false);
+  $('#answer').val('')
+  $('#answer').focus()
+
+$('#modal-after-2-tries').find('#ripiti-button').click (e) ->
+  $('#modal-after-2-tries').foundation('reveal', 'close')
+  $('#spelling_audio').trigger("play")
+  $("#answer").prop('disabled', false);
+  $('#answer').val('')
+  $('#answer').focus()
+
+$('#modal-after-2-tries').find('#siguiente-button').click (e) ->
+  $('#modal-after-2-tries').foundation('reveal', 'close')
+  next_word $('#id').val()
 
 $('#answer').keypress (e) ->
   if e.which == 13
@@ -24,25 +61,18 @@ $('#answer').keypress (e) ->
       data: "id=" + $('#id').val() + "&answer=" + $('#answer').val() + "&session_id=" + $('#session_id').val()
       success: (data, textStatus, jqXHR) ->
         if data['check'] == 'good'
-          $('#myModal').find('#message').html('<i class="fi-check large"></i> korekto!')
-          $('#myModal').find('#points').html('<i class="fi-plus"></i> 5')
-          $('#myModal').foundation('reveal', 'open')
-          delay 2000, ->
-            $('#myModal').foundation('reveal', 'close')
-            if data['next_word'] != ''
-              show_word data['next_word']
-            else
-              location.href = "session_results?session_id=" + $('#session_id').val()
+          $('#modal-good').foundation('reveal', 'open')
+          $("#answer").prop('disabled', true);
         else
-          $('#myModal').find('#message').html('<i class="fi-x large"></i> sigui purba!')
-          $('#myModal').find('#points').html('<i class="fi-minus"></i> 5')
-          $('#myModal').foundation('reveal', 'open')
-          delay 2000, ->
-            $('#myModal').foundation('reveal', 'close')
-            $('#answer').click()
-            $('#spelling_audio').trigger("play")
-            $('#answer').val('')
-            $('#answer').focus()
+          if data['tries'] > 2
+            $('#modal-after-2-tries').find('#correct-spelling').html(data['word_spelling'])
+            $('#modal-after-2-tries').foundation('reveal', 'open')
+            #delay 4000, ->
+            #  $('#myModal').foundation('reveal', 'close')
+            #  show_word data['next_word']
+          else
+            $('#modal-wrong').foundation('reveal', 'open')
+            $("#answer").prop('disabled', true);
       error: ->
         alert "Something went wrong"
 

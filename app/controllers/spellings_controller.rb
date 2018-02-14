@@ -13,6 +13,7 @@ class SpellingsController < ApplicationController
     authorize!(:play, :spellings)
     words = words_for_training_session params[:spelling_group]
     create_words_session_var words
+    initialize_spelling_tries
     @word = next_word_from words
     @spelling_session = current_user.spelling_sessions.create
   end
@@ -22,20 +23,47 @@ class SpellingsController < ApplicationController
 
     next_word = ''
     word = Word.find params[:id]
+    word_spelling = word.name.strip
     answer = params[:answer]
 
-    if answer == word.name.strip
+    if answer == word_spelling
       check = 'good'
-      delete_from_words_session_var word
+      delete_from_words_session_var word.id
+      tries = initialize_spelling_tries
       next_word = next_word_from words_in_session_var
+    else
+      tries = update_spelling_tries
     end
 
+    word_spelling = word_spelling.chars.join '-'
     create_spelling_try params[:session_id], answer, check, word
+
+    if tries > 2
+      initialize_spelling_tries
+      next_word = next_word_from words_in_session_var
+    end
 
     respond_to do |format|
       format.html # contact.html.erb
       format.json {
-        render json: {check: check, answer: answer, next_word: next_word }
+        render json: {check: check,
+          answer: answer,
+          next_word: next_word,
+          tries: tries,
+          word_spelling: word_spelling
+        }
+      }
+    end
+  end
+
+  def siguiente
+    delete_from_words_session_var params[:id].to_i unless params[:id].empty?
+    next_word = next_word_from words_in_session_var
+
+    respond_to do |format|
+      format.html # contact.html.erb
+      format.json {
+        render json: { next_word: next_word }
       }
     end
   end
@@ -51,6 +79,10 @@ class SpellingsController < ApplicationController
   def next_word_from words
     word = Word.find_by_id words.sample
     return '' if word.nil?
+    hash_from_word word
+  end
+
+  def hash_from_word word
     {
       id: word.id,
       picture: word.pictures.sample.image.url,
@@ -71,12 +103,21 @@ class SpellingsController < ApplicationController
     session[:training_session_words] = words
   end
 
-  def delete_from_words_session_var word
-    session[:training_session_words].delete(word.id)
+  def delete_from_words_session_var word_id
+    session[:training_session_words].delete(word_id)
   end
 
   def words_in_session_var
     session[:training_session_words]
+  end
+
+  def initialize_spelling_tries
+    session[:spelling_tries] = 1
+  end
+
+  def update_spelling_tries
+     initialize_spelling_tries and return if session[:spelling_tries].nil?
+    session[:spelling_tries] += 1
   end
 
   def create_spelling_try session_id, answer, check, word
@@ -85,7 +126,7 @@ class SpellingsController < ApplicationController
     session_try.user_input = answer
     session_try.word_id = word.id
     session_try.correct = check == 'good' ? true : false
-    session_try.points = check == 'good' ? 5 : -5
+    session_try.points = check == 'good' ? 5 : -1
     session_try.save
   end
 end
