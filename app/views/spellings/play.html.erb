@@ -21,8 +21,22 @@
     </div>
   </div>
 </div>
-<div id="myModal" class="reveal-modal tiny" class="reveal-modal" data-reveal>
-  <h2 id="modalTitle" class="text-center"><span id="message"></span></h2>
-  <p class="text-center"><span id="points"></p>
+<div id="modal-good" class="reveal-modal tiny" class="reveal-modal" data-reveal data-reveal data-options="close_on_background_click:false;close_on_esc:false;">
+  <h2 id="modalTitle" class="text-center"><i class="fi-check large"></i> korekto!</span></h2>
+  <p class="text-center"><i class="fi-plus"></i> 5</p>
+  <p class="text-center"><a id='siguiente-button' class="button rounded" href="#">Siguiente</a></p>
+</div>
+<div id="modal-wrong" class="reveal-modal tiny" class="reveal-modal" data-reveal data-reveal data-options="close_on_background_click:false;close_on_esc:false;">
+  <h2 id="modalTitle" class="text-center"><i class="fi-x large"></i> purba un bia mas!</h2>
+  <p class="text-center"><i class="fi-minus"></i> 1</p>
+  <p class="text-center"><a id='bon-button' class="button rounded" href="#">bon!</a></p>
+</div>
+<div id="modal-after-2-tries" class="reveal-modal tiny" class="reveal-modal" data-reveal data-reveal data-options="close_on_background_click:false;close_on_esc:false;">
+  <h2 id="modalTitle" class="text-center"><i class="fi-info large"></i> <span id="correct-spelling"></span></h2>
+  <p class="text-center">esaki ta e spèlmentu korekto</p>
+  <p class="text-center">
+    <a id='ripiti-button' class="button rounded" href="#">Ripití</a>
+    <a id='siguiente-button' class="button rounded" href="#">Siguiente</a>
+  </p>
 </div>
 <%= render "/frontends/papiamentu_footer" %>
