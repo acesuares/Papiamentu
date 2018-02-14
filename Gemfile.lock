@@ -193,9 +193,9 @@ GEM
       activesupport (>= 4.2.0)
     hashie (3.5.7)
     highline (1.7.10)
-    i18n (0.9.3)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    inline_forms (5.1.0)
+    inline_forms (5.1.1)
       rails (>= 5.0)
       rails-i18n
       rvm
@@ -234,7 +234,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.1.1)
+    loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -310,9 +310,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails-i18n (5.0.4)
-      i18n (~> 0.7)
-      railties (~> 5.0)
+    rails-i18n (5.1.0)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -455,7 +455,7 @@ DEPENDENCIES
   foundation-icons-sass-rails
   foundation-rails (~> 5.5)
   i18n-active_record!
-  inline_forms (>= 5)
+  inline_forms (~> 5.1)
   jeweler
   jquery-rails
   jquery-timepicker-rails
