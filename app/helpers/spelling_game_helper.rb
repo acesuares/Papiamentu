@@ -1,0 +1,2 @@
+module SpellingGameHelper
+end

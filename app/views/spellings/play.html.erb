@@ -1,0 +1,28 @@
+<div id="palabra">
+  <% @logo_right = 'papiamentu-home.png' %>
+  <%= render "/frontends/papiamentu_header" %>
+  <div id="left-side" class="row ">
+    <div class="columns small-12 medium-6 large-12 topper bordered">
+      <div class="columns small-12 medium-6 large-6 large-centered">
+        <img id="spelling_picture" src="<%= @word[:picture]%>" alt="Zonido">
+        <div class="text-center">
+          <audio id="spelling_audio" controls="controls" src="<%= @word[:recording]%>"></audio>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+      <div class="columns small-12 medium-6 large-6 large-centered text-center">
+        <%= hidden_field_tag 'id', @word[:id] %>
+        <%= hidden_field_tag 'session_id', @spelling_session.id %>
+        <%= text_field_tag 'answer' %>
+      </div>
+      <div class="columns small-12 medium-6 large-3 large-centered text-center">
+        <%= link_to "Stop", spelling_path, class: [:button, :rounded] %>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="reveal-modal tiny" class="reveal-modal" data-reveal>
+  <h2 id="modalTitle" class="text-center"><span id="message"></span></h2>
+  <p class="text-center"><span id="points"></p>
+</div>
+<%= render "/frontends/papiamentu_footer" %>

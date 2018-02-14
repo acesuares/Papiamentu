@@ -23,6 +23,9 @@ class User < ApplicationRecord
   has_and_belongs_to_many :roles
   has_many :words
 
+  has_many :spelling_sessions
+  has_many :spelling_tries, through: :spelling_sessions
+
   # validations
   validates :name, :presence => true
 
@@ -34,7 +37,7 @@ class User < ApplicationRecord
 
   # scopes
 
-  default_scope  { order(name: 'ASC') }
+  #default_scope  { order(name: 'ASC') }
 
   scope :active, -> { where(active: 1) }
   scope :new_words_immediately, -> { where(new_words: 2) }
@@ -46,7 +49,7 @@ class User < ApplicationRecord
   scope :own_words_daily, -> { where(own_words: 3) }
   scope :own_words_weekly, -> { where(own_words: 4) }
   scope :own_words_monthly, -> { where(own_words: 5) }
-
+  scope :leaderboard, -> { joins(:spelling_tries).group('users.id').order('SUM(spelling_tries.points) DESC') }
 
 
 
