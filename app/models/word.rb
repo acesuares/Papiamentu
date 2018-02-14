@@ -78,7 +78,7 @@ class Word < ApplicationRecord
       [ :recordings , "recordings", :associated ],
       [ :header_glosario, '', :header ],
       [ :glossaries, '', :check_list ],
-      [ :header_spelspel_grupo, '', :header ],
+      [ :header_spel_spel_group, '', :header ],
       [ :spelling_groups, '', :check_list ],
     ]
   end
