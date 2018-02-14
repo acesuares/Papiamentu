@@ -29,7 +29,7 @@ class SpellingGroup < ApplicationRecord
   end
 
   def self.order_by_clause
-    "name"
+    nil
   end
 
 
