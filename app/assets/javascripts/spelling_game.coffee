@@ -51,6 +51,7 @@ $('#modal-after-2-tries').find('#siguiente-button').click (e) ->
   $('#modal-after-2-tries').foundation('reveal', 'close')
   next_word $('#id').val()
 
+
 $('#answer').keypress (e) ->
   if e.which == 13
     $.ajax
@@ -75,6 +76,31 @@ $('#answer').keypress (e) ->
             $("#answer").prop('disabled', true);
       error: ->
         alert "Something went wrong"
+
+$('#check-button').click (e) ->
+  e.preventDefault()
+  $.ajax
+    type: 'POST'
+    url: '/spelling/check'
+    dataType: 'JSON'
+    json: true
+    data: "id=" + $('#id').val() + "&answer=" + $('#answer').val() + "&session_id=" + $('#session_id').val()
+    success: (data, textStatus, jqXHR) ->
+      if data['check'] == 'good'
+        $('#modal-good').foundation('reveal', 'open')
+        $("#answer").prop('disabled', true);
+      else
+        if data['tries'] > 2
+          $('#modal-after-2-tries').find('#correct-spelling').html(data['word_spelling'])
+          $('#modal-after-2-tries').foundation('reveal', 'open')
+          #delay 4000, ->
+          #  $('#myModal').foundation('reveal', 'close')
+          #  show_word data['next_word']
+        else
+          $('#modal-wrong').foundation('reveal', 'open')
+          $("#answer").prop('disabled', true);
+    error: ->
+      alert "Something went wrong"
 
 ready = ->
   $('#spelling_audio').trigger("play");

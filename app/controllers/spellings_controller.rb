@@ -11,6 +11,7 @@ class SpellingsController < ApplicationController
 
   def play
     authorize!(:play, :spellings)
+    @spelling_group = SpellingGroup.find_by_id params[:spelling_group]
     words = words_for_training_session params[:spelling_group]
     create_words_session_var words
     initialize_spelling_tries
