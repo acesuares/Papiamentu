@@ -3,19 +3,22 @@
   <%= render "/frontends/papiamentu_header" %>
   <div id="left-side" class="row ">
     <div class="columns small-12 medium-6 large-12 topper bordered">
-      <div class="columns small-12 medium-6 large-6 large-centered">
-        <img id="spelling_picture" src="<%= @word[:picture]%>" alt="Zonido">
-        <div class="text-center">
-          <audio id="spelling_audio" controls="controls" src="<%= @word[:recording]%>"></audio>
-        </div>
+      <div class="columns small-12 medium-6 large-3 text-center">
+        <% if @spelling_group. nil? %>
+          <h3>grupo: general</h3>          
+        <% else %>
+          <h3>grupo: <%= @spelling_group.name %></h3>
+        <% end %>
       </div>
-      <div style="clear: both;"></div>
-      <div class="columns small-12 medium-6 large-6 large-centered text-center">
+      <div class="columns small-12 medium-6 large-6 text-center">
+        <img id="spelling_picture" class="float-center" src="<%= @word[:picture]%>">
+        <audio id="spelling_audio" controls="controls" src="<%= @word[:recording]%>"></audio>
         <%= hidden_field_tag 'id', @word[:id] %>
         <%= hidden_field_tag 'session_id', @spelling_session.id %>
         <%= text_field_tag 'answer' %>
+        <a id="check-button" class="button rounded" href="#">Chèk</a>
       </div>
-      <div class="columns small-12 medium-6 large-3 large-centered text-center">
+      <div class="columns small-12 medium-6 large-3 text-center">
         <%= link_to "Stop", spelling_path, class: [:button, :rounded] %>
       </div>
     </div>
