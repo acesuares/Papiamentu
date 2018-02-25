@@ -4,9 +4,9 @@
   <% @default_message = 'login_with_email_and_password' -%>
   <div class="row" id="sign_in">
     <div class="column topper">
-      <h2>Bo a lubidá bo kódigo di seguridat? No ta problema!</h2>
-      <p>Yena bo adrès elektróniko i despues nos ta manda instrukshon pa bo kambia bo kódigo di seguridat.</p>
-      <h3>Yena awor bo adrès elektróniko.</h3>
+      <h2>Bo a lubidá bo kódigo di akseso? No ta problema!</h2>
+      <p>Yena bo adrès elektróniko i despues nos ta manda instrukshon pa bo kambia bo kódigo di akseso.</p>
+      <h3>Yena awor bo adrès elektróniko</h3>
       <div id="sign_in_form">
         <div id="flash_message">
           <%= devise_error_messages! %>
@@ -14,7 +14,7 @@
 
         <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
           <br /> <%= f.email_field :email %><br /><br />
-          <div class="text-right"><%= f.submit t("inline_forms.devise.send_instructions"), class: :button %></div>
+          <div class="text-right"><%= f.submit 'Manda instrukshon', class: :button %></div>
         <% end %>
       </div>
     </div>

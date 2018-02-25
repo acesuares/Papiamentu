@@ -4,7 +4,7 @@
   <div class="row">
     <div class="columns small-12 medium-8 large-8 topper" id="left-side">
       <h2><%= current_user.name%></h2>
-      <h3>email: <%= current_user.email %></h3>
+      <h3>Adrès elektróniko: <%= current_user.email %></h3>
       <% SETTINGS_OPTIONS.each do |setting| %>
         <div class='row'>
           <div class="columns small-12 medium-4 large-4">
@@ -19,9 +19,9 @@
     </div>
 
     <div class="columns small-12 medium-8 large-8 topper" id="left-side">
-      <h2>Words I added: <%= @my_words.sum{ |creation_date,words| words.count } %></h2>
+      <h2>Palabra ku mi a agregá: <%= @my_words.sum{ |creation_date,words| words.count } %></h2>
       <% @my_words.each do |creation_date, words| %>
-        <strong><%= creation_date %>: <%= words.count %> words</strong><br />
+        <strong><%= creation_date %>: <%= words.count %> palabra</strong><br />
         <ul>
           <% words.sort_by(&:name).each do |word| %>
             <li>
@@ -37,7 +37,7 @@
 
 
     <div class="columns small-12 medium-4 large-4 topper" id="right-side">
-    <h2>Words I voted for</h2>
+    <h2>Palabra ku mi a vota p’e</h2>
       <ul>
         <% @votes_for.each do |word| %>
           <li>
