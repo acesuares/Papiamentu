@@ -10,26 +10,25 @@
     <%#= link_to image_tag("github_logo.jpg", size: '72x72'), user_omniauth_authorize_path(:github) %>
 
   </div>
-  <h3>...òf yena bo adrès elektróniko i bo kódigo di seguridat!</h3>
+  <h3>...òf yena bo adrès elektróniko i bo kódigo di akseso!</h3>
   <div id="flash_message">
     <%= devise_error_messages! %>
   </div>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <br /> Adrès elektróniko <%= f.email_field :email %><br />
-    Kódigo di seguridat <%= f.password_field :password %><br />
+    Kódigo di akseso <%= f.password_field :password %><br />
     <p class="text-right"><%= f.submit 'Ingresá', class: :button %></p>
   <% end %>
 
 </div>
 <div class="column small-12 large-6 topper" id="sign_in_form">
-  <h3>Bo a lubidá bo kódigo di seguridat?</h3>
+  <h3>Bo a lubidá bo kódigo di akseso?</h3>
   <p>
-    <strong><%= link_to "Apliká pa un kódigo di seguridat nobo.", new_user_password_path %></strong>
+    <strong><%= link_to "Apliká pa un kódigo di akseso nobo.", new_user_password_path %></strong>
   </p>
-  <h3>Apliká pa kódigo di akseso</h3>
+  <h3>Bo no tin kuenta?</h3>
   <p>
-    Bo no tin kódigo di akseso? Apliká aki!
-    <strong><%= link_to "Apliká pa bo kódigo", new_user_registration_path %></strong>,
+    Bo no tin kuenta ainda? <strong><%= link_to "Registrá", new_user_registration_path %></strong>
     òf ingresá via ‘Facebook’.
   </p>
 </div>

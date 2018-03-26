@@ -1,0 +1,206 @@
+# 2015-10-30 translated by Rianne Hellings
+---
+en:
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Yan
+    - Feb
+    - Mar
+    - Apr
+    - Mei
+    - Yün
+    - Yül
+    - Oug
+    - Sep
+    - Okt
+    - Nov
+    - Des
+    day_names:
+    - Djadumingu
+    - Djaluna
+    - Djamars
+    - Djarason
+    - Djawèps
+    - Djabièrnè
+    - Djasabra
+    formats:
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    luna_names:
+    -
+    - Yanüari
+    - Febrüari
+    - Mart
+    - Aprel
+    - Mei
+    - Yüni
+    - Yüli
+    - Ougùstùs
+    - Septèmbèr
+    - Oktober
+    - Novèmber
+    - Desèmber
+    order:
+    - :aña
+    - :luna
+    - :dia
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: mas of menos 1 ora
+        other: mas of menos %{count} ora
+      about_x_months:
+        one: mas of menos 1 luna
+        other: mas of menos %{count} luna
+      about_x_years:
+        one: mas of menos 1 aña
+        other: mas of menos %{count} aña
+      almost_x_years:
+        one: kasi 1 aña
+        other: kasi %{count} aña
+      half_a_minute: mitar minüt
+      less_than_x_minutes:
+        one: menos ku 1 minüt
+        other: menus ku %{count} minüt
+      less_than_x_seconds:
+        one: menos ku 1 sekonde
+        other: menus ku %{count} sekonde
+      over_x_years:
+        one: mas ku 1 aña
+        other: mas ku %{count} aña
+      x_days:
+        one: 1 dia
+        other: "%{count} dia"
+      x_minutes:
+        one: 1 minüt
+        other: "%{count} minüt"
+      x_months:
+        one: 1 luna
+        other: "%{count} luna"
+      x_seconds:
+        one: 1 sekonde
+        other: "%{count} sekonde"
+    prompts:
+      day: Dia
+      hour: Ora
+      minute: Minüt
+      month: Luna
+      second: Sekonde
+      year: Aña
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: mester ta aseptá
+      blank: no por ta bashí
+      present: mester ta bashí
+      confirmation: no ta kuadra ku %{attribute}
+      empty: no por ta bashí
+      equal_to: mester ta equal ku %{count}
+      even: mester ta ‘even’
+      exclusion: ta reservá
+      greater_than: mester ta mas grandi ku %{count}
+      greater_than_or_equal_to: mester ta mas grandi òf equal ku %{count}
+      inclusion: no ta inkluí den e lista
+      invalid: ta inválido
+      less_than: mester ta menos ku %{count}
+      less_than_or_equal_to: mester ta menos òf equal ku %{count}
+      not_a_number: no ta un number
+      not_an_integer: mester ta un ‘integer’
+      odd: mester ta ’oneven’
+      record_invalid: 'Validashon a faya: %{errors}'
+      restrict_dependent_destroy:
+        one: Cannot delete record because a dependent %{record} exists
+        many: Cannot delete record because dependent %{record} exist
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: must be other than %{count}
+    template:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
+  helpers:
+    select:
+      prompt: Por tabor selektá
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+        separator: "."
+        significant: falsu
+        strip_insignificant_zeros: falsu
+        unit: "$"
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: falsu
+      strip_insignificant_zeros: falsu
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: berdat
+        strip_insignificant_zeros: berdat
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " ku "
+      two_words_connector: " ku "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: pm

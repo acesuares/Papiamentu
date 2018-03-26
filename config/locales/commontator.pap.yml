@@ -1,0 +1,102 @@
+﻿# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+# 2015-10-30 translated by Sugeidy Windster
+
+---
+en:
+  activerecord:
+    attributes:
+      commontator/comment:
+        body: Komentario
+        creator: Kreador
+        editor: Editor
+        thread: Hilu
+      commontator/subscription:
+        subscriber: Persona ku ta suskribí
+        thread: Hilu
+      commontator/thread:
+        commontable: Commontable
+    models:
+      commontator/comment:
+        one: komentario
+        other: komentarionan
+      commontator/subscription:
+        one: suskripshon
+        other: suskripshonnan
+      commontator/thread:
+        one: hilu
+        other: hilunan
+  commontator:
+    anonymous: Anónimo
+    comment:
+      actions:
+        cancel: Kanselá
+        confirm_delete: "Bo ta sigur bo ke kita e komentario aki?"
+        create: "Krea Komentario"
+        delete: Kita
+        edit: Editá
+        new: "Komentario Nobo"
+        undelete: Deshasí
+        update: "Adaptá Komentario"
+      errors:
+        already_deleted: "E komentario aki a wòrdu kitá kaba."
+        create: "E komentario aki no por a wòrdu kreá pasobra:"
+        double_posted: "ta un duplikado di otro komentario."
+        not_deleted: "E komentario aki no wòrdu kitá."
+        update: "E komentario no por a wòrdu adaptá pasobra:"
+      status:
+        created_at: "Krea riba %{created_at}."
+        deleted_by: "Komentario kitá pa %{deleter_name}."
+        updated_at: "Último adaptá pa %{editor_name} on %{updated_at}."
+    email:
+      comment_created:
+        body: "%{creator_name} komentario riba %{commontable_name}:"
+        subject: "%{creator_name} a kreá un komentario riba %{commontable_name}"
+      thread_link_html: "<a href=\"%{commontable_url}\">Click here</a> to view all comments on %{commontable_name}."
+      undisclosed_recipients: "Risibió no Revelá"
+    require_login: "Bo mester start un seshon promé bo por krea un komentario."
+    subscription:
+      actions:
+        confirm_unsubscribe: "Bo ta sigur ku bo no ke sigui e diskushon aki mas?"
+        subscribe: Suskribí
+        unsubscribe: Unsubscribe
+      errors:
+        already_subscribed: "Bo a suskribí kaba na e diskushon aki."
+        not_subscribed: "Bo no ta suskribí na e diskushon aki."
+    thread:
+      actions:
+        show_all: "Mustra Tur Komentarionan"
+        filter: "Filtra Komentarionan"
+        close: "Sera Diskushon"
+        confirm_close: "Bo ta sigur bo ke sera e diskushon aki?"
+        reopen: "Habri Diskushon di nobo"
+        show: "Mustra komentarionan"
+      errors:
+        already_closed: "E diskushon aki a wòrdu sera kaba."
+        not_closed: "E diskushon aki no ta será."
+      status:
+        cannot_post: "Komentarionan nobo no por wòrdu kreá na e momentu aki."
+        closed: "Komentarionan (Closed by %{closer_name})"
+        open: Sinti bo liber pa ekspresá komentario, idea i remarke!
+  time:
+    formats:
+      commontator: "%b %d %Y at %I:%M%p %Z"

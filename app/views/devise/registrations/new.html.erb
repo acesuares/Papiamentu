@@ -9,16 +9,16 @@
         Papiamentu.Info ta un proyekto di Fundashon Kòrsou Habrí.
       </p>
       <p>
-        Pa haña akseso, bo mester di un kódigo di seguridat.
-        Yena bo adrès elektróniko i e kódigo seguridat ku bo ta deseá.
-        No usa kódigo di seguridat ku bo ta usa pa otro servisio/aplikashon.
+        Pa haña akseso, bo mester di un kuenta di usadó.
+        Yena bo adrès elektróniko i e kódigo akseso ku bo ta deseá.
+        No usa kódigo di akseso ku bo ta usa pa otro servisio/aplikashon.
       </p>
       <p>
         Lo bo risibí un mensahe elektróniko ku ta konfirmá bo kódigo di akseso.
       </p>
     </div>
     <div class="column small-12 large-6 topper" id="sign_in_form">
-      <h3>Bo adrès elektróniko.</h3>
+      <h3>Bo adrès elektróniko</h3>
       <div id="flash_message">
         <h2><%= devise_error_messages! %></h2>
       </div>
@@ -26,15 +26,15 @@
         <br /> Nombner i Fam   <%= f.text_field :name, autofocus: true %><br />
         Yena bo adrès elektróniko <%= f.email_field :email %>
         <% if f.object.password_required? %>
-          <br />kódigo di seguridat
+          <br />kódigo di akseso
           <% if @minimum_password_length %>
             <em>(kantidat mínimo di <%= @minimum_password_length %> leter i/òf sifra)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off" %><br />
-          kódigo di seguridat <em>(un bia mas pa konfrimá)</em><br />
+          kódigo di akseso <em>(un bia mas pa konfirmá)</em><br />
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         <% end %>
-        <p><%= f.submit 'pidi akseso', class: :button %></p>
+        <p><%= f.submit 'Registrá', class: :button %></p>
       <% end %>
     </div>
   </div>

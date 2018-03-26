@@ -14,11 +14,11 @@ class ApplicationController < InlineFormsApplicationController
   # Uncomment next line if you want I18n (based on subdomain)
   # before_filter :set_locale
 
-  # Uncomment next line and specify default locale
-  # I18n.default_locale = :en
-
   # Uncomment next line and specify available locales
-  # I18n.available_locales = [ :en, :nl, :pp ]
+  I18n.available_locales = [ :en, :pap ]
+
+  # Uncomment next line and specify default locale
+  I18n.default_locale = :pap
 
   # Uncomment next nine line if you want locale based on subdomain, like 'it.example.com, de.example.com'
   # def set_locale

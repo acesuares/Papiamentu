@@ -1,0 +1,64 @@
+# encoding: utf-8
+# sample localization file for english. add more files in this directory for other locales.
+# see http://github.com/svenfuchs/rails-i18n/tree/master/rails%2flocale for starting points.
+
+en:
+  inline_forms.devise.submit.change_password: ok
+  success: a añadí bo informashon
+  application_name: banko di palabra
+  hints:
+    messages:
+      presence: yena loke falta
+      uniqueness: por aparesé un bia so
+  activerecord:
+    models:
+      role: pèrmit
+      user: usadó
+      word: palabra
+      wordtype: kategoria
+      glossary: glosario
+      goal: aréa di edukashon
+      source: fuente
+      spelling_group: Grupo di palabra pa Spèl-spèl
+    attributes:
+      word:
+        name: entrada
+        synonym: sinonimo
+        variants: Variante ortográfiko
+        wordtypes: kategoria
+        glossaries: E palabra aki ta den e siguiente glosarionan
+        goals: aréa di edukashon
+        sources: fuente
+        countable: telbaar
+        specific: spesífiko
+        school_language: idioma di skol
+        description_nl: deskripshon (hul)
+        description_pap_cw: deskripshon (pap)
+        tr_nl: tradukshon (hul)
+        tr_en: tradukshon (eng)
+        source: fuente
+        user: usadó
+        attested: standarisá
+        attested_on: fecha standarisá
+        header_lema: lèma
+        header_gramma: karakterístika gramatikal
+        header_fuente: fuente
+        header_splikashon: splikashon
+        header_glosario: glosario
+        created_at: created
+        buki_di_oro: Buki di Oro
+        buki_di_oro_text: Tekst volgens Buki di Oro
+        pictures: potrèt
+        recordings: zonido
+        header_spel_spel_group: Grupo di palabra pa Spèl-spèl
+        spelling_groups: E palabra aki ta den e siguiente gruponan
+      glossary:
+        words: Lista di palabra den e glosario aki
+      spelling_group:
+        words: Lista di palabra den e grupo aki
+    errors:
+      models:
+        word:
+          attributes:
+            buki_di_oro:
+              immutable: 'attribute is immutable'
