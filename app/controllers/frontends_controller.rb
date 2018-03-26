@@ -140,7 +140,7 @@ class FrontendsController < ApplicationController
     user_ids = Word.all.map(&:user_id).uniq.compact - [5] # 5 = FPI
     @users = User.order(:name).where(id: user_ids)
     @users.each do |user|
-      user[:user_words] = Word.unscoped.where(user_id: user.id).group_by{ |word| word.created_at.to_date.to_formatted_s(:db)}
+      user.user_words = Word.unscoped.where(user_id: user.id).group_by{ |word| word.created_at.to_date.to_formatted_s(:db)}
     end
   end
 
