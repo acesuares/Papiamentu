@@ -14,7 +14,7 @@ class Ability
       can :access, :all
     elsif user.role? :admin
       can :access_but_not_delete,  [:words, :sources, :wordtypes, :goals, :roles, :fshp_categories,
-                                    :pictures, :recordings]
+                                    :pictures, :recordings, :glossaries, :spelling_groups]
       can [:revert, :destroy, :vote], :words
       can :do_frontend_stuff,      :frontends
       can :rapport,                :frontends
