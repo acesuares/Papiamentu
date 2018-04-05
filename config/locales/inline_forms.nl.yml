@@ -9,6 +9,7 @@ nl:
       add_new: Maak een nieuw %{model}
       undo: terughalen
       trash: weggooien
+      restore: restore
     devise:
       send_instructions: stuur instructies
       sign_up: inschrijven
