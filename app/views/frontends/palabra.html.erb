@@ -1,148 +1,141 @@
-<div id="palabra">
-  <% @logo_right = 'papiamentu-home.png' %>
-  <%= render "/frontends/papiamentu_header" %>
-  <div class="row" id="left-side">
-    <div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
-      <%= render "first_picture" %>
-    </div>
-    <div class="columns small-12 medium-6 large-5 topper  bordered">
-      <h2>
-        <% if @word.approved? %>
-          <%= image_tag 'yes.png', size: '32x32' %>
-        <% else %>
-          <%= image_tag 'no.png',  size: '32x32'  %>
-        <% end %>
-        <%= @word.name %>
-      </h2>
-      <% if @word.recordings.first %>
-        <%= send("audio_field_show", @word.recordings.first, :audio) -%>
-      <% end %>
-      <% unless @word.approved? %>
-        <div class="vote">
-          <% @thumbs_word = @word %>
-          <div class="row votes_thumbs_<%= @thumbs_word.id %>">
-            <%= render 'thumbs_votes' %>
-          </div>
-        </div>
-      <% end %>
-
-      <div class="pap_description bordered">
-        <%= content_tag :p, @word.variants_nice if @word.varies? %>
-        <%= content_tag :p, @word.description_pap_cw_nice %>
-        <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
-        <%= content_tag(:p, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>
-        <%= content_tag(:p, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
-        <%= content_tag(:p, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
-        <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
-        <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe )%>
+<div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
+  <%= render "first_picture" %>
+</div>
+<div class="columns small-12 medium-6 large-5 topper  bordered">
+  <h2>
+    <% if @word.approved? %>
+      <%= image_tag 'yes.png', size: '32x32' %>
+    <% else %>
+      <%= image_tag 'no.png',  size: '32x32'  %>
+    <% end %>
+    <%= @word.name %>
+  </h2>
+  <% if @word.recordings.first %>
+    <%= send("audio_field_show", @word.recordings.first, :audio) -%>
+  <% end %>
+  <% unless @word.approved? %>
+    <div class="vote">
+      <% @thumbs_word = @word %>
+      <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+        <%= render 'thumbs_votes' %>
       </div>
-
-      <div id='common_table'>
-        <%= commontator_thread(@word) %>
-      </div>
-   </div>
-
-    <div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
-      <h3>informashon</h3>
-      <ul>
-        <li>
-          <div class='yes_no'>
-            aprobá
-              <% if @word.approved? %>
-                <%= image_tag 'yes.png' %>
-              <% else %>
-                <%= image_tag 'no.png'  %>
-              <% end %>
-          </div>
-        </li>
-        <li>
-          <div class='yes_no'>
-            standarisá
-              <% if @word.standarized? %>
-                <%= image_tag 'yes.png' %>
-                <%= time_ago_in_words(@word.attested_on) %> ago
-              <% else %>
-                <%= image_tag 'no.png' %>
-              <% end %>
-          </div>
-        </li>
-        <li>
-          <div class='yes_no'>
-            views: <%= @word.views %>
-          </div>
-        </li>
-      </ul>
-      <h3>anterior/siguiente/buska</h3>
-      <ul>
-        <li>
-          anterior: <%= link_to_word(@word.previous_words.first) %>
-        </li>
-        <li>
-          siguiente: <%= link_to_word(@word.next_words.first) %>
-        </li>
-        <li>
-          <%= render "search_form" %>
-        </li>
-      </ul>
-
-      <% unless @word.approved? %>
-        <h3>Vota</h3>
-        agregá pa: <%= @word.user.name %> (<%= time_ago_in_words(@word.created_at) %> pasá)
-        pro: <%= @word.votes_for %><br />
-        kontra: <%= @word.votes_against %>
-      <% end %>
-
-      <h3>lingwístiko</h3>
-      <ul>
-        <li>
-          tipo di palabra: <%= @word.wordtypes.map(&:name).to_sentence %>
-        </li>
-        <li>
-          <div class='yes_no'>
-            kontabel
-              <% if @word.countable? %>
-                <%= image_tag 'yes.png' %>
-              <% else %>
-                <%= image_tag 'no.png'  %>
-              <% end %>
-          </div>
-        </li>
-        <li>
-          <div class='yes_no'>
-            spesífiko
-              <% if @word.specific? %>
-                <%= image_tag 'yes.png' %>
-              <% else %>
-                <%= image_tag 'no.png'  %>
-              <% end %>
-          </div>
-        </li>
-      </ul>
-
-      <h3>palabra mas resien</h3>
-      <ul>
-        <% Word.recently_updated.each do |word| %>
-          <li>
-            <% @thumbs_word = word %>
-            <div class="row votes_thumbs_<%= @thumbs_word.id %>">
-              <%= render 'thumbs_votes' %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-
-      <h3>palabra mas mirá</h3>
-      <ul>
-        <% Word.most_viewed.each do |word| %>
-          <li>
-            <% @thumbs_word = word %>
-            <div class="row votes_thumbs_<%= @thumbs_word.id %>">
-              <%= render 'thumbs_votes' %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
     </div>
+  <% end %>
+
+  <div class="pap_description bordered">
+    <%= content_tag :p, @word.variants_nice if @word.varies? %>
+    <%= content_tag :p, @word.description_pap_cw_nice %>
+    <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
+    <%= content_tag(:p, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>
+    <%= content_tag(:p, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
+    <%= content_tag(:p, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
+    <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
+    <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe )%>
+  </div>
+
+  <div id='common_table'>
+    <%= commontator_thread(@word) %>
   </div>
 </div>
-<%= render "/frontends/papiamentu_footer" %>
+
+<div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
+  <h3>informashon</h3>
+  <ul>
+    <li>
+      <div class='yes_no'>
+        aprobá
+          <% if @word.approved? %>
+            <%= image_tag 'yes.png' %>
+          <% else %>
+            <%= image_tag 'no.png'  %>
+          <% end %>
+      </div>
+    </li>
+    <li>
+      <div class='yes_no'>
+        standarisá
+          <% if @word.standarized? %>
+            <%= image_tag 'yes.png' %>
+            <%= time_ago_in_words(@word.attested_on) %> ago
+          <% else %>
+            <%= image_tag 'no.png' %>
+          <% end %>
+      </div>
+    </li>
+    <li>
+      <div class='yes_no'>
+        views: <%= @word.views %>
+      </div>
+    </li>
+  </ul>
+  <h3>anterior/siguiente/buska</h3>
+  <ul>
+    <li>
+      anterior: <%= link_to_word(@word.previous_words.first) %>
+    </li>
+    <li>
+      siguiente: <%= link_to_word(@word.next_words.first) %>
+    </li>
+    <li>
+      <%= render "search_form" %>
+    </li>
+  </ul>
+
+  <% unless @word.approved? %>
+    <h3>Vota</h3>
+    agregá pa: <%= @word.user.name %> (<%= time_ago_in_words(@word.created_at) %> pasá)
+    pro: <%= @word.votes_for %><br />
+    kontra: <%= @word.votes_against %>
+  <% end %>
+
+  <h3>lingwístiko</h3>
+  <ul>
+    <li>
+      tipo di palabra: <%= @word.wordtypes.map(&:name).to_sentence %>
+    </li>
+    <li>
+      <div class='yes_no'>
+        kontabel
+          <% if @word.countable? %>
+            <%= image_tag 'yes.png' %>
+          <% else %>
+            <%= image_tag 'no.png'  %>
+          <% end %>
+      </div>
+    </li>
+    <li>
+      <div class='yes_no'>
+        spesífiko
+          <% if @word.specific? %>
+            <%= image_tag 'yes.png' %>
+          <% else %>
+            <%= image_tag 'no.png'  %>
+          <% end %>
+      </div>
+    </li>
+  </ul>
+
+  <h3>palabra mas resien</h3>
+  <ul>
+    <% Word.recently_updated.each do |word| %>
+      <li>
+        <% @thumbs_word = word %>
+        <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+          <%= render 'thumbs_votes' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>palabra mas mirá</h3>
+  <ul>
+    <% Word.most_viewed.each do |word| %>
+      <li>
+        <% @thumbs_word = word %>
+        <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+          <%= render 'thumbs_votes' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

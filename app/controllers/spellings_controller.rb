@@ -1,5 +1,5 @@
 class SpellingsController < ApplicationController
-  layout 'application'
+  layout 'frontends'
   include CancanConcern
   #load_and_authorize_resource :class => false
 

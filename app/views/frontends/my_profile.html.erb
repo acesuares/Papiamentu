@@ -1,63 +1,56 @@
-<div id="my_profile">
-  <% @logo_right = 'papiamentu-home.png' %>
-  <%= render "/frontends/papiamentu_header" %>
-  <div class="row">
-    <div class="columns small-12 medium-8 large-8 topper" id="left-side">
-      <h2><%= current_user.name%></h2>
-      <h3>Adrès elektróniko: <%= current_user.email %></h3>
-      <% SETTINGS_OPTIONS.each do |setting| %>
-        <div class='row'>
-          <div class="columns small-12 medium-4 large-4">
-            <%= t "setting.#{setting}" %>
+<div class="columns small-12 medium-8 large-8 topper" id="left-side">
+  <h2><%= current_user.name%></h2>
+  <h3>Adrès elektróniko: <%= current_user.email %></h3>
+  <% SETTINGS_OPTIONS.each do |setting| %>
+    <div class='row'>
+      <div class="columns small-12 medium-4 large-4">
+        <%= t "setting.#{setting}" %>
+      </div>
+      <% css_class_id = "#{current_user.class.name.underscore}_#{current_user.id}_#{setting}" %>
+      <div class="columns small-12 medium-8 large-8" id="<%= css_class_id %>">
+        <%= send("dropdown_with_values_show", current_user, setting.to_sym) -%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="columns small-12 medium-8 large-8 topper" id="left-side">
+  <h2>Palabra ku mi a agregá: <%= @my_words.sum{ |creation_date,words| words.count } %></h2>
+  <% @my_words.each do |creation_date, words| %>
+    <strong><%= creation_date %>: <%= words.count %> palabra</strong><br />
+    <ul>
+      <% words.sort_by(&:name).each do |word| %>
+        <li>
+          <% @thumbs_word = word %>
+          <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+            <%= render 'thumbs_votes' %>
           </div>
-          <% css_class_id = "#{current_user.class.name.underscore}_#{current_user.id}_#{setting}" %>
-          <div class="columns small-12 medium-8 large-8" id="<%= css_class_id %>">
-            <%= send("dropdown_with_values_show", current_user, setting.to_sym) -%>
-          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="columns small-12 medium-4 large-4 topper" id="right-side">
+<h2>Palabra ku mi a vota p’e</h2>
+  <ul>
+    <% @votes_for.each do |word| %>
+      <li>
+        <% @thumbs_word = word %>
+        <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+          <%= render 'thumbs_votes' %>
         </div>
-      <% end %>
-    </div>
+      </li>
+    <% end %>
 
-    <div class="columns small-12 medium-8 large-8 topper" id="left-side">
-      <h2>Palabra ku mi a agregá: <%= @my_words.sum{ |creation_date,words| words.count } %></h2>
-      <% @my_words.each do |creation_date, words| %>
-        <strong><%= creation_date %>: <%= words.count %> palabra</strong><br />
-        <ul>
-          <% words.sort_by(&:name).each do |word| %>
-            <li>
-              <% @thumbs_word = word %>
-              <div class="row votes_thumbs_<%= @thumbs_word.id %>">
-                <%= render 'thumbs_votes' %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
+    <% @votes_against.each do |word| %>
+      <li>
+        <% @thumbs_word = word %>
+        <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+          <%= render 'thumbs_votes' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 
-
-    <div class="columns small-12 medium-4 large-4 topper" id="right-side">
-    <h2>Palabra ku mi a vota p’e</h2>
-      <ul>
-        <% @votes_for.each do |word| %>
-          <li>
-            <% @thumbs_word = word %>
-            <div class="row votes_thumbs_<%= @thumbs_word.id %>">
-              <%= render 'thumbs_votes' %>
-            </div>
-          </li>
-        <% end %>
-
-        <% @votes_against.each do |word| %>
-          <li>
-            <% @thumbs_word = word %>
-            <div class="row votes_thumbs_<%= @thumbs_word.id %>">
-              <%= render 'thumbs_votes' %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-
-    </div>
-  </div>
 </div>

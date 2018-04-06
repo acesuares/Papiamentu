@@ -1,0 +1,17 @@
+<% if params[:state] == "confirmed" %>
+  <div class="row" id="info">
+    <div class="columns small-12 large-12 topper">
+      <h2>U heeft nu toegang tot papiamentu!</h2>
+      Vanaf nu kunt u op deze site inloggen met uw emailadres en uw wachtwoord.
+    </div>
+  </div>
+<% end %>
+
+<% if params[:state] == "password_changed" %>
+  <div class="row" id="info">
+    <div class="columns small-12 large-12 topper">
+      <h2>U heeft uw wachtwoord gewijzigd!</h2>
+      Vanaf nu kunt u op deze site inloggen met uw emailadres en uw nieuwe wachtwoord.
+    </div>
+  </div>
+<% end %>

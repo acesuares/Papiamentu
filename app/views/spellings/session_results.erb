@@ -1,38 +1,31 @@
-<div id="palabra">
-  <% @logo_right = 'papiamentu-home.png' %>
-  <%= render "/frontends/papiamentu_header" %>
-  <div class="row" id="left-side">
-    <div class="columns small-12 medium-6 large-4 topper  bordered text-center">
-      <h2>Bo a gana</h2>
-      <p><span class="points-number"><%= @points %></span> punto</p>
-    </div>
-    <div class="columns small-12 medium-6 large-4 topper  bordered">
-      <h2>Lista di palabra</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Palabra</th>
-            <th>kon ba skirbié </th>
-            <th>korekto?</th>
-            <th>punto</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @SpellingSession.spelling_tries.each do |try| %>
-            <tr>
-              <td><%= try.word.name %></td>
-              <td><%= try.user_input %></td>
-              <td><%= raw try.correct ? '<i class="fi-check"></i>' : '<i class="fi-x"></i>' %></td>
-              <td><%= try.points %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="columns small-12 medium-6 large-4 topper bordered text-center">
-      <%= link_to "Hunga atrobe", spelling_play_path, class: [:button, :rounded] %>
-      <%= link_to "Bai página prinsipal", spelling_path, class: [:button, :rounded] %>
-    </div>
-  </div>
+<div class="columns small-12 medium-6 large-4 topper  bordered text-center">
+  <h2>Bo a gana</h2>
+  <p><span class="points-number"><%= @points %></span> punto</p>
 </div>
-<%= render "/frontends/papiamentu_footer" %>
+<div class="columns small-12 medium-6 large-4 topper  bordered">
+  <h2>Lista di palabra</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Palabra</th>
+        <th>kon ba skirbié </th>
+        <th>korekto?</th>
+        <th>punto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @SpellingSession.spelling_tries.each do |try| %>
+        <tr>
+          <td><%= try.word.name %></td>
+          <td><%= try.user_input %></td>
+          <td><%= raw try.correct ? '<i class="fi-check"></i>' : '<i class="fi-x"></i>' %></td>
+          <td><%= try.points %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="columns small-12 medium-6 large-4 topper bordered text-center">
+  <%= link_to "Hunga atrobe", spelling_play_path, class: [:button, :rounded] %>
+  <%= link_to "Bai página prinsipal", spelling_path, class: [:button, :rounded] %>
+</div>
