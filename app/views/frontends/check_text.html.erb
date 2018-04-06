@@ -1,16 +1,10 @@
-<div id="palabra">
-  <% @logo_right = 'papiamentu-home.png' %>
-  <%= render "/frontends/papiamentu_header" %>
-  <div class="row" id="left-side">
-    <div class="columns small-12">
-      <h2>E palabranan abou no ta den e bank'i palabra!</h2>
-      <ul>
-        <% @words_missing.each do |missing_word| %>
-          <li>
-            <%= link_to missing_word, "/palabra/#{missing_word}" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-<%= render "/frontends/papiamentu_footer" %>
+<div class="columns small-12">
+  <h2>E palabranan abou no ta den e bank'i palabra!</h2>
+  <ul>
+    <% @words_missing.each do |missing_word| %>
+      <li>
+        <%= link_to missing_word, "/palabra/#{missing_word}" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

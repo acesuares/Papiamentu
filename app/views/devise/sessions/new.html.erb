@@ -1,6 +1,6 @@
 <div id="devise">
   <% @logo_right = 'papiamentu-welkom.png' %>
-  <%= render "/frontends/papiamentu_header" %>
+  <%= render "/shared/frontend_header" %>
   <%= render "flash" %>
   <div class="row" id="sign_in">
     <% if params[:state] == "after_sign_up" %>
@@ -10,4 +10,4 @@
     <% end %>
   </div>
 </div>
-<%= render "/frontends/papiamentu_footer" %>
+<%= render "/shared/frontend_footer" %>

@@ -1,27 +1,21 @@
-<div id="palabra">
-  <% @logo_right = 'papiamentu-home.png' %>
-  <%= render "/frontends/papiamentu_header" %>
-  <div id="left-side" class="row ">
-    <div class="columns small-12 medium-6 large-12 topper bordered">
-      <div class="columns small-12 medium-6 large-3 text-center">
-        <% if @spelling_group. nil? %>
-          <h3>grupo: general</h3>          
-        <% else %>
-          <h3>grupo: <%= @spelling_group.name %></h3>
-        <% end %>
-      </div>
-      <div class="columns small-12 medium-6 large-6 text-center">
-        <img id="spelling_picture" class="float-center" src="<%= @word[:picture]%>">
-        <audio id="spelling_audio" controls="controls" src="<%= @word[:recording]%>"></audio>
-        <%= hidden_field_tag 'id', @word[:id] %>
-        <%= hidden_field_tag 'session_id', @spelling_session.id %>
-        <%= text_field_tag 'answer' %>
-        <a id="check-button" class="button rounded" href="#">Chèk</a>
-      </div>
-      <div class="columns small-12 medium-6 large-3 text-center">
-        <%= link_to "Stop", spelling_path, class: [:button, :rounded] %>
-      </div>
-    </div>
+<div class="columns small-12 medium-6 large-12 topper bordered">
+  <div class="columns small-12 medium-6 large-3 text-center">
+    <% if @spelling_group. nil? %>
+      <h3>grupo: general</h3>
+    <% else %>
+      <h3>grupo: <%= @spelling_group.name %></h3>
+    <% end %>
+  </div>
+  <div class="columns small-12 medium-6 large-6 text-center">
+    <img id="spelling_picture" class="float-center" src="<%= @word[:picture]%>">
+    <audio id="spelling_audio" controls="controls" src="<%= @word[:recording]%>"></audio>
+    <%= hidden_field_tag 'id', @word[:id] %>
+    <%= hidden_field_tag 'session_id', @spelling_session.id %>
+    <%= text_field_tag 'answer' %>
+    <a id="check-button" class="button rounded" href="#">Chèk</a>
+  </div>
+  <div class="columns small-12 medium-6 large-3 text-center">
+    <%= link_to "Stop", spelling_path, class: [:button, :rounded] %>
   </div>
 </div>
 <div id="modal-good" class="reveal-modal tiny" class="reveal-modal" data-reveal data-reveal data-options="close_on_background_click:false;close_on_esc:false;">
@@ -42,4 +36,3 @@
     <a id='siguiente-button' class="button rounded" href="#">Siguiente</a>
   </p>
 </div>
-<%= render "/frontends/papiamentu_footer" %>
