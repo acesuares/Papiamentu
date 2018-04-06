@@ -1,4 +1,4 @@
-en:
+pap:
   inline_forms:
     general:
       application_title: Banko di Palabra
@@ -7,6 +7,7 @@ en:
       add_new: make a new %{model}
       undo: undo
       trash: trash
+      restore: restore
     devise:
       title_for_devise: Banki do Palabra
       welcome: Banko di Palabra
