@@ -15,10 +15,10 @@ class ApplicationController < InlineFormsApplicationController
   # before_filter :set_locale
 
   # Uncomment next line and specify available locales
-  I18n.available_locales = [ :en, :pap ]
+  I18n.available_locales = [ :en, "pap-CW" ]
 
   # Uncomment next line and specify default locale
-  I18n.default_locale = :pap
+  I18n.default_locale = "pap-CW"
 
   # Uncomment next nine line if you want locale based on subdomain, like 'it.example.com, de.example.com'
   # def set_locale
