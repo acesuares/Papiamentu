@@ -1,0 +1,16 @@
+pap-CW:
+  views:
+    shared:
+      flash:
+      frontend:
+        header:
+        footer:
+          back_to_home: bai bèk na página inisio
+          disclaimer: no por derivá ningun derechi di uzo for di e wèpsait aki
+          logout: finalisá seshon
+        sidebar:
+          important_links: Lenk importante
+          glossaries: Glosario
+          recent_words: Palabra mas resien
+          most_viewed_words: Palabra mas mirá
+      state:
