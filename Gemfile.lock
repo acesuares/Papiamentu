@@ -13,6 +13,14 @@ GIT
       i18n (>= 0.5.0)
 
 GIT
+  remote: https://github.com/acesuares/rails-i18n.git
+  revision: ade0ad15322831baf15bfa7aa4f280992a1028a6
+  specs:
+    rails-i18n (5.1.1)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
+
+GIT
   remote: https://github.com/acesuares/seed_dump.git
   revision: 493b2e6356efe0f54dd66ade827f3dc5a39218ae
   specs:
@@ -317,9 +325,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails-i18n (5.1.1)
-      i18n (>= 0.7, < 2)
-      railties (>= 5.0, < 6)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -479,7 +484,7 @@ DEPENDENCIES
   poltergeist
   rails (~> 5.1.4)
   rails-controller-testing
-  rails-i18n
+  rails-i18n!
   rake
   remotipart (~> 1.0)
   rspec-rails
