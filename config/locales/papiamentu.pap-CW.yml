@@ -14,3 +14,28 @@ pap-CW:
           recent_words: Palabra mas resien
           most_viewed_words: Palabra mas mirá
       state:
+        you_have_access: U heeft nu toegang tot de Banko di Palabra!
+        you_can_login: Vanaf nu kunt u op deze site inloggen met uw emailadres en uw wachtwoord.
+        you_have_changed_password: U heeft uw wachtwoord gewijzigd!
+        you_can_login_with_new_password: Vanaf nu kunt u op deze site inloggen met uw emailadres en uw nieuwe wachtwoord.
+  word_mailer:
+    views:
+      banko_di_palabra: Banko di Palabra
+      thanks_for_joining: Thanks for joining and have a great day!
+      this_week: this week
+      this_month: this month
+      ago: pasá
+      votes: votes
+      there_is_a_new_word_created: A kaba di krea e palabra
+      please_visit_the_link_to_this_word: Por fabor bishitá %{link} pa wak e!
+      the_word_has_views: 'E palabra: %{word} tin %{views} now!'
+      the_word_has_positive_votes: 'E palabra: %{word} tin %{votes} positif!'
+      the_word_has_negative_votes: 'E palabra: %{word} tin %{votes} negatif!'
+    new_word_created_email:
+      subject: 'Banko di Palabra: New word created: %{word}'
+    own_word_liked_or_visited_email:
+      subject: 'Banko di Palabra: Bo palabra %{word} a hanja un view of un like!'
+    daily_new_words_email:
+      subject:
+        one: 'Banko di Palabra: New word created today: %{word}'
+        other: 'Banko di Palabra: %{count} new words created today'

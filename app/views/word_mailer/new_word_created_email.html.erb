@@ -1,16 +1,20 @@
+<% translation_scope = "word_mailer.views" %>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Papiamentu: A krea palabra nobo: <%= @word.name %></h1>
+    <h1><%= t '.subject', word: @word.name %></h1>
     <p>
-      A kaba di krea e palabra: <%= @word.name %>!
+      <%= t :there_is_a_new_word_created, scope: translation_scope %> <%= @word.name %>!
     </p>
     <p>
-      Por fabor bishitá <%= link_to_word(@word, true) %> pa wak e!
+      <%= t :please_visit_the_link_to_this_word, scope: translation_scope, link: link_to_word(@word, true) %>
     </p>
-    <p>Danki pa partisipá pasa un dushi dia!</p>
+    <p>
+      <%= t :thanks_for_joining, scope: translation_scope %>
+    </p>
   </body>
 </html>

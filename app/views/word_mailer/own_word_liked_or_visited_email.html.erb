@@ -1,22 +1,26 @@
+<% translation_scope = "word_mailer.views" %>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Papiamentu: Bo palabra <%= @word.name %> a hanja un view of un like!</h1>
+    <h1><%= t '.subject', word: @word.name %></h1>
     <p>
-      E palabra: <%= @word.name %> tin <%= @word.views %> now!
+      <%= t :the_word_has_views, scope: translation_scope, word: @word.name, views: @word.views %>
     </p>
     <p>
-      E palabra: <%= @word.name %> tin <%= @word.votes_for %> positif!
+      <%= t :the_word_has_positive_votes, scope: translation_scope, word: @word.name, votes: @word.votes_for %>
     </p>
     <p>
-      E palabra: <%= @word.name %> tin <%= @word.votes_against %> negatif!
+      <%= t :the_word_has_negative_votes, scope: translation_scope, word: @word.name, votes: @word.votes_against %>
     </p>
     <p>
-      Por fabor bishitá <%= link_to_word(@word, true) %> pa wak e!
+      <%= t :please_visit_the_link_to_this_word, scope: translation_scope, link: link_to_word(@word, true) %>
     </p>
-    <p>Danki pa partisipá pasa un dushi dia!</p>
+    <p>
+      <%= t :thanks_for_joining, scope: translation_scope %>
+    </p>
   </body>
 </html>

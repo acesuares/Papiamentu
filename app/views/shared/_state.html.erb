@@ -1,8 +1,10 @@
+<% translation_scope = "views.shared.state" %>
+
 <% if params[:state] == "confirmed" %>
   <div class="row" id="info">
     <div class="columns small-12 large-12 topper">
-      <h2>U heeft nu toegang tot papiamentu!</h2>
-      Vanaf nu kunt u op deze site inloggen met uw emailadres en uw wachtwoord.
+      <h2><%= t :you_have_access, scope: translation_scope %></h2>
+      <%= t :you_can_login, scope: translation_scope %>
     </div>
   </div>
 <% end %>
@@ -10,8 +12,8 @@
 <% if params[:state] == "password_changed" %>
   <div class="row" id="info">
     <div class="columns small-12 large-12 topper">
-      <h2>U heeft uw wachtwoord gewijzigd!</h2>
-      Vanaf nu kunt u op deze site inloggen met uw emailadres en uw nieuwe wachtwoord.
+      <h2><%= t :you_have_changed_password, scope: translation_scope %></h2>
+      <%= t :you_can_login_with_new_password, scope: translation_scope %>
     </div>
   </div>
 <% end %>

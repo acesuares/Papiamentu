@@ -5,18 +5,14 @@ class WordMailer < ApplicationMailer
 
   def new_word_created_email(word_id, email)
     @word = Word.find(word_id)
-    mail  to: email, subject: "Papiamentu: A krea palabra nobo: #{@word.name}"
+    mail  to: email, subject: default_i18n_subject(word: @word.name)
   end
 
   def own_word_liked_or_visited_email(word, user, status)
     @word = word
     @user = user
     @status = status
-    if status == 2
-      mail  to: user.email, subject: "Papiamentu: New Visit: #{word.name} (now #{word.views})"
-    else
-      mail  to: user.email, subject: "Papiamentu: New Vote: #{status} for #{word.name}"
-    end
+    mail  to: user.email, subject: default_i18n_subject(word: @word.name)
   end
 
   # daily
@@ -24,7 +20,7 @@ class WordMailer < ApplicationMailer
   def daily_new_words_email(user, words)
     @words = words
     @user = user
-    mail  to: user.email, subject: "Papiamentu: #{@words.length} New Words Created Today!"
+    mail  to: user.email, subject: default_i18n_subject(count: @words.length, word: @words.first.name)
   end
 
   def daily_own_words_email(user, words)

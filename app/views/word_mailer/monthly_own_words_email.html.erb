@@ -1,10 +1,12 @@
+<% translation_scope = "word_mailer.views" %>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Papiamentu: Votes This Month:</h1>
+    <h1><%= t :banko_di_palabra, scope: translation_scope %>: <%= t :votes, scope: translation_scope %><%= t :this_month, scope: translation_scope %></h1>
     <ul>
       <% @words.each do |word| %>
         <li>
@@ -12,13 +14,13 @@
           <ul>
             <% word.votes.where("'#{1.month.ago.to_date.to_s(:db)}' < created_at").each do |vote| %>
               <li>
-                <%= time_ago_in_words(vote.updated_at) %> pasá: <%= vote.vote ? "+1" : "-1" %>
+                <%= time_ago_in_words(vote.updated_at) %><%= t :ago, scope: translation_scope %>: <%= vote.vote ? "+1" : "-1" %>
               </li>
             <% end %>
           </ul>
         </li>
       <% end %>
     </ul>
-    <p>Thanks for joining and have a great day!</p>
+    <p><%= t :thanks_for_joining, scope: translation_scope %></p>
   </body>
 </html>
