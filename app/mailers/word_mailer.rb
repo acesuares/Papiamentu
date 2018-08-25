@@ -26,7 +26,7 @@ class WordMailer < ApplicationMailer
   def daily_own_words_email(user, words)
     @words = words
     @user = user
-    mail  to: user.email, subject: "Papiamentu: Visits and Likes for Today!"
+    mail  to: user.email, subject: default_i18n_subject
   end
 
   # weekly
@@ -34,13 +34,13 @@ class WordMailer < ApplicationMailer
   def weekly_new_words_email(user, words)
     @words = words
     @user = user
-    mail  to: user.email, subject: "Papiamentu: #{@words.length} New Words Created This Week!"
+    mail  to: user.email, subject: default_i18n_subject(count: @words.length, word: @words.first.name)
   end
 
   def weekly_own_words_email(user, words)
     @words = words
     @user = user
-    mail  to: user.email, subject: "Papiamentu: Visits and Likes for This Week!"
+    mail  to: user.email, subject: default_i18n_subject
   end
 
   # monthly
@@ -48,13 +48,13 @@ class WordMailer < ApplicationMailer
   def monthly_new_words_email(user, words)
     @words = words
     @user = user
-    mail  to: user.email, subject: "Papiamentu: #{@words.length} New Words Created This Month!"
+    mail  to: user.email, subject: default_i18n_subject(count: @words.length, word: @words.first.name)
   end
 
   def monthly_own_words_email(user, words)
     @words = words
     @user = user
-    mail  to: user.email, subject: "Papiamentu: Visits and Likes for This Month!"
+    mail  to: user.email, subject: default_i18n_subject
   end
 
 end

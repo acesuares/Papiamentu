@@ -6,7 +6,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= t :banko_di_palabra, scope: translation_scope %>: <%= t :new_words_created, count: @words.length, scope: translation_scope %><%= t :this_week, scope: translation_scope %></h1>
+    <h1><%= t '.subject', count: @words.length, word: @words.first.name %></h1>
     <ul>
       <% @words.each do |word| %>
         <li>

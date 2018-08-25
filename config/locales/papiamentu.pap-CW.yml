@@ -22,10 +22,7 @@ pap-CW:
     views:
       banko_di_palabra: Banko di Palabra
       thanks_for_joining: Thanks for joining and have a great day!
-      this_week: this week
-      this_month: this month
       ago: pasá
-      votes: votes
       there_is_a_new_word_created: A kaba di krea e palabra
       please_visit_the_link_to_this_word: Por fabor bishitá %{link} pa wak e!
       the_word_has_views: 'E palabra: %{word} tin %{views} now!'
@@ -39,3 +36,17 @@ pap-CW:
       subject:
         one: 'Banko di Palabra: New word created today: %{word}'
         other: 'Banko di Palabra: %{count} new words created today'
+    daily_own_words_email:
+      subject: 'Banko di Palabra: Visits and votes for your words today.'
+    weekly_new_words_email:
+      subject:
+        one: 'Banko di Palabra: New word created this week: %{word}'
+        other: 'Banko di Palabra: %{count} new words created this week'
+    weekly_own_words_email:
+      subject: 'Banko di Palabra: Visits and votes for your words this week.'
+    monthly_new_words_email:
+      subject:
+        one: 'Banko di Palabra: New word created this month: %{word}'
+        other: 'Banko di Palabra: %{count} new words created this month'
+    monthly_own_words_email:
+      subject: 'Banko di Palabra: Visits and votes for your words this month.'
