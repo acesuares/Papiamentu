@@ -15,7 +15,7 @@ class ApplicationController < InlineFormsApplicationController
   # before_filter :set_locale
 
   # Uncomment next line and specify available locales
-  I18n.available_locales = [ :en, "pap-CW" ]
+  I18n.available_locales = [ :en, :nl, "pap-CW" ]
 
   # Uncomment next line and specify default locale
   I18n.default_locale = "pap-CW"
