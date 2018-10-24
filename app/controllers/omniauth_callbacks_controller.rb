@@ -11,4 +11,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
   alias_method :github, :all
   alias_method :facebook, :all
+
+  def failure
+    redirect_to root_path
+  end
+  
 end
