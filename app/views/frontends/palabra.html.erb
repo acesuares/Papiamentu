@@ -68,7 +68,13 @@
       </div>
     </li>
   </ul>
-  <h3>anterior/siguiente/buska</h3>
+  <h3>DCDP</h3>
+  <ul>
+    <li>
+      buska DCDP: <%= link_to "dcdp.uoc.cw: #{@word.name}", "http://dcdp.uoc.cw/results/?text=#{@word.name}", target: :_blank %>
+    </li>
+  </ul>
+<h3>anterior/siguiente/buska</h3>
   <ul>
     <li>
       anterior: <%= link_to_word(@word.previous_words.first) %>
