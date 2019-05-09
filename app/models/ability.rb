@@ -45,6 +45,11 @@ class Ability
       can :can_play_spelling,      :spellings
       can :access_but_not_delete,   :users, id: user.id
       cannot :update,               :users, [:roles, :email]
+      elsif user.id.nil?
+        can :read,                    [:words, :sources, :wordtypes, :goals,:roles,:fshp_categories,
+                                       :pictures, :recordings]
+        can :do_frontend_stuff,       :frontends
+        #can :can_play_spelling,      :spellings
     end
   end
 end

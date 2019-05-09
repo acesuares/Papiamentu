@@ -12,7 +12,7 @@
   </div>
   <h3>...òf yena bo adrès elektróniko i bo kódigo di akseso!</h3>
   <div id="flash_message">
-    <%= devise_error_messages! %>
+    <%= render "devise/shared/error_messages" %>
   </div>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <br /> Adrès elektróniko <%= f.email_field :email %><br />

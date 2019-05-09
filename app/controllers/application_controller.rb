@@ -5,11 +5,18 @@ class ApplicationController < InlineFormsApplicationController
   before_action :authenticate_user!
 
   # Comment next 6 lines if you want CanCan authorization
-  enable_authorization :unless => :devise_controller?
+  check_authorization :unless => :devise_controller?
 
-  rescue_from CanCan::Unauthorized do |exception|
-    redirect_to root_path, alert: exception.message
-  end
+  rescue_from CanCan::AccessDenied do |exception|
+      respond_to do |format|
+        format.json { head :forbidden, content_type: 'text/html' }
+        format.html { redirect_to main_app.root_url, notice: exception.message }
+        format.js   { head :forbidden, content_type: 'text/html' }
+      end
+    end
+  # rescue_from CanCan::Unauthorized do |exception|
+  #   redirect_to root_path, alert: exception.message
+  # end
 
   # Uncomment next line if you want I18n (based on subdomain)
   # before_filter :set_locale

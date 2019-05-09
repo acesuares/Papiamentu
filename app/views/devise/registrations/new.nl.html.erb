@@ -20,7 +20,9 @@
     <div class="column small-12 large-6 topper" id="sign_in_form">
       <h3>Bo adrès elektróniko</h3>
       <div id="flash_message">
-        <h2><%= devise_error_messages! %></h2>
+        <h2>
+          <%= render "devise/shared/error_messages" %>
+        </h2>
       </div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <br /> Nombner i Fam   <%= f.text_field :name, autofocus: true %><br />
