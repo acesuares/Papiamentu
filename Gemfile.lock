@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/galetahub/ckeditor.git
-  revision: f670d232e04b8d81aa3cb9c279e162a69fdd76b5
-  specs:
-    ckeditor (5.0.0)
-      orm_adapter (~> 0.5.0)
-
-GIT
   remote: https://github.com/acesuares/devise-i18n.git
   revision: a2f20feac23bfaeec8e73cccea32bcab8758211a
   specs:
@@ -125,13 +118,14 @@ GEM
       sidekiq (>= 3.4)
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
-    capybara (3.19.0)
+    capybara (3.20.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
+      uglifier
       xpath (~> 3.2)
     carrierwave (1.3.1)
       activemodel (>= 4.0.0)
@@ -259,7 +253,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multi_xml (0.6.0)
-    multipart-post (2.1.0)
+    multipart-post (2.1.1)
     mustermann (1.0.3)
     mysql2 (0.5.2)
     net-scp (2.0.0)
@@ -337,7 +331,7 @@ GEM
     rdoc (6.1.1)
     redis (4.1.1)
     ref (2.0.0)
-    regexp_parser (1.4.0)
+    regexp_parser (1.5.0)
     remotipart (1.4.2)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -405,7 +399,7 @@ GEM
     statistics2 (0.54)
     switch_user (1.5.2)
     tabs_on_rails (3.0.0)
-    test-unit (3.3.2)
+    test-unit (3.3.3)
       power_assert
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -454,7 +448,6 @@ DEPENDENCIES
   capistrano3-unicorn
   capybara
   carrierwave
-  ckeditor!
   coffee-rails
   commontator!
   compass-rails
