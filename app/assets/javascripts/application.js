@@ -15,5 +15,8 @@
 //= require jquery.ui.all
 //= require foundation
 //= require jquery.remotipart
+//= require ckeditor/override
+//= require ckeditor/init
+//= require ckeditor/config
 //= require inline_forms
 //= require_tree .
