@@ -25,9 +25,11 @@
     <%= content_tag(:p, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
     <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
     <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe )%>
-    <%= link_to 'tradukshon Majstro', "http://www.majstro.com/Web/Majstro/bdict.php?gebrTaal=dut&bronTaal=pap&doelTaal=dut&teVertalen=#{@word.name}", target: :_blank %>
   </div>
 
+  <div id='common_table'>
+    <%= commontator_thread(@word) %>
+  </div>
 </div>
 
 <div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
@@ -63,7 +65,7 @@
   <h3>DCDP</h3>
   <ul>
     <li>
-      <%= link_to "buska dcdp.uoc.cw: #{@word.name}", "http://dcdp.uoc.cw/results/?text=#{@word.name}", target: :_blank %>
+      buska DCDP: <%= link_to "dcdp.uoc.cw: #{@word.name}", "http://dcdp.uoc.cw/results/?text=#{@word.name}", target: :_blank %>
     </li>
   </ul>
 <h3>anterior/siguiente/buska</h3>
@@ -117,7 +119,10 @@
   <ul>
     <% Word.recently_updated.each do |word| %>
       <li>
-        <%= link_to word.word_max_length(20), "/palabra/#{word.name}", :title => word.name  %>
+        <% @thumbs_word = word %>
+        <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+          <%= render 'thumbs_votes' %>
+        </div>
       </li>
     <% end %>
   </ul>
@@ -126,7 +131,10 @@
   <ul>
     <% Word.most_viewed.each do |word| %>
       <li>
-        <%= link_to word.word_max_length(20), "/palabra/#{word.name}", :title => word.name  %>
+        <% @thumbs_word = word %>
+        <div class="row votes_thumbs_<%= @thumbs_word.id %>">
+          <%= render 'thumbs_votes' %>
+        </div>
       </li>
     <% end %>
   </ul>

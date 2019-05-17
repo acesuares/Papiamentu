@@ -1,5 +1,5 @@
 <ul>
-  <% Word.recently_updated(@palabra_mas_resien_limit, @palabra_mas_resien_offset).each do |word| %>
+  <% Word.buki_di_oro.recently_updated(@palabra_mas_resien_limit, @palabra_mas_resien_offset).each do |word| %>
     <li>
       <%= link_to_word word %>: <%= time_ago_in_words(word.updated_at) %> pasá
     </li>

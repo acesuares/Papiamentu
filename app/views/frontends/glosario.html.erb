@@ -2,23 +2,21 @@
   <h2>
     <%= @glossary.title %>
   </h2>
+  <p>
+    <%= @glossary.description %>
+  </p>
 
   <div class="pap_description bordered">
-    <%= content_tag :p, @glossary.description %>
-    <% alpha = @glossary.words.order("name ASC").group_by{|u| u.name[0]}
-       alpha.each do |letter, items| %>
-        <h3><%= letter %></h3>
-        <p>
+    <% @glossary.words.order("name ASC").group_by{|u| u.name[0]}.each do |letter, items| %>
+      <h3><%= letter %></h3>
+      <ul>
         <% items.each do |item| %>
-          <%= link_to_word item %>
+          <li>
+            <%= link_to_word item %>
+          </li>
         <% end %>
-        </p>
+      </ul>
     <% end %>
   </div>
 
-</div>
-
-<div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
-  <!-- <%= render 'glosario_sponser'%> -->
-  <%= link_to('Baha dokumento PDF', "/glosario/#{@glossary.name}.pdf") %>
 </div>

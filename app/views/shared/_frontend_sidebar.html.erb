@@ -1,18 +1,22 @@
 <% translation_scope = "views.shared.frontend.sidebar" %>
 
 <div class="columns small-12 medium-4 large-4 topper" id="right-side">
-  <h3><%= current_user.name %></h3>
-  <div id='user'>
-    <%= render 'user' %>
-  </div>
+  <h3><%= current_user.nil? ? 'Bon Biní' : current_user.name %></h3>
+  <% unless current_user.nil? %>
+    <div id='user'>
+      <%= render 'user' %>
+    </div>
+  <% end %>
   <h3><%= t :important_links, scope: translation_scope %></h3>
   <div id='lenk_importante'>
     <%= render 'lenk' %>
   </div>
-  <h3><%= t :glossaries, scope: translation_scope %></h3>
-  <div id='glosario'>
-    <%= render 'glosario' %>
-  </div>
+  <% if 1 == 0 %>
+    <h3><%= t :glossaries, scope: translation_scope %></h3>
+    <div id='glosario'>
+      <%= render 'glosario' %>
+    </div>
+  <% end %>
   <h3><%= t :recent_words, scope: translation_scope %></h3>
   <div id='palabra_mas_resien'>
     <%= render 'palabra_mas_resien' %>

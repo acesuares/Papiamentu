@@ -15,12 +15,12 @@ class FrontendsController < ApplicationController
       @search_word = params[:word].squish.gsub(CHARACTER_REGEX,'')
       @word = Word.find_by_name(@search_word)
       if @word.nil?
-        render 'palabra_not_found' and return
+        render 'palabra_nobo' and return
       end
       @word.increment_views
       # WordMailer.own_word_liked_or_visited_email(self.id, 'ace@suares.com').deliver
-      # OwnWordLikedOrVisitedWorker.perform_async(@word.id, 2)
-      # commontator_thread_show(@word)
+      OwnWordLikedOrVisitedWorker.perform_async(@word.id, 2)
+      commontator_thread_show(@word)
     end
   end
 
