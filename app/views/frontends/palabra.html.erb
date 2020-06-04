@@ -14,10 +14,12 @@
     <% end %>
   </h2>
 
-  <div class="pap_description bordered">
+  <div class="wikipedia">
     <% wiki = Wikipedia.find(@word.name) %>
-    <%= image_tag wiki.main_image_url, class: 'wiki-image' unless wiki.main_image_url.nil? %>
+    <%= image_tag wiki.main_image_url unless wiki.main_image_url.nil? %>
     <%= wiki.summary %>
+  </div>
+  <div class='xxxxxx'>
     <%# <%= content_tag :p, @word.variants_nice if @word.varies? %>
     <%= content_tag(:p, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
     <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
