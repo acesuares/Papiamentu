@@ -1,11 +1,10 @@
 <%= render 'shared/state' %>
 <div class="columns small-12 medium-8 large-8 topper" id="left-side">
-  <h2>Papiamentu!</h2>
-  <h2>buska un palabra</h2>
+  <h2>Palabra di dia: <%= link_to_word Word.buki_di_oro.random %></h2>
+  <h3>Buska un palabra</h3>
   <p>
     <%= render 'search_form' %>
   </p>
-  <h2>palabra di dia: <%= link_to_word Word.random %></h2>
   <!-- <h2>chèk un teksto pa missing palabra</h2>
   <p>
     maksimo 1 mega bait

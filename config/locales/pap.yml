@@ -2,7 +2,7 @@
 # sample localization file for english. add more files in this directory for other locales.
 # see http://github.com/svenfuchs/rails-i18n/tree/master/rails%2flocale for starting points.
 
-pap:
+pap-CW:
   inline_forms.devise.submit.change_password: ok
   success: a añadí bo informashon
   application_name: banko di palabra

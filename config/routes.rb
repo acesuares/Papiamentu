@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   get 'spelling', to: 'spellings#index'
   get 'spelling/play', to: 'spellings#play'
   get 'spelling/session_results', to: 'spellings#session_results'

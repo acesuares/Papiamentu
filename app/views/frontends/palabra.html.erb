@@ -1,7 +1,5 @@
 <div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
-  <h5>Picture</h5>
   <%= render "first_picture" %>
-  <h5>audio</h5>
   <% if @word.recordings.first %>
     <%= send("audio_field_show", @word.recordings.first, :audio) -%>
   <% end %>
@@ -17,15 +15,17 @@
   </h2>
 
   <div class="pap_description bordered">
-    <%= content_tag :p, @word.variants_nice if @word.varies? %>
-    <%= content_tag :p, @word.description_pap_cw_nice %>
+    <% wiki = Wikipedia.find(@word.name) %>
+    <%= image_tag wiki.main_image_url, class: 'wiki-image' unless wiki.main_image_url.nil? %>
+    <%= wiki.summary %>
+    <%# <%= content_tag :p, @word.variants_nice if @word.varies? %>
+    <%= content_tag(:p, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
     <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
     <%= content_tag(:p, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>
     <%= content_tag(:p, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
     <%= content_tag(:p, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
     <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
-    <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe )%>
-    <%= link_to 'tradukshon Majstro', "http://www.majstro.com/Web/Majstro/bdict.php?gebrTaal=dut&bronTaal=pap&doelTaal=dut&teVertalen=#{@word.name}", target: :_blank %>
+    <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
   </div>
 
 </div>
@@ -67,18 +67,24 @@
       <%= link_to "#{@word.name}", "http://dcdp.uoc.cw/results/?text=#{@word.name}", target: :_blank %>
     </li>
   </ul>
-<h3>anterior/siguiente/buska</h3>
+  <h3>Tradukshon Majstro</h3>
   <ul>
     <li>
-      anterior: <%= link_to_word(@word.previous_words.first) %>
-    </li>
-    <li>
-      siguiente: <%= link_to_word(@word.next_words.first) %>
-    </li>
-    <li>
-      <%= render "search_form" %>
+      <%= link_to 'tradukshon Majstro', "https://www.majstro.com/Web/Majstro/bdict.php?gebrTaal=dut&bronTaal=pap&doelTaal=dut&teVertalen=#{@word.name}", target: :_blank %>
     </li>
   </ul>
+  <h3>anterior/siguiente/buska</h3>
+    <ul>
+      <li>
+        anterior: <%= link_to_word(@word.previous_words.first) %>
+      </li>
+      <li>
+        siguiente: <%= link_to_word(@word.next_words.first) %>
+      </li>
+      <li>
+        <%= render "search_form" %>
+      </li>
+    </ul>
 
   <% unless @word.approved? %>
     <h3>Vota</h3>

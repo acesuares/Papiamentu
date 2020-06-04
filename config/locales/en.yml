@@ -3,7 +3,9 @@
 # see http://github.com/svenfuchs/rails-i18n/tree/master/rails%2flocale for starting points.
 
 en:
-  inline_forms.devise.submit.change_password: ok
+  inline_forms:
+    general:
+      application_title: Banko di Palabra
   success: a añadí bo informashon
   application_name: banko di palabra
   hints:
