@@ -83,6 +83,10 @@ class Word < ApplicationRecord
     ]
   end
 
+  def yandex_translations
+    translator = Yandex::Translator.new(ENV["YANDEX_TRANSLATE_KEY"])
+    Hash[['en','nl','es'].map{|language|[language, translator.translate(self.name, from: 'pap', to: language)]}]
+  end
 
   def self.not_accessible_through_html?
     false
