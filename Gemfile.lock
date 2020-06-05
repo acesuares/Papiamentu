@@ -200,7 +200,7 @@ GEM
     httparty (0.18.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     image_processing (1.11.0)
       mini_magick (>= 4.9.5, < 5)
