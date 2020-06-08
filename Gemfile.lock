@@ -363,6 +363,8 @@ GEM
       ffi (~> 1.9)
     ruby2_keywords (0.0.2)
     rvm (1.11.3.9)
+    rvm-capistrano (1.5.0)
+      capistrano (>= 2.15.4)
     rvm1-capistrano3 (1.4.0)
       capistrano (~> 3.0)
       sshkit (>= 1.2)
@@ -489,6 +491,7 @@ DEPENDENCIES
   remotipart (~> 1.0)
   rspec-rails
   rvm
+  rvm-capistrano
   rvm1-capistrano3
   sass-rails
   seed_dump!
