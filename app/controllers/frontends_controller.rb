@@ -6,6 +6,10 @@ class FrontendsController < ApplicationController
     @palabra_mas_resien_offset = params[:palabra_mas_resien_offset] || 0
     @palabra_mas_mira_limit = params[:palabra_mas_mira_limit] || 10
     @palabra_mas_mira_offset = params[:palabra_mas_mira_offset] || 0
+    respond_to do |format|
+      format.html {
+      }
+    end
   end
 
   def palabra
@@ -15,7 +19,7 @@ class FrontendsController < ApplicationController
       @search_word = params[:word].squish.gsub(CHARACTER_REGEX,'')
       @word = Word.find_by_name(@search_word)
       if @word.nil?
-        render 'palabra_not_found' and return
+        render ('palabra_not_found', formats: :html) and return
       end
       @word.increment_views
       # WordMailer.own_word_liked_or_visited_email(self.id, 'ace@suares.com').deliver
