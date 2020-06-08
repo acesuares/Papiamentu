@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Word < ApplicationRecord
+  store :yandex_translation_cache, accessors: [ YANDEX_LANGUAGES ], coder: JSON, prefix: :yandex
   before_create :add_variant
   acts_as_voteable
   acts_as_commontable
@@ -85,7 +86,10 @@ class Word < ApplicationRecord
 
   def yandex_translations
     translator = Yandex::Translator.new(ENV["YANDEX_TRANSLATE_KEY"])
-    Hash[['en','nl','es'].map{|language|[language, translator.translate(self.name, from: 'pap', to: language)]}]
+    YANDEX_LANGUAGES.each do |language|
+      self.send("#{language}=",translator.translate(self.name, from: 'pap', to: language))
+    end
+
   end
 
   def is_money?
@@ -93,7 +97,7 @@ class Word < ApplicationRecord
   end
 
   def monetary_value_nice
-    monetary_value_in_mct / 10 < 100 ? "#{self.monetary_value_in_mct/10} sèn" : "#{self.monetary_value_in_mct/1000} florín" 
+    monetary_value_in_mct / 10 < 100 ? "#{monetary_value_in_mct/10} sèn" : "#{monetary_value_in_mct/1000} florín"
   end
 
 

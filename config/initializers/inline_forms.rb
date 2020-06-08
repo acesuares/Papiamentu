@@ -1,6 +1,8 @@
 MODEL_TABS = %w(words clients sources wordtypes goals users roles glossaries spelling_groups)
 HIDDEN_MODELS = %w()
 
+YANDEX_LANGUAGES = [:en, :nl, :es, :pt, :de]
+
 VIA_WEBSITE = 14 # this happens to be the source id for papiamentu.info
 
 JA_NEE  =               {
