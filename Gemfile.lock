@@ -140,7 +140,6 @@ GEM
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
     chronic (0.10.2)
-    chunky_png (1.3.11)
     cliver (0.3.2)
     coderay (1.1.3)
     coffee-rails (5.0.0)
@@ -150,20 +149,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    compass (1.0.3)
-      chunky_png (~> 1.2)
-      compass-core (~> 1.0.2)
-      compass-import-once (~> 1.0.5)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-      sass (>= 3.3.13, < 3.5)
-    compass-core (1.0.3)
-      multi_json (~> 1.0)
-      sass (>= 3.3.0, < 3.5)
-    compass-import-once (1.0.5)
-      sass (>= 3.2, < 3.5)
-    compass-rails (2.0.1)
-      compass (~> 1.0.0)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.3)
     crass (1.0.6)
@@ -306,8 +291,6 @@ GEM
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
-    rack-proxy (0.6.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.1)
@@ -396,7 +379,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    semantic_range (2.3.0)
     semver (1.0.1)
     shoulda (3.6.0)
       shoulda-context (~> 1.0, >= 1.0.1)
@@ -448,11 +430,6 @@ GEM
     validation_hints (0.2.1)
     warden (1.2.8)
       rack (>= 2.0.6)
-    webpacker (5.1.1)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -487,7 +464,6 @@ DEPENDENCIES
   carrierwave
   coffee-rails
   commontator!
-  compass-rails
   devise
   devise-i18n!
   figaro
@@ -530,7 +506,6 @@ DEPENDENCIES
   uglifier
   unicorn
   validation_hints
-  webpacker
   whenever
   wikipedia-client
   will_paginate
