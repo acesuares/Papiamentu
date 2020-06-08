@@ -47,7 +47,7 @@ gem 'jquery-timepicker-rails'
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem 'yaml_db'
-  gem 'rvm-capistrano', require: false
+  # gem 'rvm-capistrano', require: false
   gem 'seed_dump', git: 'https://github.com/acesuares/seed_dump.git'
   gem 'switch_user'
   gem 'shoulda'
@@ -59,8 +59,8 @@ group :development do
   gem 'capistrano-sidekiq'
   gem 'listen'
   gem 'capistrano', require: false
-  gem 'capistrano-rails', '~> 1.3', require: false
-  gem 'capistrano-bundler', '~> 1.3', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano3-unicorn'
 end
