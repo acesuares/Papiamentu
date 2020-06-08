@@ -5,7 +5,7 @@ GIT
     devise-i18n (1.6.4)
       devise (>= 4.4)
 
-GIT
+GIT 
   remote: https://github.com/acesuares/i18n-active_record.git
   revision: 819b2b8a571c49b79aa0923f5d4e90ae58a8870d
   specs:
