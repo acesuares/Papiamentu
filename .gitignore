@@ -29,3 +29,5 @@ app/old
 pdfs/*.*
 
 
+
+/config/master.key
