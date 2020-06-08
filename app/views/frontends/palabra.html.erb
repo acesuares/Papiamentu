@@ -40,9 +40,10 @@
   <div class="yandex">
     Tradukshon di Yandex
     <ul>
-      <% @word.yandex_translations.each do |language, translation| %>
+      <% @word.get_yandex_translations %>
+      <% YANDEX_LANGUAGES.each do |language| %>
         <li>
-          <%= "#{language}: #{translation}" %>
+          <%= "#{language}: #{@word.yandex_translation_cache[language]}" %>
         </li>
       <% end %>
   </div>

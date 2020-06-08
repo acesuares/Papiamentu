@@ -65,4 +65,4 @@ Rails.application.configure do
 
 end
 
-Sidekiq::Logging.logger.level = Logger::DEBUG
+#Sidekiq::Logging.logger.level = Logger::DEBUG

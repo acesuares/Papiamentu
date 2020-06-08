@@ -22,7 +22,7 @@ class Word < ApplicationRecord
   has_many :recordings
   has_many :spelling_tries
   belongs_to :user
-  belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User'
+  belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User', optional: true
 
   IMMUTABLE = %w{buki_di_oro}
 
@@ -84,12 +84,14 @@ class Word < ApplicationRecord
     ]
   end
 
-  def yandex_translations
-    translator = Yandex::Translator.new(ENV["YANDEX_TRANSLATE_KEY"])
-    YANDEX_LANGUAGES.each do |language|
-      self.send("#{language}=",translator.translate(self.name, from: 'pap', to: language))
+  def get_yandex_translations(force=false)
+    if yandex_translation_cache.empty?
+      translator = Yandex::Translator.new(ENV["YANDEX_TRANSLATE_KEY"])
+      YANDEX_LANGUAGES.each do |language|
+        yandex_translation_cache[language] = translator.translate(self.name, from: 'pap', to: language)
+      end
+      save unless yandex_translation_cache.empty?
     end
-
   end
 
   def is_money?

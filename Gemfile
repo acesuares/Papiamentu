@@ -12,10 +12,11 @@ gem 'paper_trail'
 gem 'devise'
 gem 'devise-i18n', :git => 'https://github.com/acesuares/devise-i18n.git'
 gem 'inline_forms', '~> 6.0'
+# gem 'webpacker'
 gem 'validation_hints'
 gem 'mini_magick'
 gem 'wikipedia-client'
-gem 'rails-i18n', :git => 'https://github.com/acesuares/rails-i18n.git'
+gem 'rails-i18n' #, :git => 'https://github.com/acesuares/rails-i18n.git'
 gem 'i18n-active_record', :git => 'https://github.com/acesuares/i18n-active_record.git'
 gem 'unicorn'
 gem 'rvm'
@@ -33,7 +34,7 @@ gem 'foundation-rails', '~> 5.5'
 gem 'foundation-icons-sass-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
-gem 'compass-rails'
+#gem 'compass-rails'
 gem 'figaro'
 gem 'therubyracer'
 gem 'uglifier'
@@ -57,7 +58,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'capistrano-sidekiq'
   gem 'listen'
-  gem 'capistrano', '~> 3.6', require: false
+  gem 'capistrano', require: false
   gem 'capistrano-rails', '~> 1.3', require: false
   gem 'capistrano-bundler', '~> 1.3', require: false
   gem 'rvm1-capistrano3', require: false
