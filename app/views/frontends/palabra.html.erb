@@ -21,6 +21,12 @@
       (pap.wikipedia.org)
     </div>
   <% end %>
+  <% if @word.is_money? %>
+    <div class="money">
+        Sèn. Ta bale: <%= @word.monetary_value_nice %>
+    </div>
+  <% end %>
+
   <div class='xxxxxx'>
     <%# <%= content_tag :p, @word.variants_nice if @word.varies? %>
     <%= content_tag(:p, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>

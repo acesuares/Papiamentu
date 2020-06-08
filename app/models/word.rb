@@ -88,6 +88,15 @@ class Word < ApplicationRecord
     Hash[['en','nl','es'].map{|language|[language, translator.translate(self.name, from: 'pap', to: language)]}]
   end
 
+  def is_money?
+    is_money == 2
+  end
+
+  def monetary_value_nice
+    monetary_value_in_mct / 10 < 100 ? "#{self.monetary_value_in_mct/10} sèn" : "#{self.monetary_value_in_mct/1000} florín" 
+  end
+
+
   def self.not_accessible_through_html?
     false
   end
