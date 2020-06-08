@@ -65,27 +65,27 @@ namespace :git do
   desc 'Commiting and pushing to the remote repository'
   task :push do
     on roles(:all) do
-      run_locally do
-        # Check for any local changes that haven't been committed
-        status = %x(git status --porcelain).chomp
-        if status != ""
-          ask :answer, "Local git repository has uncommitted changes?. Continue deploying? [Y/N]"
-          unless fetch(:answer).downcase.strip == 'y'
-            puts "Deploy cancelled\n"
-            exit
-          end
-        end
-
-        # Check we are on the master branch, so we can't forget to merge before deploying
-        branch = %x(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/').chomp
-        if branch != "master" && !ENV["IGNORE_BRANCH"]
-          raise RuntimeError, "Not on master branch (set IGNORE_BRANCH=1 to ignore)"
-        end
-
-        system "bundle install"
-        system "git commit -a"
-        system "git push"
-      end
+      # run_locally do
+      #   # Check for any local changes that haven't been committed
+      #   status = %x(git status --porcelain).chomp
+      #   if status != ""
+      #     ask :answer, "Local git repository has uncommitted changes?. Continue deploying? [Y/N]"
+      #     unless fetch(:answer).downcase.strip == 'y'
+      #       puts "Deploy cancelled\n"
+      #       exit
+      #     end
+      #   end
+      #
+      #   # Check we are on the master branch, so we can't forget to merge before deploying
+      #   branch = %x(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/').chomp
+      #   if branch != "master" && !ENV["IGNORE_BRANCH"]
+      #     raise RuntimeError, "Not on master branch (set IGNORE_BRANCH=1 to ignore)"
+      #   end
+      #
+      #   system "bundle install"
+      #   system "git commit -a"
+      #   system "git push"
+      # end
     end
   end
 end
