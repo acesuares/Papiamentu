@@ -5,7 +5,7 @@
   <% end %>
 </div>
 <div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
-  <div class='word_section'>
+  <div class='word_section section'>
       <%= @word.name %>
       <% if @word.approved? %>
         <%= image_tag 'yes.png', size: '32x32' %>
@@ -15,7 +15,7 @@
   </div>
   <% wiki = Wikipedia.find(@word.name) %>
   <% if wiki.main_image_url || wiki.summary %>
-    <div class="wikipedia_section">
+    <div class="wikipedia_section section">
       <strong>Informashon di Wikipedia.</strong>
       <ul>
         <li>
@@ -33,7 +33,7 @@
     </div>
   <% end %>
   <% if @word.is_money? %>
-    <div class="money_section">
+    <div class="money_section section">
       <strong>E palabra ta denunsia moneda (sèn).</strong>
       <ul>
         <li>
@@ -45,7 +45,7 @@
       </div>
     </div>
   <% end %>
-  <div class='main_section'>
+  <div class='main_section section'>
     <%# <%= content_tag :p, @word.variants_nice if @word.varies? %>
     <%= content_tag(:p, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
     <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
@@ -55,7 +55,7 @@
     <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
     <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
   </div>
-  <div class="yandex_section">
+  <div class="yandex_section section">
     <strong>Tradukshon di Yandex. Por ta no ta accuraat.</strong>
     <ul>
       <% @word.get_yandex_translations %>
