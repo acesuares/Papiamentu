@@ -16,6 +16,68 @@
  *= require spelling_game
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+
+body {
+  font-family: 'Dosis', sans-serif;
+}
+
  #frontend .flash {
    margin-top: 0px;
  }
+
+#left-side {
+  border: 0px solid green;
+}
+
+#right-side {
+  border: 0px solid green;
+}
+
+#middle {
+  border: 0px solid red;
+}
+
+.source {
+  font-size: 70%;
+  margin-left: 4em;
+  color: #CD5C5C;
+  text-decoration: none;
+}
+.source a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.word_section {
+  border: 0px solid blue;
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+  font-size: 200%;
+}
+
+.wikipedia_section {
+  border: 0px solid red;
+}
+
+.wiki_image img {
+  max-height: 400px;
+  max-width: 400px;
+  float: right;
+}
+
+.wiki_summary {
+  clear: both;
+}
+.money_section {
+  border: 0px solid orange;
+}
+
+.main_section {
+  border: 0px solid yellow;
+}
+
+.yandex_section {
+  border: 0px solid black;
+}

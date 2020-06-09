@@ -4,30 +4,48 @@
     <%= send("audio_field_show", @word.recordings.first, :audio) -%>
   <% end %>
 </div>
-<div class="columns small-12 medium-6 large-5 topper  bordered">
-  <h2>
-    <%= @word.name %>
-    <% if @word.approved? %>
-      <%= image_tag 'yes.png', size: '32x32' %>
-    <% else %>
-      <%= image_tag 'no.png',  size: '32x32'  %>
-    <% end %>
-  </h2>
+<div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
+  <div class='word_section'>
+      <%= @word.name %>
+      <% if @word.approved? %>
+        <%= image_tag 'yes.png', size: '32x32' %>
+      <% else %>
+        <%= image_tag 'no.png',  size: '32x32'  %>
+      <% end %>
+  </div>
   <% wiki = Wikipedia.find(@word.name) %>
   <% if wiki.main_image_url || wiki.summary %>
-    <div class="wikipedia">
-      <%= image_tag wiki.main_image_url unless wiki.main_image_url.nil? %>
-      <%= wiki.summary %>
-      (pap.wikipedia.org)
+    <div class="wikipedia_section">
+      <strong>Informashon di Wikipedia.</strong>
+      <ul>
+        <li>
+          <div class="wiki_image">
+            <%= image_tag wiki.main_image_url unless wiki.main_image_url.nil? %>
+          </div>
+          <div class="wiki_summary">
+            <%= wiki.summary %>
+          </div>
+        </li>
+      </ul>
+      <div class="source">
+        Fuente: <%= link_to 'Wikipedia na Papiamentu', wiki.fullurl, target: "_blank" %>
+      </div>
     </div>
   <% end %>
   <% if @word.is_money? %>
-    <div class="money">
-        Sèn. Ta bale: <%= @word.monetary_value_nice %>
+    <div class="money_section">
+      <strong>E palabra ta denunsia moneda (sèn).</strong>
+      <ul>
+        <li>
+        "<%= @word.name %>" tin un balor di: <%= @word.monetary_value_nice %>
+        </li>
+      </ul>
+      <div class="source">
+        Fuente: © 2017 Lista kompilá pa Delno Tromp (den kuadro di proyekto Dòmpereré); revisá pa Ini Statia i Lucille Berry-Haseth (01-03-2018)
+      </div>
     </div>
   <% end %>
-
-  <div class='xxxxxx'>
+  <div class='main_section'>
     <%# <%= content_tag :p, @word.variants_nice if @word.varies? %>
     <%= content_tag(:p, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
     <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
@@ -37,8 +55,8 @@
     <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
     <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
   </div>
-  <div class="yandex">
-    Tradukshon di Yandex
+  <div class="yandex_section">
+    <strong>Tradukshon di Yandex. Por ta no ta accuraat.</strong>
     <ul>
       <% @word.get_yandex_translations %>
       <% YANDEX_LANGUAGES.each do |language| %>
@@ -46,10 +64,15 @@
           <%= "#{language}: #{@word.yandex_translation_cache[language]}" %>
         </li>
       <% end %>
+    </ul>
+    <div class="source">
+      <%= link_to 'Powered by Yandex.Translate', 'https://translate.yandex.com', target: "_blank" %>
+    </div>
+
   </div>
 </div>
 
-<div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
+<div id="right-side" class="columns small-12 medium-6 large-4 topper bordered">
   <h3>informashon</h3>
   <ul>
     <li>
