@@ -1,8 +1,6 @@
 <div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
-  <%= render "first_picture" %>
-  <% if @word.recordings.first %>
-    <%= send("audio_field_show", @word.recordings.first, :audio) -%>
-  <% end %>
+  <%= image_tag @word.pictures.first.image.palm.url rescue '' %>
+  <%= audio_tag(@word.recordings.first.audio.url, autoplay: false, controls: true) unless @word.recordings.empty? %>
 </div>
 <div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
   <div class='word_section section'>
