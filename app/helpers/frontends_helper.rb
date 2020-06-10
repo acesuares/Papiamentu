@@ -23,7 +23,4 @@ module FrontendsHelper
     end
   end
 
-  def image_generator(height, width)
-    image_tag "http://via.placeholder.com/#{height}x#{width}"
-  end
 end
