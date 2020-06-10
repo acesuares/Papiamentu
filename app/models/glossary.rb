@@ -5,6 +5,7 @@ class Glossary < ApplicationRecord
   has_paper_trail
 
   has_and_belongs_to_many :words
+  belongs_to :user
 
   def _presentation
     name
@@ -13,6 +14,7 @@ class Glossary < ApplicationRecord
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
+      [ :user , "name", :info ],
       [ :name , "name", :text_field ],
       [ :title , "title", :text_field ],
       [ :description , "description", :text_area ],
