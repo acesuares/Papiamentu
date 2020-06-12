@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_150922) do
+ActiveRecord::Schema.define(version: 2020_06_10_163656) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -233,6 +233,9 @@ ActiveRecord::Schema.define(version: 2020_06_10_150922) do
     t.integer "active", default: 1
     t.integer "own_words", default: 0
     t.integer "most_voted", default: 0
+    t.datetime "deleted_at"
+    t.integer "deleted", default: 1
+    t.integer "deleted_by"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -298,6 +301,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_150922) do
     t.integer "is_money", default: 1
     t.integer "monetary_value_in_mct", default: 0
     t.text "yandex_translation_cache"
+    t.datetime "deleted_at"
     t.index ["views"], name: "index_words_on_views"
   end
 

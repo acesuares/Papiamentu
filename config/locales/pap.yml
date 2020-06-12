@@ -62,3 +62,6 @@ pap-CW:
           attributes:
             buki_di_oro:
               immutable: 'attribute is immutable'
+  devise:  
+    failure:
+      deleted_account: "You've deleted your account. Thanks!"

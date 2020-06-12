@@ -16,7 +16,7 @@ gem 'inline_forms', '~> 6.0'
 gem 'validation_hints'
 gem 'mini_magick'
 gem 'wikipedia-client'
-gem 'rails-i18n', :git => 'https://github.com/acesuares/rails-i18n.git'
+gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git'  # since https://github.com/svenfuchs/rails-i18n/pull/794 we don't have to maintain 'https://github.com/acesuares/rails-i18n.git' anymore!
 gem 'i18n-active_record', :git => 'https://github.com/acesuares/i18n-active_record.git'
 gem 'unicorn'
 gem 'rvm'

@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 class Word < ApplicationRecord
+  include InlineForms::SoftDeletable
+  enum deleted: { active: 1, deleted: 2 }
+
   store :yandex_translation_cache, accessors: [ YANDEX_LANGUAGES ], coder: JSON, prefix: :yandex
   before_create :add_variant
   acts_as_voteable
@@ -36,12 +39,18 @@ class Word < ApplicationRecord
 
   enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
-  enum deleted: { active: 1, deleted: 2 }
 
   def _presentation
     ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
+    deleted_nice = deleted? ? "deleted by #{deleter.name}" : ""
+    "#{name}#{wordtype} #{deleted_nice} #{ago} "
+  end
+  def _presentation
+    created_ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
     wordtype = " (#{wordtypes.map(&:name).to_sentence})" rescue ''
-    "#{name}#{wordtype}#{ago} #{'DELETED' if deleted?}"
+    deleted_ago = " (#{ActionController::Base.helpers.time_ago_in_words(deleted_at)} ago)" rescue ""
+    deleted_nice = deleted? ? "deleted by #{deleter.name} #{deleted_ago}" : ""
+    "#{name} #{created_ago} #{deleted_nice}"
   end
 
   def inline_forms_attribute_list
@@ -199,24 +208,6 @@ class Word < ApplicationRecord
 
   def self.mail_monthly_own_words
     MonthlyOwnWordsEmailWorker.perform_async
-  end
-
-
-  # these three are needed for soft delete. And a migration of course.
-  def self.safe_deletable?
-    true
-  end
-
-  def safe_delete(current_user)
-    self.deleted = 2
-    self.deleter = current_user
-    self.save
-  end
-
-  def safe_restore
-    self.deleted = 1
-    self.deleted_by = nil
-    self.save
   end
 
   protected

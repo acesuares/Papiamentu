@@ -53,9 +53,11 @@ end
   end
 
   devise_for :users, path_prefix: 'auth', controllers: {omniauth_callbacks: "omniauth_callbacks",
-                                                        registrations: "registrations",
+                                                        registrations: 'registrations',
                                                         confirmations: 'confirmations' ,
                                                         passwords: 'passwords' }
+
+
   resources :users do
     post 'revert', :on => :member
     get 'list_versions', :on => :member

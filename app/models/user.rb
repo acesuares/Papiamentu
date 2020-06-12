@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include InlineForms::SoftDeletable
+
   before_create :add_guest_role
   acts_as_voter
   has_karma :words, :as => :submitter, :weight => [ 0.2, 0.2 ]
@@ -26,13 +28,14 @@ class User < ApplicationRecord
 
   has_many :spelling_sessions
   has_many :spelling_tries, through: :spelling_sessions
+  belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User', optional: true
 
   # validations
   validates :name, :presence => true
 
   # pagination
   attr_reader :per_page
-  @per_page = 7
+  @per_page = 99
 
   has_paper_trail
 
@@ -52,11 +55,20 @@ class User < ApplicationRecord
   scope :own_words_monthly, -> { where(own_words: 5) }
   scope :leaderboard, -> { joins(:spelling_tries).group('users.id').order('SUM(spelling_tries.points) DESC') }
 
+  enum deleted: { active: 1, deleted: 2 }
 
 
   def _presentation
     name
   end
+  def _presentation
+    created_ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
+    deleted_ago = " (#{ActionController::Base.helpers.time_ago_in_words(deleted_at)} ago)" rescue ""
+    deleted_nice = deleted? ? "deleted by #{deleter.name} #{deleted_ago}" : ""
+    "#{name} #{created_ago} #{deleted_nice}"
+  end
+
+
 
   def role?(role)
     return !!self.roles.find_by_name(role)
@@ -95,6 +107,16 @@ class User < ApplicationRecord
 
   def self.order_by_clause
     nil
+  end
+
+  # ensure user account is active
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  # provide a custom message for a deleted account
+  def inactive_message
+    !deleted_at ? super : :deleted_account
   end
 
 
