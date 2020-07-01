@@ -1,5 +1,12 @@
-MODEL_TABS = %w(words clients sources wordtypes goals users roles glossaries spelling_groups)
+MODEL_TABS = %w(words clients sources wordtypes goals users roles glossaries spelling_groups inline_forms_locales)
 HIDDEN_MODELS = %w()
+
+
+AVAILABLE_LOCALES = [ "pap-CW", "pap-AW", "en", "nl"  ]
+# please make sure you never change the order! FIXME
+# for some reason this need to be strings and not symbols
+DEFAULT_LOCALE = "pap-CW"
+LOCALES_OPTIONS = (1..AVAILABLE_LOCALES.size).zip(AVAILABLE_LOCALES).to_h
 
 YANDEX_LANGUAGES = [:en, :nl, :es, :pt, :de]
 
@@ -19,6 +26,7 @@ DELIVERY_SCHEDULES  =   {
                           4 => 'options.weekly',
                           5 => 'options.monthly',
                         }
+
 CHARACTER_REGEX = /[^'a-zA-ZèéàáòóìíüñçÈÉÀÁÒÓÌÍÜÑÇ ]/
 
 SETTINGS_OPTIONS = %w(new_words own_words most_voted)

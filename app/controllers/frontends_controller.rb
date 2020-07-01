@@ -1,6 +1,8 @@
 class FrontendsController < ApplicationController
   layout 'frontends'
   skip_authorization_check
+  check_authorization :only => :my_profile
+
   def index
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit] || 10
     @palabra_mas_resien_offset = params[:palabra_mas_resien_offset] || 0

@@ -1,0 +1,126 @@
+# encoding: utf-8
+en:
+  views:
+    shared:
+      flash:
+      frontend:
+        header:
+        footer:
+          back_to_home: bai bèk na página inisio
+          disclaimer: no por derivá ningun derechi di uzo for di e wèpsait aki
+          logout: finalisá seshon
+        sidebar:
+          important_links: Lenk importante
+          glossaries: Glosario
+          recent_words: Palabra mas resien
+          most_viewed_words: Palabra mas mirá
+      state:
+        you_have_access: U heeft nu toegang tot de Banko di Palabra!
+        you_can_login: Vanaf nu kunt u op deze site inloggen met uw emailadres en uw wachtwoord.
+        you_have_changed_password: U heeft uw wachtwoord gewijzigd!
+        you_can_login_with_new_password: Vanaf nu kunt u op deze site inloggen met uw emailadres en uw nieuwe wachtwoord.
+  word_mailer:
+    views:
+      banko_di_palabra: Banko di Palabra
+      thanks_for_joining: Thanks for joining and have a great day!
+      ago: pasá
+      there_is_a_new_word_created: A kaba di krea e palabra
+      please_visit_the_link_to_this_word: Por fabor bishitá %{link} pa wak e!
+      the_word_has_views: 'E palabra: %{word} tin %{views} now!'
+      the_word_has_positive_votes: 'E palabra: %{word} tin %{votes} positif!'
+      the_word_has_negative_votes: 'E palabra: %{word} tin %{votes} negatif!'
+    new_word_created_email:
+      subject: 'Banko di Palabra: New word created: %{word}'
+    own_word_liked_or_visited_email:
+      subject: 'Banko di Palabra: Bo palabra %{word} a hanja un view of un like!'
+    daily_new_words_email:
+      subject:
+        one: 'Banko di Palabra: New word created today: %{word}'
+        other: 'Banko di Palabra: %{count} new words created today'
+    daily_own_words_email:
+      subject: 'Banko di Palabra: Visits and votes for your words today.'
+    weekly_new_words_email:
+      subject:
+        one: 'Banko di Palabra: New word created this week: %{word}'
+        other: 'Banko di Palabra: %{count} new words created this week'
+    weekly_own_words_email:
+      subject: 'Banko di Palabra: Visits and votes for your words this week.'
+    monthly_new_words_email:
+      subject:
+        one: 'Banko di Palabra: New word created this month: %{word}'
+        other: 'Banko di Palabra: %{count} new words created this month'
+    monthly_own_words_email:
+      subject: 'Banko di Palabra: Visits and votes for your words this month.'
+  setting:
+    new_words: palabra nobo
+    own_words: mi palabra
+    most_voted: mas vota
+  options:
+    empty: '-'
+    never: nunka
+    immediately: imediamente
+    daily: kada dia
+    weekly: kada siman
+    monthly: kada luna
+  inline_forms.devise.submit.change_password: ok
+  success: a añadí bo informashon
+  application_name: banko di palabra
+  hints:
+    messages:
+      presence: yena loke falta
+      uniqueness: por aparesé un bia so
+  activerecord:
+    models:
+      role: pèrmit
+      user: usadó
+      word: palabra
+      wordtype: kategoria
+      glossary: glosario
+      goal: aréa di edukashon
+      source: fuente
+      spelling_group: Grupo di palabra pa Spèl-spèl
+    attributes:
+      word:
+        name: entrada
+        synonym: sinonimo
+        variants: Variante ortográfiko
+        wordtypes: kategoria
+        glossaries: E palabra aki ta den e siguiente glosarionan
+        goals: aréa di edukashon
+        sources: fuente
+        countable: telbaar
+        specific: spesífiko
+        school_language: idioma di skol
+        description_nl: deskripshon (hul)
+        description_pap_cw: deskripshon (pap)
+        tr_nl: tradukshon (hul)
+        tr_en: tradukshon (eng)
+        source: fuente
+        user: usadó
+        attested: standarisá
+        attested_on: fecha standarisá
+        header_lema: lèma
+        header_gramma: karakterístika gramatikal
+        header_fuente: fuente
+        header_splikashon: splikashon
+        header_glosario: glosario
+        created_at: created
+        buki_di_oro: Buki di Oro
+        buki_di_oro_text: Tekst volgens Buki di Oro
+        pictures: potrèt
+        recordings: zonido
+        header_spel_spel_group: Grupo di palabra pa Spèl-spèl
+        spelling_groups: E palabra aki ta den e siguiente gruponan
+      glossary:
+        words: Lista di palabra den e glosario aki
+      spelling_group:
+        words: Lista di palabra den e grupo aki
+    errors:
+      models:
+        word:
+          attributes:
+            buki_di_oro:
+              immutable: 'attribute is immutable'
+  devise:
+    failure:
+      deleted_account: "You've deleted your account. Thanks!"

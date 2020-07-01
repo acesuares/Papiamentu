@@ -12,6 +12,7 @@ gem 'paper_trail'
 gem 'devise'
 gem 'devise-i18n', :git => 'https://github.com/acesuares/devise-i18n.git'
 gem 'inline_forms', '~> 6.0'
+# gem 'inline_forms', path: "/home/ace/Documents/602_Rails_3/inline_forms"
 # gem 'webpacker'
 gem 'validation_hints'
 gem 'mini_magick'
@@ -73,3 +74,5 @@ group :development, :test do
   gem 'launchy'
   gem 'rails-controller-testing'
 end
+
+# gem "byebug", "~> 11.1", :groups => [:development, :test]

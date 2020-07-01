@@ -82,7 +82,7 @@ class User < ApplicationRecord
       [ :new_words, '', :dropdown_with_values, DELIVERY_SCHEDULES ],
       [ :own_words, '', :dropdown_with_values, DELIVERY_SCHEDULES ],
       [ :most_voted, '', :dropdown_with_values, DELIVERY_SCHEDULES ],
-#      [ :locale, '', :dropdown ],
+      [ :locale, '', :dropdown_with_values, LOCALES_OPTIONS ],
       [ :password, '', :devise_password_field ],
       [ :header_user_roles, '', :header ],
       [ :roles, '', :check_list ],

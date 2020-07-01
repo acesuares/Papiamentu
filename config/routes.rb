@@ -41,6 +41,8 @@ end
   MODEL_TABS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
+      post 'soft_delete', :on => :member
+      post 'soft_restore', :on => :member
       get 'list_versions', :on => :member
     end
   end
@@ -48,6 +50,7 @@ end
   HIDDEN_MODELS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
+
       get 'list_versions', :on => :member
     end
   end
@@ -66,20 +69,20 @@ end
   # require 'sidekiq/web'
   # mount Sidekiq::Web => '/sidekiq'
   #
-  # get 'frontends/_vote_reset', to: 'frontends#_vote_reset'
-  # get 'frontends/_vote_for', to: 'frontends#_vote_for'
-  # get 'frontends/_vote_against', to: 'frontends#_vote_against'
-  # get 'frontends/_vote_reset_thumbs', to: 'words#_vote_reset_thumbs'
-  # get 'frontends/_vote_for_thumbs', to: 'words#_vote_for_thumbs'
-  # get 'frontends/_vote_against_thumbs', to: 'words#_vote_against_thumbs'
+  get 'frontends/_vote_reset', to: 'frontends#_vote_reset'
+  get 'frontends/_vote_for', to: 'frontends#_vote_for'
+  get 'frontends/_vote_against', to: 'frontends#_vote_against'
+  get 'frontends/_vote_reset_thumbs', to: 'words#_vote_reset_thumbs'
+  get 'frontends/_vote_for_thumbs', to: 'words#_vote_for_thumbs'
+  get 'frontends/_vote_against_thumbs', to: 'words#_vote_against_thumbs'
   get 'frontends/_palabra_mas_resien', to: 'frontends#_palabra_mas_resien'
   get 'frontends/_palabra_mas_mira', to: 'frontends#_palabra_mas_mira'
-  # get 'frontends/rapport', to: 'frontends#rapport'
+  get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
   get 'glosario/:glossary', to: 'frontends#glosario'
   #
-  # get 'my_profile', to: 'frontends#my_profile'
+  get 'my_profile', to: 'frontends#my_profile'
   #
   post 'palabra', to: 'frontends#search'
   # post 'tra_palabra', to: 'frontends#tra_palabra'
