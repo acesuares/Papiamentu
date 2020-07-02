@@ -1,6 +1,5 @@
-MODEL_TABS = %w(words clients sources wordtypes goals users roles glossaries spelling_groups inline_forms_locales)
+MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups)
 HIDDEN_MODELS = %w()
-
 
 AVAILABLE_LOCALES = [ "pap-CW", "pap-AW", "en", "nl"  ]
 # please make sure you never change the order! FIXME

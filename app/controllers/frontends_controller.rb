@@ -1,7 +1,7 @@
 class FrontendsController < ApplicationController
   layout 'frontends'
-  skip_authorization_check
-  check_authorization :only => :my_profile
+  # authorize_resource :class => false
+  skip_authorization_check :except => [:my_profile, :rapport]
 
   def index
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit] || 10
@@ -129,6 +129,7 @@ class FrontendsController < ApplicationController
   end
 
   def my_profile
+    authorize! :my_profile, FrontendsController
     @my_words = Word.unscoped.where(user_id: current_user.id).group_by{ |word| word.created_at.to_date.to_formatted_s(:db)}
     @votes_for = []
     @votes_against = []
@@ -145,8 +146,9 @@ class FrontendsController < ApplicationController
   end
 
   def rapport
-    user_ids = Word.all.map(&:user_id).uniq.compact - [5] # 5 = FPI
-    @users = User.order(:name).where(id: user_ids)
+    authorize! :rapport, FrontendsController
+    user_ids = Word.accessible_by(current_ability).map(&:user_id).uniq.compact - [5] # 5 = FPI
+    @users = User.accessible_by(current_ability).order(:name).where(id: user_ids)
     @users.each do |user|
       user.user_words = Word.unscoped.where(user_id: user.id).group_by{ |word| word.created_at.to_date.to_formatted_s(:db)}
     end

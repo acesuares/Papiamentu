@@ -23,7 +23,7 @@
                 <% MODEL_TABS.each do |m| %>
                   <% model = m.singularize.camelcase.constantize rescue nil %>
                     <% unless model.nil? || model.not_accessible_through_html? %>
-                    <% if can? :read, m.to_sym %>
+                    <% if can? :read, model %>
                       <li>
                         <%= link_to model.model_name.human, '/' +  m %>
                       </li>
@@ -31,7 +31,7 @@
                   <% end %>
                 <% end %>
                 <li>
-                  <%= link_to 'palabra nobo', '/?newest_words=1' %>
+                  <%= link_to 'palabra nobo', '/words/?newest_words=1' %>
                 </li>
 
               </ul>

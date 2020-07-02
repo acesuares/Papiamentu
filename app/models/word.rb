@@ -27,7 +27,7 @@ class Word < ApplicationRecord
   belongs_to :user
   belongs_to :deleter, foreign_key: :deleted_by, class_name: 'User', optional: true
 
-  IMMUTABLE = %w{buki_di_oro}
+  IMMUTABLE = %w{buki_di_oro buki_di_oro_text}
 
   validate :force_immutable
   validates :name, :presence => true
@@ -41,13 +41,8 @@ class Word < ApplicationRecord
   enum attested: { not_standarized: 0, standarized: 1 }
 
   def _presentation
-    ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
-    deleted_nice = deleted? ? "deleted by #{deleter.name}" : ""
-    "#{name}#{wordtype} #{deleted_nice} #{ago} "
-  end
-  def _presentation
     created_ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
-    wordtype = " (#{wordtypes.map(&:name).to_sentence})" rescue ''
+    # wordtype = " (#{wordtypes.map(&:name).to_sentence})" rescue ''
     deleted_ago = " (#{ActionController::Base.helpers.time_ago_in_words(deleted_at)} ago)" rescue ""
     deleted_nice = deleted? ? "deleted by #{deleter.name} #{deleted_ago}" : ""
     "#{name} #{created_ago} #{deleted_nice}"

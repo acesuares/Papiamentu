@@ -13,17 +13,19 @@ class Ability
       if user.role? :superadmin
         can :manage, :all
       elsif user.role? :admin
-        can :access_but_not_delete,  [Word, Source, Wordtype, Goal, Role, FshpCategory,
+        can :read,                   [Word, Source, Wordtype, Goal, Role, FshpCategory,
                                       Picture, Recording, Glossary, SpellingGroup]
+        can :create,                 [Word, Source, Wordtype, Goal, Picture, Recording, Glossary, SpellingGroup]
+        can :update,                 [Word, Source, Picture, Recording, Glossary, SpellingGroup]
         can [:soft_delete, :soft_restore, :vote], Word
         # can :do_frontend_stuff,      :frontends
-        can :rapport,                :frontends
-        can :my_profile,              :frontends
-        can :read,                    User, id: user.id   # for self
-        can :update,                  User, [:new_words, :own_words, :most_voted, :password], id: user.id   # for self
-        # can :read,                   User, [:name, :email,:roles]  # for other users
+        can :rapport,                FrontendsController
+        can :my_profile,             FrontendsController
+        can :read,                   User, id: user.id   # for self
+        can :update,                 User, [:new_words, :own_words, :most_voted, :password], id: user.id   # for self
+        can :read,                   User, [:name, :email,:roles]  # for other users
         # can :can_play_spelling,      :spellings
-        # cannot :update,              Word, [:buki_di_oro, :buki_di_oro_text]
+        cannot :update,              Word, [:buki_di_oro, :buki_di_oro_text]
         # cannot :update,              User, Role
       end
     end
