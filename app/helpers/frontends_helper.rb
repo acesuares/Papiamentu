@@ -14,12 +14,12 @@ module FrontendsHelper
   def link_to_glossary(glossary, full_url=false)
     if full_url
       if Rails.env.development?
-        link_to glossary.name, "http://localhost:3000/glosario/#{glossary.name}" unless glossary.nil?
+        link_to glossary.name, "http://localhost:3000/glossaries/#{glossary.id}" unless glossary.nil?
       else
-        link_to glossary.name, "https://www.papiamentu.info/glosario/#{glossary.name}" unless glossary.nil?
+        link_to glossary.name, "https://www.papiamentu.info/glossaries/#{glossary.name}" unless glossary.nil?
       end
     else
-      link_to glossary.name, "/glosario/#{glossary.name}" unless glossary.nil?
+      link_to glossary.name, "/glossaries/#{glossary.id}" unless glossary.nil?
     end
   end
 

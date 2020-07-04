@@ -80,7 +80,7 @@ end
   get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
-  get 'glosario/:glossary', to: 'frontends#glosario'
+  # get 'glosario/:glossary', to: 'frontends#glosario'
   #
   get 'my_profile', to: 'frontends#my_profile'
   #

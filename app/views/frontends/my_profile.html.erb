@@ -2,6 +2,7 @@
   <h2><%= current_user.name%></h2>
   <strong>Adrès elektróniko: <%= current_user.email %></strong><br/>
   <strong>Idioma: <%= LOCALES_OPTIONS[current_user.locale] %></strong>
+  <strong>Permissions: <%= current_user.roles.first.name %></strong>
   <% SETTINGS_OPTIONS.each do |setting| %>
     <div class='row'>
       <div class="columns small-12 medium-4 large-4">
@@ -13,6 +14,17 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<div class="columns small-12 medium-12 large-12 topper" id="my_glossaries">
+  <h2>Mi Glossario:</h2>
+<ul>
+  <% current_user.glossaries.each do |glossary| %>
+    <li>
+      <%= link_to_glossary glossary %>
+    </li>
+  <% end %>
+</ul>
 </div>
 
 <div class="columns small-12 medium-8 large-8 topper" id="left-side">

@@ -25,8 +25,17 @@ class Ability
         can :update,                 User, [:new_words, :own_words, :most_voted, :password], id: user.id   # for self
         can :read,                   User, [:name, :email,:roles]  # for other users
         # can :can_play_spelling,      :spellings
-        cannot :update,              Word, [:buki_di_oro, :buki_di_oro_text]
+        cannot :update,              Word, [:buki_di_oro, :buki_di_oro_text, :sources]
         # cannot :update,              User, Role
+      elsif user.role? :viewer
+        can :read,                   [Word, Source, Wordtype, Goal, Role, FshpCategory,
+                                      Picture, Recording, SpellingGroup]
+        can [:create, :vote],         Word
+        can :update,                  Word, :views
+        can :manage,                 Glossary, id: user.id # for managing own glossaries
+        can :read,                   User, id: user.id   # for self
+        can :update,                 User, [:new_words, :own_words, :most_voted, :password], id: user.id   # for self
+        can :my_profile,             FrontendsController
       end
     end
   end
@@ -45,14 +54,8 @@ end
 #   cannot :update,               Word, [:buki_di_oro, :buki_di_oro_text]
 #   cannot :update,               :users, :roles
 # elsif user.role? :viewer
-#   can :read,                    [Word, :sources, :wordtypes, :goals,:roles,:fshp_categories,
-#                                  :pictures, :recordings]
-#   can [:create, :vote],         Word
-#   can :update,                  Word, :views
-#   can :do_frontend_stuff,       :frontends
+
 #   can :can_play_spelling,      :spellings
-#   can :access_but_not_delete,   :users, id: user.id
-#   cannot :update,               :users, [:roles, :email]
 #   elsif user.id.nil?
 #     can :read,                    [Word, :sources, :wordtypes, :goals,:roles,:fshp_categories,
 #                                    :pictures, :recordings]

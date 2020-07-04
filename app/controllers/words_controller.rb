@@ -120,7 +120,7 @@ end
     @thumbs_word = Word.find(params[:id])
     @update_span = params[:update]
     current_user.vote_for(@thumbs_word)
-    OwnWordLikedOrVisitedWorker.perform_async(@thumbs_word.id, 1)
+    # OwnWordLikedOrVisitedWorker.perform_async(@thumbs_word.id, 1)
     respond_to do |format|
       format.js { }
     end
@@ -130,7 +130,7 @@ end
     @thumbs_word = Word.find(params[:id])
     @update_span = params[:update]
     current_user.vote_against(@thumbs_word)
-    OwnWordLikedOrVisitedWorker.perform_async(@thumbs_word.id, -1)
+    # OwnWordLikedOrVisitedWorker.perform_async(@thumbs_word.id, -1)
     respond_to do |format|
       format.js { }
     end
@@ -140,7 +140,7 @@ end
     @thumbs_word = Word.find(params[:id])
     @update_span = params[:update]
     current_user.unvote_for(@thumbs_word)
-    OwnWordLikedOrVisitedWorker.perform_async(@thumbs_word.id, 0)
+    # OwnWordLikedOrVisitedWorker.perform_async(@thumbs_word.id, 0)
     respond_to do |format|
       format.js { }
     end

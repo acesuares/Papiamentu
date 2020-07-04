@@ -1,0 +1,11 @@
+<div class="columns small-12 medium-12 large-12 topper" id="left-side">
+  <h2><%= @glossary.name %></h2>
+  <h3><%= @glossary.user.name%></h3>
+  <ul>
+    <% @glossary.words.each do |word| %>
+      <li>
+        <%= link_to_word word %>
+      </li>
+    <% end %>
+  </ul>
+</div>

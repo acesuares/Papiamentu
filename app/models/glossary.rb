@@ -1,6 +1,6 @@
 class Glossary < ApplicationRecord
   attr_reader :per_page
-  @per_page = 7
+  @per_page = 99
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
@@ -18,7 +18,7 @@ class Glossary < ApplicationRecord
       [ :name , "name", :text_field ],
       [ :title , "title", :text_field ],
       [ :description , "description", :text_area ],
-      [ :words, 'words_in_glossary', :info_list ],
+      [ :words, 'words_in_glossary', :check_list ],
     ]
   end
 
