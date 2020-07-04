@@ -1,5 +1,6 @@
 class WordsController < InlineFormsController
   set_tab :word
+  autocomplete :word, :name, full: true, limit: 20
 
   def index
     @objects ||= @Klass

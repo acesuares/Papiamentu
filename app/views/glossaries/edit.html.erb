@@ -1,0 +1,29 @@
+<div class="columns small-12 medium-12 large-12 topper" id="left-side">
+  <h2><%= @glossary.name %></h2>
+  <h3><%= @glossary.user.name%></h3>
+  Add a word:
+  <%= form_tag request.path, :method => 'post' do %>
+    <div class="row">
+      <div class="large-3 small-3 columns">
+        <%= autocomplete_field_tag :add_word, '', send("autocomplete_word_name_words_path"), :placeholder => 'buska palabra...', :id => 'input_search' %>
+      </div>
+      <div class="large-2 small-2 columns">
+        <%= submit_tag :add_word, :class => "button expand inline_forms_model_top_bar_buttons" %>
+      </div>
+    </div>
+  <% end %>
+  <div id="glossary_list">
+    <%= form_tag request.path, :method => 'post' do %>
+      <ul>
+        <% @glossary.words.each do |word| %>
+          <li>
+            <%= check_box_tag 'remove_words[]', word.name %>
+            <%= link_to_word word %>
+          </li>
+        <% end %>
+      </ul>
+      <%= submit_tag :remove_word, :class => "button expand inline_forms_model_top_bar_buttons" %>
+    <% end %>
+
+  </div>
+</div>

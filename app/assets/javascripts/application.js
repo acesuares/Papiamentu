@@ -16,4 +16,5 @@
 //= require foundation
 //= require jquery.remotipart
 //= require inline_forms
+//= require autocomplete-rails
 //= require_tree .

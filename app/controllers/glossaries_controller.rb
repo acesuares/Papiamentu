@@ -1,12 +1,13 @@
 class GlossariesController < InlineFormsController
   set_tab :glossary
   layout 'frontends'
+  autocomplete :word, :name, full: true, limit: 20
 
   def index
   end
 
   def show
-    @glossary = Glossary.find(1)
+    @glossary = referenced_object
     redirect_to '/' if @glossary.nil?
 
     respond_to do |format|
@@ -41,6 +42,18 @@ class GlossariesController < InlineFormsController
     @object = @Klass.new
     @object.user_id = current_user.id
     super
+  end
+
+  def edit
+    @glossary = referenced_object
+    redirect_to '/' if @glossary.nil?
+    word_to_add = Word.find_by_name(params[:add_word])
+    @glossary.words << word_to_add if word_to_add
+    remove_words = params[:remove_words]
+    unless remove_words.blank?
+      words_to_remove = remove_words.map{ |word| Word.find_by_name(word) }.compact.uniq
+      @glossary.words.delete words_to_remove
+    end
   end
 
 end

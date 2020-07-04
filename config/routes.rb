@@ -44,6 +44,7 @@ end
       post 'soft_delete', :on => :member
       post 'soft_restore', :on => :member
       get 'list_versions', :on => :member
+      get :"autocomplete_#{model.singularize}_name", :on => :collection
     end
   end
 
@@ -88,6 +89,7 @@ end
   # post 'tra_palabra', to: 'frontends#tra_palabra'
   # post 'check_text', to: 'frontends#check_text'
 
+  post 'glossaries/:id/edit/', to: 'glossaries#edit'
   root :to => 'frontends#index'
 
 end

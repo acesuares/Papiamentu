@@ -44,6 +44,7 @@ gem 'pdfkit'
 #gem 'ckeditor'
 gem 'yandex-translator'
 gem 'jquery-timepicker-rails'
+gem 'rails-jquery-autocomplete'
 
 # Include everything needed to run rake, tests, features, etc.
 group :development do

@@ -35,9 +35,22 @@
                 <%= link_to "<i class='fi-x'></i>".html_safe, '/', :title => 'reset', :class => "button expand inline_forms_model_top_bar_buttons" %>
               </div>
               <div class="large-3 small-3 columns">
-                <%= text_field_tag :search,  params[:search], :placeholder => 'buska palabra...', :id => 'input_search' %>
+                <%= autocomplete_field_tag 'search', params[:search], send("autocomplete_#{current_tab.to_s}_name_#{current_tab.to_s.pluralize}_path"), :placeholder => 'buska palabra...', :id => 'input_search' %>
               </div>
               <div class="large-2 small-2 columns">
+                <%= submit_tag 'buska', :class => "button expand inline_forms_model_top_bar_buttons" %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="has-form">
+          <%= form_tag request.path, :method => 'get' do %>
+            <div class="row">
+              <div class="large-9 small-9 columns">
+                <%= autocomplete_field_tag 'search', params[:search], send("autocomplete_#{current_tab.to_s}_name_#{current_tab.to_s.pluralize}_path"), :placeholder => 'buska...', :id => 'input_search' %>
+              </div>
+              <div class="large-3 small-3 columns">
                 <%= submit_tag 'buska', :class => "button expand inline_forms_model_top_bar_buttons" %>
               </div>
             </div>

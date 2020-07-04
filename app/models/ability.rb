@@ -33,6 +33,7 @@ class Ability
         can [:create, :vote],         Word
         can :update,                  Word, :views
         can :manage,                 Glossary, id: user.id # for managing own glossaries
+        can :autocomplete_word_name, Word 
         can :read,                   User, id: user.id   # for self
         can :update,                 User, [:new_words, :own_words, :most_voted, :password], id: user.id   # for self
         can :my_profile,             FrontendsController
