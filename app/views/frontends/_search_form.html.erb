@@ -1,7 +1,8 @@
 <%= form_tag '/palabra', method: :post do %>
   <div class="row">
     <div class="column large-6 medium-6 small-9 text-left">
-      <%= text_field_tag :word, nil, placeholder: 'buska un palabra' %>
+      <%= autocomplete_field_tag :word, '', send("autocomplete_word_name_words_path"), :placeholder => 'buska un palabra...' %>
+
     </div>
     <div class="column large-6 medium-6 small-3 text-left">
       <%= submit_tag 'buska', class: 'button search_form_button' %>

@@ -2,6 +2,7 @@ class FrontendsController < ApplicationController
   layout 'frontends'
   # authorize_resource :class => false
   skip_authorization_check :except => [:my_profile, :rapport]
+  autocomplete :word, :name, full: true, limit: 12
 
   def index
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit] || 10
@@ -133,7 +134,8 @@ class FrontendsController < ApplicationController
     if params[:word].blank?
       redirect_to root_path
     else
-      redirect_to "/palabra/#{params[:word]}"
+      redirect_to "/palabra/#{url_encode(params[:word])}", status: 303
     end
   end
+
 end

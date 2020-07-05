@@ -1,7 +1,7 @@
 class GlossariesController < InlineFormsController
   set_tab :glossary
   layout 'frontends'
-  autocomplete :word, :name, full: true, limit: 20
+  autocomplete :word, :name, full: true
 
   def index
   end

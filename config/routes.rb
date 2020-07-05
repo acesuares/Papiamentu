@@ -81,11 +81,12 @@ end
   get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
-  # get 'glosario/:glossary', to: 'frontends#glosario'
-  #
-  get 'my_profile', to: 'frontends#my_profile'
-  #
   post 'palabra', to: 'frontends#search'
+
+  # get 'glosario/:glossary', to: 'frontends#glosario'
+
+  get 'my_profile', to: 'frontends#my_profile'
+
   # post 'tra_palabra', to: 'frontends#tra_palabra'
   # post 'check_text', to: 'frontends#check_text'
 
