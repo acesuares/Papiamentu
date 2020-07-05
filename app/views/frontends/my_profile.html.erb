@@ -27,6 +27,19 @@
 </ul>
 </div>
 
+<div class="columns small-12 medium-12 large-12 topper" id="my_glossaries">
+  <h2>Mi Imagèn:</h2>
+<ul>
+  <%= current_user.pictures.count %> pics
+  <% current_user.pictures.each do |picture| %>
+    <li>
+      <%= image_tag picture.image.thumb.url %>
+    </li>
+  <% end %>
+</ul>
+</div>
+
+
 <div class="columns small-12 medium-8 large-8 topper" id="left-side">
   <h2>Palabra ku mi a agregá: <%= @my_words.sum{ |creation_date,words| words.count } %></h2>
   <% @my_words.each do |creation_date, words| %>

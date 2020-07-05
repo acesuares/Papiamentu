@@ -7,6 +7,7 @@ class Picture < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :word
+  belongs_to :user
 
   def _presentation
     name

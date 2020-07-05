@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :roles
   has_many :words
   has_many :glossaries
+  has_many :pictures
 
   has_many :spelling_sessions
   has_many :spelling_tries, through: :spelling_sessions
