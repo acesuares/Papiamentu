@@ -26,7 +26,8 @@ DELIVERY_SCHEDULES  =   {
                           5 => 'options.monthly',
                         }
 
-CHARACTER_REGEX = /[^'a-zA-ZèéàáòóìíüñçÈÉÀÁÒÓÌÍÜÑÇ ]/
+# CHARACTER_REGEX = /[^'a-zA-ZèéàáòóìíüñçÈÉÀÁÒÓÌÍÜÑÇ ]/
+CHARACTER_REGEX = /[^'a-záçèéíñòóùúü ]/i #careful this is a negate regex, i.e. it matches NOT one of those characters.
 
 SETTINGS_OPTIONS = %w(new_words own_words most_voted)
 

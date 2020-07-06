@@ -12,7 +12,7 @@ gem 'paper_trail'
 gem 'devise'
 gem 'devise-i18n', :git => 'https://github.com/acesuares/devise-i18n.git'
 gem 'inline_forms', '~> 6.1'
-#gem 'inline_forms', path: "/home/ace/Documents/602_Rails_3/inline_forms"
+# gem 'inline_forms', path: "/home/ace/Documents/602_Rails_3/inline_forms"
 # gem 'webpacker'
 gem 'validation_hints'
 gem 'mini_magick'
