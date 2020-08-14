@@ -43,16 +43,26 @@
       </div>
     </div>
   <% end %>
-  <div class='main_section section'>
-    <%# <%= content_tag :p, @word.variants_nice if @word.varies? %>
-    <%= content_tag(:p, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
-    <%= content_tag(:p, @word.synonym) unless @word.synonym.blank? %>
-    <%= content_tag(:p, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>
-    <%= content_tag(:p, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
-    <%= content_tag(:p, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
-    <%= content_tag(:p, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
-    <%= content_tag(:p, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
-  </div>
+  <% if @word.is_fauna? %>
+    <div class="fauna_section section">
+      <strong>E palabra ta denunsia un animál (fauna).</strong>
+      <ul>
+        <li>
+        Nòmber sientífiko : <%= @word.scientific_name %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+  <ul class='main_section section'>
+    <%# <%= content_tag :li, @word.variants_nice if @word.varies? %>
+    <%= content_tag(:li, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
+    <%= content_tag(:li, @word.synonym) unless @word.synonym.blank? %>
+    <%= content_tag(:li, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>
+    <%= content_tag(:li, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
+    <%= content_tag(:li, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
+    <%= content_tag(:li, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
+    <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
+  </ul>
   <div class="yandex_section section">
     <strong>Tradukshon di Yandex. Por ta no ta accuraat.</strong>
     <ul>
