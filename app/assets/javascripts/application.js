@@ -17,4 +17,5 @@
 //= require jquery.remotipart
 //= require inline_forms
 //= require autocomplete-rails
+//= require lightbox
 //= require_tree .

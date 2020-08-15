@@ -1,14 +1,29 @@
 <%= render 'shared/state' %>
 <div class="columns small-12 medium-8 large-8 topper" id="left-side">
-  <h2>Palabra di dia: <%= link_to_word Word.buki_di_oro.random %></h2>
-  <h3>Buska un palabra</h3>
-  <p>
-    <%= render 'search_form' %>
-  </p>
-  <!-- <h2>chèk un teksto pa missing palabra</h2>
-  <p>
-    maksimo 1 mega bait
-    <%= render 'search_form_text' %>
-  </p> -->
+  <div class="row">
+    <div class="columns">
+      <h2>Palabra di dia: <%= link_to_word Word.random_from_buki_di_oro(1).first %></h2>
+      <h3>Buska un palabra</h3>
+      <p>
+        <%= render 'search_form' %>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <h2>Galeria</h2>
+      <ul class="large-block-grid-3 medium-block-grid-2">
+        <% Word.random_with_pictures(9).each do |word| %>
+          <li>
+            <%= image_tag word.pictures.first.image.palm.url, alt: word.name, title: word.name %><br />
+            <%= link_to_word word %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
-<%= render 'shared/frontend_sidebar' %>
+<div class="columns small-12 medium-4 large-4 topper" id="right-side">
+  <%= render 'shared/frontend_sidebar' %>
+</div>

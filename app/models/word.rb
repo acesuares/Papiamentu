@@ -34,8 +34,8 @@ class Word < ApplicationRecord
   validates :name, :uniqueness => true, on: :create
 
   scope :buki_di_oro, -> {where(buki_di_oro: 1)}
-  scope :picture_ready, -> { joins(:pictures).where.not(pictures: {id: nil }) }
-  scope :recording_ready, -> { joins(:recordings).where.not(recordings: {id: nil }) }
+  scope :has_pictures, -> { joins(:pictures).where.not(pictures: {id: nil }) }
+  scope :has_recordings, -> { joins(:recordings).where.not(recordings: {id: nil }) }
 
   enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
@@ -135,8 +135,13 @@ class Word < ApplicationRecord
     Word.unscoped.limit(n).order("name ASC").where("name > ?", name)
   end
 
-  def self.random
-    Word.unscoped.where(buki_di_oro: 1).order('rand()').limit(1).first
+  def self.random_from_buki_di_oro(quantity)
+    # need unscoped if there's a default scope
+    Word.unscoped.buki_di_oro.order('rand()').limit(quantity)
+  end
+
+  def self.random_with_pictures(quantity)
+    Word.unscoped.has_pictures.order('rand()').limit(quantity)
   end
 
   def description_pap_cw_nice

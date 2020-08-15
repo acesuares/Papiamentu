@@ -1,5 +1,8 @@
 <div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
-  <%= image_tag @word.pictures.first.image.very_small.url rescue '' %>
+  <%= if @word.pictures.first
+        link_to(  image_tag(@word.pictures.first.image.palm.url, alt: @word.name, title: @word.name),
+                  @word.pictures.first.image.url, "data-lightbox": "image-1", "data-title": @word.name, "data-alt": @word.name) 
+      end %>
   <%= audio_tag(@word.recordings.first.audio.url, autoplay: false, controls: true) unless @word.recordings.empty? %>
 </div>
 <div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
