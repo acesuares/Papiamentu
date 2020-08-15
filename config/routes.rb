@@ -86,6 +86,7 @@ end
   # get 'glosario/:glossary', to: 'frontends#glosario'
 
   get 'my_profile', to: 'frontends#my_profile'
+  get 'memory_game', to: 'memories#game'
 
   # post 'tra_palabra', to: 'frontends#tra_palabra'
   # post 'check_text', to: 'frontends#check_text'

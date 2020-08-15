@@ -15,6 +15,8 @@
  *= require commontator/application
  *= require spelling_game
  *= require lightbox
+ *= require memory/MemoryGame
+ *= require memory/cards
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;500&display=swap');
@@ -99,4 +101,10 @@ ul {
 
 .yandex_section {
   border: 0px solid black;
+}
+
+#test {
+  width: 400px;
+  height: 400px;
+  border: 2px solid blue;
 }

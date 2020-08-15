@@ -1,4 +1,4 @@
-MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups)
+MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memories)
 HIDDEN_MODELS = %w()
 
 AVAILABLE_LOCALES = [ "pap-CW", "pap-AW", "en", "nl"  ]

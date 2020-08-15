@@ -58,7 +58,7 @@ group :development do
   gem 'bundler'
   gem 'jeweler'
   gem 'test-unit'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capistrano-sidekiq'
   gem 'listen'

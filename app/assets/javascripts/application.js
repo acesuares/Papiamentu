@@ -18,4 +18,7 @@
 //= require inline_forms
 //= require autocomplete-rails
 //= require lightbox
+//= require memory/MemoryGame
+//= require memory/Card
+//= require memory/BrowserInterface
 //= require_tree .

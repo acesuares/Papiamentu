@@ -92,10 +92,10 @@ class SpellingsController < ApplicationController
 
   def words_for_training_session spelling_group_id = nil
     if spelling_group_id.nil?
-      Word.picture_ready.recording_ready.limit(10).pluck(:id)
+      Word.has_pictures.has_recordings.limit(10).pluck(:id)
     else
       spelling_group = SpellingGroup.find(spelling_group_id)
-      spelling_group.words.picture_ready.recording_ready.limit(10).pluck(:id)
+      spelling_group.words.has_pictures.has_recordings.limit(10).pluck(:id)
     end
   end
 
