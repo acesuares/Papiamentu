@@ -3,7 +3,7 @@ class MemoriesController < InlineFormsController
   autocomplete :memory, :name, full: true
 
   def game
-    authorize!(:game, :memories)
+    authorize!(:game, Memory)
     render layout: 'memory_game'
   end
 end

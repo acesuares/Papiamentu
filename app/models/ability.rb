@@ -9,6 +9,7 @@ class Ability
 
     can :read, [Word, Glossary] # permissions for every user, even if not logged in
     can :autocomplete_word_name, Word
+    can :game,                   Memory
 
     if user.present?
       if user.role? :superadmin
