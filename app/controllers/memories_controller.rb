@@ -4,6 +4,6 @@ class MemoriesController < InlineFormsController
 
   def game
     authorize!(:game, Memory)
-    render layout: 'memory_game'
+    render layout: 'frontends'
   end
 end

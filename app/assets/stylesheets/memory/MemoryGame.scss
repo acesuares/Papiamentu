@@ -1,20 +1,11 @@
-html {
-  width:100%;
-  height:100%;
+#memory--game {
+  width: 100%;
+  height: 768px;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow:hidden;
-}
-
-.modal {
-  position: fixed;
-  height: 90%;
-  right: 0;
-  top: 0;
+#memory--game .modal {
+  position: relative;
+  height: 120px;
   z-index: 3;
   width: 100%;
   visibility: hidden;
@@ -25,68 +16,64 @@ body {
   -o-transition:opacity 0.4s linear;
   transition:opacity 0.4s linear;
 }
-.modal.show {
+#memory--game .modal.show {
   visibility: visible;
   opacity:1;
 }
 
-.valign-table {
+#memory--game .valign-table {
   display: table;
   table-layout: fixed;
 }
-.valign-cell {
+#memory--game .valign-cell {
   display: table-cell;
   vertical-align: middle;
 }
 
 #memory--app-container {
+  margin-top:-120px;
   background-color: #0061a8;
   width:100%;
   height:90%;
 }
 
-
-.memory--menu-bar {
+#memory--menu-bar {
     width: 100%;
     background-color: #f0ce0b;
-    height: 12%;
+    height: 10%;
     display: table;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 
-.memory--menu-bar .inner {
+#memory--menu-bar .inner {
   display:table-cell;
   vertical-align:middle;
   max-height: 50px;
 }
-.memory--menu-bar .left {
+#memory--menu-bar .left {
     text-align: left;
     float: left;
     width: 80%;
     padding: 7px 30px;
 }
-.memory--menu-bar .right {
+#memory--menu-bar .right {
     text-align: right;
     float: right;
     width: 15%;
 }
 
-.memory--menu-bar #restart, .memory--menu-bar #back {
+#memory--menu-bar #restart, #memory--menu-bar #back {
     width: 50px;
     padding: 0 5px;
 }
-.memory--app-name {
+
+#memory--app-name {
   color:#000;
-  font-size:26px;
+  font-size:22px;
   margin:0;
   padding:1px 4px;
   letter-spacing: 2px;
-}
-@media screen and (max-width: 480px) {
-  .memory--app-name {
-    font-size:16px;
-  }
 }
 
 #memory--start-again-button {
@@ -111,44 +98,6 @@ body {
   margin-bottom: 4px;
 }
 
-#memory--settings-modal {
-  background-color: rgba(0, 0, 0, .86);
-  z-index: 4;
-}
-#memory--settings-modal form {
-  min-width:240px;
-  width:50%;
-  margin:0 auto;
-  text-align: center;
-  color:#ccc;
-}
-
-.memory--settings-label {
-  margin:8px 0;
-}
-
-#memory--settings-grid,
-#memory--settings-reset {
-  width:100%;
-  margin-bottom:16px;
-  font-size:18px;
-  background:transparent;
-  color:#ccc;
-  height:50px;
-  text-align: center;
-}
-
-#memory--settings-grid option {
-  padding-top:5px;
-  padding-bottom:5px;
-}
-
-#memory--settings-reset {
-  border-radius:5px;
-  border:2px solid #ccc;
-  cursor: pointer;
-}
-
 #memory--cards {
   margin:0 auto;
   padding:0;
@@ -158,21 +107,21 @@ body {
   position:relative;
 }
 /* entire container, keeps perspective */
-.flip-container {
+#memory--game .flip-container {
   -webkit-perspective: 1000px;
   perspective: 1000px;
   float:left;
 }
 
 /* flip the pane when clicked */
-.flip-container.clicked .front {
+#memory--game .flip-container.clicked .front {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-.flip-container.clicked .back {
+#memory--game .flip-container.clicked .back {
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
@@ -181,7 +130,7 @@ body {
 }
 
 /* flip speed goes here */
-.flipper {
+#memory--game .flipper {
   width:70%;
   height:90%;
   margin:0% auto;
@@ -199,7 +148,7 @@ body {
 }
 
 /* hide back of pane during swap */
-.front, .back {
+#memory--game .front, #memory--game .back {
   width:100%;
   height:100%;
   display: block;
@@ -220,7 +169,7 @@ body {
 }
 
 /* front pane, placed above back */
-.front {
+#memory--game .front {
   /* for firefox 31 */
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
@@ -237,7 +186,7 @@ body {
 }
 
 /* back, initially hidden pane */
-.back {
+#memory--game .back {
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   -ms-transform: rotateY(-180deg);
