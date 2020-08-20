@@ -17,7 +17,9 @@ class MemoryGame < ApplicationRecord
     @inline_forms_attribute_list ||= [
       [ :user , "user", :info],
       [ :name , "name", :text_field ],
-      [ :words, 'words_in_glossary', :info ],
+      [ :title , "name", :text_field ],
+      [ :description, "name", :text_area ],
+      [ :words, 'words_in_glossary', :info_list ],
     ]
   end
 

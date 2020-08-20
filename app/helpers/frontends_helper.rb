@@ -11,16 +11,17 @@ module FrontendsHelper
     end
   end
 
-  def link_to_glossary(glossary, full_url=false)
-    if full_url
-      if Rails.env.development?
-        link_to glossary.name, "http://localhost:3000/glossaries/#{glossary.id}" unless glossary.nil?
-      else
-        link_to glossary.name, "https://www.papiamentu.info/glossaries/#{glossary.name}" unless glossary.nil?
-      end
-    else
-      link_to glossary.name, "/glossaries/#{glossary.id}" unless glossary.nil?
-    end
+  def link_to_glossary(glossary)
+    link_to glossary.name, "/glossaries/#{glossary.id}" unless glossary.nil?
+  end
+
+
+  def link_to_memory_game_play(memory_game)
+    link_to memory_game.title, "/memory_games/#{memory_game.id}/play_game" unless memory_game.nil?
+  end
+
+  def link_to_memory_game_edit(memory_game)
+    link_to 'edit', "/memory_games/#{memory_game.id}/edit_game" unless memory_game.nil?
   end
 
 end

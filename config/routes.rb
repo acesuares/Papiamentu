@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   get 'spelling', to: 'spellings#index'
   get 'spelling/play', to: 'spellings#play'
   get 'spelling/session_results', to: 'spellings#session_results'
@@ -79,7 +80,6 @@ Rails.application.routes.draw do
   # get 'glosario/:glossary', to: 'frontends#glosario'
 
   get 'my_profile', to: 'frontends#my_profile'
-  # get 'memory_game', to: 'memories#game'
 
   # post 'tra_palabra', to: 'frontends#tra_palabra'
   # post 'check_text', to: 'frontends#check_text'

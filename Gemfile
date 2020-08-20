@@ -41,7 +41,7 @@ gem 'therubyracer'
 gem 'uglifier'
 gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers', branch: '0-9-stable'
 gem 'pdfkit'
-#gem 'ckeditor'
+gem "ckeditor", "~> 4.3.0"
 gem 'yandex-translator'
 gem 'jquery-timepicker-rails'
 gem 'rails-jquery-autocomplete'

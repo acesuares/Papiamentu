@@ -13,6 +13,9 @@ class Picture < ApplicationRecord
     name
   end
 
+  def title_license_attribution
+    "#{word.name} ⓒ #{user.name}, #{LICENSE}"
+  end
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [

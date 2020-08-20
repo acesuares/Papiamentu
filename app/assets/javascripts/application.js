@@ -17,6 +17,7 @@
 //= require jquery.remotipart
 //= require inline_forms
 //= require autocomplete-rails
+//= require ckeditor/init
 //= require lightbox
 //= require memory/Card
 //= require memory/BrowserInterface

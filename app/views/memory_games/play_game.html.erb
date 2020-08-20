@@ -1,3 +1,10 @@
+<div id="ExplainModal" class="reveal-modal small" data-reveal aria-labelledby="ExplainModalTitle" aria-hidden="false" role="dialog">
+  <h2 class="memory_game_title_and_ownder">Memory Game: <%= @memory_game.title %> (by <%= @memory_game.user.name %>)</h2>
+  <div class="memory_game_description">
+    <%= @memory_game.description %>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
 <div id="memory--game">
   <section id="memory--end-game-modal" class="valign-table modal">
     <div class="valign-cell">

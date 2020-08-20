@@ -1,6 +1,7 @@
 MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games)
 HIDDEN_MODELS = %w()
 
+LICENSE = "license: <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>CC BY-NC-SA 4.0</a>"
 AVAILABLE_LOCALES = [ "pap-CW", "pap-AW", "en", "nl"  ]
 # please make sure you never change the order! FIXME
 # for some reason this need to be strings and not symbols

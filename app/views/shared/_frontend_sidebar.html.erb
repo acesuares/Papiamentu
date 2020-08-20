@@ -10,10 +10,16 @@
   <div id='lenk_importante'>
     <%= render 'lenk' %>
   </div>
-  <% if 1 == 0 %>
+  <% if 1 == 1 %>
     <h3><%= t :glossaries, scope: translation_scope %></h3>
     <div id='glosario'>
-      <%= render 'glosario' %>
+      <%= render 'glossaries' %>
+    </div>
+  <% end %>
+  <% if 1 == 1 %>
+    <h3><%= t :memory_games, scope: translation_scope %></h3>
+    <div id='memory_games'>
+      <%= render 'memory_games' %>
     </div>
   <% end %>
   <h3><%= t :recent_words, scope: translation_scope %></h3>

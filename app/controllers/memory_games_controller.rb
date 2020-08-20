@@ -61,6 +61,6 @@ class MemoryGamesController < InlineFormsController
   def play_game
     @memory_game = referenced_object
     authorize!(:play_game, MemoryGame)
-    render layout: 'frontends'
+    render layout: 'memory_game'
   end
 end

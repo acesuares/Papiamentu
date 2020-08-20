@@ -1,12 +1,17 @@
 <div class="columns small-12 medium-12 large-12 topper" id="left-side">
-  <h1>Memory Game</h1>
+  <h1>Memory Game (<%= @memory_game.user.name %>)</h1>
   <% css_class_id = "#{@memory_game.class.name.underscore}_#{@memory_game.id}_name" -%>
- <div id="<%= css_class_id %>">
-   <%= send("text_field_show", @memory_game, :name) %>
- </div>
-
-  <h2><%= @memory_game.name %></h2>
-  <h3><%= @memory_game.user.name%></h3>
+  <div id="<%= css_class_id %>">
+    Interne naam: <%= send("text_field_show", @memory_game, :name) %>
+  </div>
+  <% css_class_id = "#{@memory_game.class.name.underscore}_#{@memory_game.id}_title" -%>
+  <div id="<%= css_class_id %>">
+    Titel: <%= send("text_field_show", @memory_game, :title) %>
+  </div>
+  <% css_class_id = "#{@memory_game.class.name.underscore}_#{@memory_game.id}_description" -%>
+  <div id="<%= css_class_id %>">
+    Beschrijving: <%= send("text_area_show", @memory_game, :description) %>
+  </div>
   Add a word:
   <%= form_tag request.path, :method => 'post' do %>
     <div class="row">
