@@ -1,4 +1,4 @@
-MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games)
+MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games slide_games)
 HIDDEN_MODELS = %w()
 
 LICENSE = "license: <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>CC BY-NC-SA 4.0</a>"

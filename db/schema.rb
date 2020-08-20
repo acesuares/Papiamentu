@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_035749) do
+ActiveRecord::Schema.define(version: 2020_08_20_071815) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -178,6 +178,23 @@ ActiveRecord::Schema.define(version: 2020_08_20_035749) do
   create_table "roles_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "slide_games", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_slide_games_on_user_id"
+  end
+
+  create_table "slide_games_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "slide_game_id", null: false
+    t.bigint "word_id", null: false
+    t.index ["slide_game_id", "word_id"], name: "index_slide_games_words_on_slide_game_id_and_word_id"
+    t.index ["word_id", "slide_game_id"], name: "index_slide_games_words_on_word_id_and_slide_game_id"
   end
 
   create_table "sources", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|

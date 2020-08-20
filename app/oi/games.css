@@ -1,0 +1,80 @@
+html {
+  width:100%;
+  height:100%;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+body {
+  font-family: 'Poppins', sans-serif;
+
+  background-color: #E2E8F3;
+  font-size: .8em;
+  /* disable select text/images https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting#4407335 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow:hidden;
+}
+
+.container {
+  align-items: center;
+}
+
+img {
+  cursor: pointer;
+  height: auto;
+  margin: 3px;
+  float: left;
+  flex: 1;
+  min-width: 0;
+}
+
+.draggables, .dropzones {
+  width: 90%;
+  margin: 20px auto;
+}
+
+
+.row {
+  display: flex;
+}
+
+.draggables {
+}
+
+.dropzones {
+  width: 90%;
+  margin-top: 60px;
+}
+
+.drop-zone {
+  width: 200px;
+  height: 200px;
+  background: #878787;
+  color: white;
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.poepie {
+  max-width: 50%;
+}
+
+.puzzle img {
+  margin: 1px;
+}

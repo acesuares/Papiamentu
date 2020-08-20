@@ -1,0 +1,115 @@
+#slide--game {
+  width: 100%;
+  height: 768px;
+  /* disable select text/images https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting#4407335 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#slide--game .container {
+  align-items: center;
+}
+
+#slide--game img {
+  cursor: pointer;
+  height: auto;
+  margin: 3px;
+  float: left;
+  flex: 1;
+  min-width: 0;
+}
+
+#slide--game .draggables, #slide--game .dropzones {
+  width: 90%;
+  margin: 20px auto;
+}
+
+
+#slide--game .row {
+  display: flex;
+}
+
+#slide--game .draggables {
+}
+
+#slide--game .dropzones {
+  width: 90%;
+  margin-top: 60px;
+}
+
+#slide--game .drop-zone {
+  width: 200px;
+  height: 200px;
+  background: #878787;
+  color: white;
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+}
+
+#slide--game .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#slide--game .poepie {
+  max-width: 50%;
+}
+
+#slide--game .puzzle img {
+  margin: 1px;
+}
+
+#slide--menu-bar {
+    width: 100%;
+    background-color: #f0ce0b;
+    height: 10%;
+    display: table;
+    position: relative;
+    bottom: 0;
+}
+
+#slide--menu-bar .inner {
+  display:table-cell;
+  vertical-align:middle;
+  max-height: 50px;
+}
+#slide--menu-bar .left {
+    text-align: left;
+    float: left;
+    width: 80%;
+    padding: 7px 30px;
+}
+#slide--menu-bar .right {
+    text-align: right;
+    float: right;
+    width: 15%;
+}
+
+#slide--menu-bar #restart, #slide--menu-bar #back {
+    width: 50px;
+    padding: 0 5px;
+}
+
+#slide--app-name {
+  color:#000;
+  font-size:22px;
+  margin:0;
+  padding:1px 4px;
+  letter-spacing: 2px;
+}
+
+#slide--start-again-button {
+  height: 24px;
+  padding:4px 8px;
+}
+
+#slide--back-buton {
+  height: 24px;
+  padding:4px 8px;
+}

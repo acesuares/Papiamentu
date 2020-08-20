@@ -1,0 +1,39 @@
+<div id="ExplainModal" class="reveal-modal small" data-reveal aria-labelledby="ExplainModalTitle" aria-hidden="false" role="dialog">
+  <h2 class="slide_game_title_and_owner">Slide Game: <%= @slide_game.title %> (by <%= @slide_game.user.name %>)</h2>
+  <div class="slide_game_description">
+    <%= @slide_game.description %>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div id="slide--game">
+  <div class="container">
+    <div id="draggables" class="draggables">
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div id="dropzones" class="dropzones">
+    </div>
+  </div>
+
+  <section id="slide--menu-bar">
+    <div class="inner">
+      <div class="left">
+        <h1 id="slide--app-name">
+          Buska e plachinan ku ta kuadra ku otro
+        </h1>
+      </div>
+      <div class="right">
+        <%= link_to image_tag("games/start-again-button.png", id: "restart"), '' %>
+        <%= link_to image_tag("games/back-button.png", id: "back"), '/' %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const NUMBER_OF_IMAGES = 6;
+  const GAME_TYPE = 2;
+  const ROWS = 1;
+</script>

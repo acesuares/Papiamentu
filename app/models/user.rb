@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :words
   has_many :glossaries
   has_many :memory_games
+  has_many :slide_games
   has_many :pictures
 
   has_many :spelling_sessions

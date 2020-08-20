@@ -19,6 +19,7 @@
 //= require autocomplete-rails
 //= require ckeditor/init
 //= require lightbox
+//= require slidegames/slidegames
 //= require memory/Card
 //= require memory/BrowserInterface
 //= require_tree .
