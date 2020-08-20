@@ -1,18 +1,23 @@
-class Memory < ApplicationRecord
+class MemoryGame < ApplicationRecord
   attr_reader :per_page
-  @per_page = 99
+  @per_page = 7
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
-  validates :name, :presence => true, :uniqueness => true, :length => { :minimum => 3, :maximum => 254 }
+  has_and_belongs_to_many :words
+  belongs_to :user
+
+  default_scope { order('name')}
 
   def _presentation
-    "#{name}"
+    name
   end
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
+      [ :user , "user", :info],
       [ :name , "name", :text_field ],
+      [ :words, 'words_in_glossary', :info ],
     ]
   end
 

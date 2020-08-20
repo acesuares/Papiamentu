@@ -102,6 +102,18 @@ class Word < ApplicationRecord
     is_money == 2
   end
 
+  def is_fauna?
+    is_fauna == 2
+  end
+
+  def has_pictures?
+    ! pictures.empty?
+  end
+
+  def has_recordings?
+    ! recordings.empty?
+  end
+
   def monetary_value_nice
     monetary_value_in_mct / 10 < 100 ? "#{monetary_value_in_mct/10} sèn" : "#{monetary_value_in_mct/1000} florín"
   end

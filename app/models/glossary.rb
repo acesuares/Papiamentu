@@ -7,10 +7,11 @@ class Glossary < ApplicationRecord
   has_and_belongs_to_many :words
   belongs_to :user
 
+  default_scope { order('name')}
+
   def _presentation
     name
   end
-
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
@@ -22,7 +23,6 @@ class Glossary < ApplicationRecord
     ]
   end
 
-
   def self.not_accessible_through_html?
     false
   end
@@ -30,4 +30,5 @@ class Glossary < ApplicationRecord
   def self.order_by_clause
     nil
   end
+  
 end

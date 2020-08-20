@@ -1,7 +1,7 @@
 <div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
   <%= if @word.pictures.first
         link_to(  image_tag(@word.pictures.first.image.palm.url, alt: @word.name, title: @word.name),
-                  @word.pictures.first.image.url, "data-lightbox": "image-1", "data-title": @word.name, "data-alt": @word.name) 
+                  @word.pictures.first.image.url, "data-lightbox": "image-1", "data-title": @word.name, "data-alt": @word.name)
       end %>
   <%= audio_tag(@word.recordings.first.audio.url, autoplay: false, controls: true) unless @word.recordings.empty? %>
 </div>
@@ -35,7 +35,7 @@
   <% end %>
   <% if @word.is_money? %>
     <div class="money_section section">
-      <strong>E palabra ta denunsia moneda (sèn).</strong>
+      <strong>E palabra ta indiká moneda (sèn).</strong>
       <ul>
         <li>
         "<%= @word.name %>" tin un balor di: <%= @word.monetary_value_nice %>
@@ -48,7 +48,7 @@
   <% end %>
   <% if @word.is_fauna? %>
     <div class="fauna_section section">
-      <strong>E palabra ta denunsia un animál (fauna).</strong>
+      <strong>E palabra ta indiká un animál (fauna).</strong>
       <ul>
         <li>
         Nòmber sientífiko : <%= @word.scientific_name %>
@@ -67,7 +67,7 @@
     <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
   </ul>
   <div class="yandex_section section">
-    <strong>Tradukshon di Yandex. Por ta no ta accuraat.</strong>
+    <strong>Tradukshon di Yandex. Kisas no ta presis.</strong>
     <ul>
       <% @word.get_yandex_translations %>
       <% YANDEX_LANGUAGES.each do |language| %>

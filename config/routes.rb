@@ -6,16 +6,10 @@ Rails.application.routes.draw do
   post 'spelling/check', to: 'spellings#check'
   get 'spelling/siguiente', to: 'spellings#siguiente'
 
-  resources :recordings do
-  post 'revert', :on => :member
-  get 'list_versions', :on => :member
-end
 
   resources :pictures do
-  post 'revert', :on => :member
-  get 'list_versions', :on => :member
-  get 'close_versions_list', :on => :member
-end
+    get 'close_versions_list', :on => :member
+  end
 
   # API
   namespace :api do
@@ -51,7 +45,6 @@ end
   HIDDEN_MODELS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
-
       get 'list_versions', :on => :member
     end
   end
@@ -86,12 +79,15 @@ end
   # get 'glosario/:glossary', to: 'frontends#glosario'
 
   get 'my_profile', to: 'frontends#my_profile'
-  get 'memory_game', to: 'memories#game'
+  # get 'memory_game', to: 'memories#game'
 
   # post 'tra_palabra', to: 'frontends#tra_palabra'
   # post 'check_text', to: 'frontends#check_text'
 
   post 'glossaries/:id/edit/', to: 'glossaries#edit'
+  get 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
+  get 'memory_games/:id/play_game', to: 'memory_games#play_game'
+  post 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
   root :to => 'frontends#index'
 
 end

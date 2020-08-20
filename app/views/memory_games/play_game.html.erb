@@ -1,0 +1,39 @@
+<div id="memory--game">
+  <section id="memory--end-game-modal" class="valign-table modal">
+    <div class="valign-cell">
+      <div class="wrapper">
+        <h2 id="memory--end-game-message"></h2>
+        <h3 id="memory--end-game-score"></h3>
+      </div>
+    </div>
+  </section>
+  <section id="memory--app-container">
+    <ul id="memory--cards">
+    </ul>
+  </section>
+  <section id="memory--menu-bar">
+    <div class="inner">
+      <div class="left">
+        <h1 id="memory--app-name">
+          Klek e plachinan i buska sèt di dos plachi ku ta igual
+        </h1>
+      </div>
+      <div class="right">
+        <%= link_to image_tag("memory/start-again-button.png", id: "restart"), '' %>
+        <%= link_to image_tag("memory/back-button.png", id: "back"), '/' %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  <% @memory_game.words.each_with_index do |word, index| %>
+    <%= ".back.card-#{index+1} { background-image: url(#{word.pictures.first.image.palm.url}); }" %>
+  <% end %>
+</style>
+
+<script>
+  MemoryGame.settings.rows = 3;
+  MemoryGame.settings.colums = 4;
+  MemoryGame.settings.images = 6;
+</script>
