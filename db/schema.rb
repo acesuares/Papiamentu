@@ -129,6 +129,12 @@ ActiveRecord::Schema.define(version: 2020_08_20_071815) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "memories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "memory_games", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"

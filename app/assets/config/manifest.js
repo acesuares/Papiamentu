@@ -2,6 +2,7 @@
 //= link_directory ../javascripts .js
 //= link_directory ../javascripts/memory .js
 //= link_directory ../javascripts/slidegames .js
+//= link_directory ../javascripts/slabText .js
 //= link_directory ../stylesheets .css
 //= link_directory ../stylesheets/memory .scss
 //= link_directory ../stylesheets .scss

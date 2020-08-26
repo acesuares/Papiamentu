@@ -18,6 +18,7 @@
 //= require inline_forms
 //= require autocomplete-rails
 //= require ckeditor/init
+//= require slabText/jquery.slabtext
 //= require lightbox
 //= require slidegames/slidegames
 //= require memory/Card
