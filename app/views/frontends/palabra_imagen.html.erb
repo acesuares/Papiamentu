@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= t('inline_forms.general.application_title') + " v" + InlineForms::VERSION %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "palabra_imagen/palabra_imagen" %>
+  </head>
+
+  <body>
+    <div id="word_as_image_section">
+      <div id="word_as_image_wrapper">
+        <h1><%= @word.name %></h1>
+      </div>
+    </div>
+    <%= javascript_include_tag 'palabra_imagen/palabra_imagen' %>
+  </body>
+</html>

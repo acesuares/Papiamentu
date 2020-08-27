@@ -79,6 +79,7 @@ Rails.application.routes.draw do
   get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
+  get 'palabra_imagen/:word', to: 'frontends#palabra_imagen'
   post 'palabra', to: 'frontends#search'
 
   # get 'glosario/:glossary', to: 'frontends#glosario'

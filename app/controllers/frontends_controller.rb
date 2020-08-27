@@ -35,6 +35,27 @@ class FrontendsController < ApplicationController
     end
   end
 
+  def palabra_imagen
+    if params[:word].blank?
+      redirect_to '/'
+    else
+      @search_word = params[:word].squish.gsub(CHARACTER_REGEX,'')
+      @word = Word.find_by_name(@search_word)
+      if @word.nil?
+        render 'palabra_not_found' and return
+      end
+      respond_to do |format|
+        format.html {
+        }
+        format.png {
+          image = IMGKit.new("http://127.0.0.1:3001#{request.original_fullpath.gsub(/\.png/,'')}")
+          # File.open("#{Rails.root}/public/test.html", "w+b") {|f| f.write(html)}
+          file = image.to_file("#{Rails.root}/public/test.png")
+        }
+      end
+    end
+  end
+
   def tra_palabra
     if params[:word].blank? || params[:commit] == "nò, mi ke bai bèk na e pagina inisio"
       redirect_to '/'

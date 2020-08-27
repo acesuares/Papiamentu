@@ -46,6 +46,7 @@ gem 'yandex-translator'
 gem 'jquery-timepicker-rails'
 gem 'rails-jquery-autocomplete'
 gem 'lightbox2-rails'
+gem 'imgkit'
 
 
 # Include everything needed to run rake, tests, features, etc.
