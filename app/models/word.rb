@@ -222,6 +222,33 @@ class Word < ApplicationRecord
     MonthlyOwnWordsEmailWorker.perform_async
   end
 
+  def image_from_word(attribute)
+    # convert white.png -size 350x250 -background none caption:"barbulete kaya mino wau"  -pointsize 72 -gravity Center -composite result.png
+    if [:tr_pap_cw].include? attribute
+      value = send(attribute)
+      background_image = "#{Rails.root}/app/assets/images/white.png"
+      store_dir = "#{Rails.root}/public/uploads/word/#{attribute}/#{self.id}"
+      FileUtils.mkdir_p(store_dir) unless Dir.exists?(store_dir)
+      convert = MiniMagick::Tool::Convert.new
+      convert << background_image
+      convert << "-size"
+      convert << "350x250"
+      convert << "-background"
+      convert << "none"
+      convert << "-pointsize"
+      convert << "72"
+      convert << "-font"
+      convert << "Roboto"
+      convert << "-gravity"
+      convert << "Center"
+      convert << "caption:#{value}"
+      convert << "-composite"
+      convert << "#{store_dir}/#{value.squish.gsub(CHARACTER_REGEX,'')}.png"
+      convert.call
+    end
+  end
+
+
   protected
     def add_variant
       variants << Variant.create(lemma: name, orthographic_type: 'cw')

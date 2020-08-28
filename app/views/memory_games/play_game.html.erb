@@ -35,7 +35,8 @@
 
 <style>
   <% @memory_game.words.each_with_index do |word, index| %>
-    <%= ".back.card-#{index+1} { background-image: url(#{word.pictures.first.image.palm.url}); }" %>
+    <%= ".back.card-#{index+1}          { background-image: url(#{word.pictures.first.image.palm.url}); }" %>
+    <%= ".back.matching.card-#{index+1} { background-image: url(#{"/uploads/word/tr_pap_cw/#{word.id}/#{word.tr_pap_cw.squish.gsub(CHARACTER_REGEX,'')}.png"}); }" %>
   <% end %>
 </style>
 
