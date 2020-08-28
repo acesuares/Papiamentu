@@ -19,7 +19,9 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
+  # https://stackoverflow.com/questions/56063066/es6-syntax-harmony-mode-must-be-enabled-with-uglifier-newharmony-true
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
