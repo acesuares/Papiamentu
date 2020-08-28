@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # https://blog.engineyard.com/rails-encrypted-credentials-on-rails-5.2
+  config.require_master_key = true
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
