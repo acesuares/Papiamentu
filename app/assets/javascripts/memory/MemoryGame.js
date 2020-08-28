@@ -19,7 +19,7 @@
 var MemoryGame = {
 
   settings: {
-    rows: 2,
+    rows: 3,
     columns: 4,
     images: 6, // Number of images
   },

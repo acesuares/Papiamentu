@@ -79,7 +79,6 @@ Rails.application.routes.draw do
   get 'frontends/rapport', to: 'frontends#rapport'
 
   get 'palabra/:word', to: 'frontends#palabra'
-  get 'palabra_imagen/:word', to: 'frontends#palabra_imagen'
   post 'palabra', to: 'frontends#search'
 
   # get 'glosario/:glossary', to: 'frontends#glosario'
@@ -93,6 +92,8 @@ Rails.application.routes.draw do
   get 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
   get 'memory_games/:id/play_game', to: 'memory_games#play_game'
   post 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
+  get 'memory_game', to: 'memory_games#play_random_game'
+
   get 'slide_games/:id/edit_game', to: 'slide_games#edit_game'
   get 'slide_games/:id/play_game', to: 'slide_games#play_game'
   post 'slide_games/:id/edit_game', to: 'slide_games#edit_game'

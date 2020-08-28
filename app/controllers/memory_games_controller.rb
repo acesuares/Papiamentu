@@ -28,8 +28,14 @@ class MemoryGamesController < InlineFormsController
   end
 
   def play_game
-    @memory_game = referenced_object
     authorize!(:play_game, MemoryGame)
-    render layout: 'memory_game'
+    @memory_game = referenced_object
+    render layout: false
   end
+
+  def play_random_game
+    authorize!(:play_random_game, MemoryGame)
+    render layout: false
+  end
+
 end
