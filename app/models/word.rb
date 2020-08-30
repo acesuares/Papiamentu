@@ -71,6 +71,8 @@ class Word < ApplicationRecord
       [ :goals, '', :check_list ],
       [ :buki_di_oro, '', :info ], #radio_button, { 0 => 'nò', 1 => 'Buki di Oro 2009' } ],
       [ :header_splikashon, '', :header ],
+      [ :context, "description_nl", :text_area_without_ckeditor ],
+      [ :varianten, "description_nl", :text_field ],
       [ :description_nl , "description_nl", :text_area_without_ckeditor ],
       [ :description_pap_cw , "description_pap_cw", :text_area_without_ckeditor ],
       [ :tr_nl , "tr_nl", :text_field ],

@@ -1,5 +1,20 @@
-MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games slide_games)
+MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games slide_games recordings)
 HIDDEN_MODELS = %w()
+
+MARTA_WOORDTYPES = {
+        "art" => "artíkulo",
+        "atv" => "atverbio",
+        "kon" => "konhunshon",
+        "num" => "numeral",
+        "par" => "partíkula",
+        "pre" => "preposishon",
+        "pro d" => "pronòmber demostrativo",
+        "pro i" => "pronòmber interogativo",
+        "pro p" => "pronómber personal/posesivo",
+        "sus" => "sustantivo",
+        "ver" => "verbo",
+}
+
 
 LICENSE = "license: <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>CC BY-NC-SA 4.0</a>"
 AVAILABLE_LOCALES = [ "pap-CW", "pap-AW", "en", "nl"  ]
