@@ -3,6 +3,7 @@ HIDDEN_MODELS = %w()
 
 MARTA_WOORDTYPES = {
         "art" => "artíkulo",
+        "ath" => "athetivo",
         "atv" => "atverbio",
         "kon" => "konhunshon",
         "num" => "numeral",
