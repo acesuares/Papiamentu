@@ -58,6 +58,16 @@
       </ul>
     </div>
   <% end %>
+  <% if @word.is_flora? %>
+    <div class="flora_section section">
+      <strong>E palabra ta indiká un mata (flora).</strong>
+      <ul>
+        <li>
+        Nòmber sientífiko : <%= @word.scientific_name %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
   <ul class='main_section section'>
     <%# <%= content_tag :li, @word.variants_nice if @word.varies? %>
     <%= content_tag(:li, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>

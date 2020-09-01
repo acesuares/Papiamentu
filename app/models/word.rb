@@ -108,6 +108,10 @@ class Word < ApplicationRecord
     is_fauna == 2
   end
 
+  def is_flora?
+    is_flora == 2
+  end
+
   def has_pictures?
     ! pictures.empty?
   end
