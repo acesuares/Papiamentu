@@ -4,6 +4,7 @@ class GlossariesController < InlineFormsController
   autocomplete :word, :name, full: true
 
   def index
+    super
   end
 
   def show

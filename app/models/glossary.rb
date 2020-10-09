@@ -19,7 +19,7 @@ class Glossary < ApplicationRecord
       [ :name , "name", :text_field ],
       [ :title , "title", :text_field ],
       [ :description , "description", :text_area ],
-      [ :words, 'words_in_glossary', :check_list ],
+      # [ :words, 'words_in_glossary', :check_list ],
     ]
   end
 
@@ -30,5 +30,5 @@ class Glossary < ApplicationRecord
   def self.order_by_clause
     nil
   end
-  
+
 end
