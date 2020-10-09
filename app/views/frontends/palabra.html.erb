@@ -58,6 +58,31 @@
       </ul>
     </div>
   <% end %>
+  <% if @word.is_element? %>
+    <div class="kimika_section section">
+      <strong>E palabra ta indiká un elemento kímika.</strong>
+      <ul>
+        <li>
+          Number : <%= @word.atoomnummer %>
+        </li>
+        <li>
+          Símbolo : <%= @word.symbool %>
+        </li>
+        <li>
+          Hulandes: <%= link_to @word.tr_nl, "https://nl.wikipedia.org/wiki/#{@word.tr_nl}" %>
+        </li>
+        <li>
+          Spaño: <%= link_to @word.tr_es, "https://es.wikipedia.org/wiki/#{@word.tr_es}" %>
+        </li>
+        <li>
+          Inglès: <%= link_to @word.tr_en, "https://en.wikipedia.org/wiki/#{@word.tr_en}" %>
+        </li>
+      </ul>
+      <div class="source">
+        Lijst van Elementen, Gertrude Franca e.a., 2019
+      </div>
+    </div>
+  <% end %>
   <% if @word.is_flora? %>
     <div class="flora_section section">
       <strong>E palabra ta indiká un mata (flora).</strong>
@@ -81,7 +106,7 @@
   <div class="yandex_section section">
     <strong>Tradukshon di Yandex. Kisas no ta presis.</strong>
     <ul>
-      <% @word.get_yandex_translations %>
+      <% @word.get_yandex_translations unless Rails.env.development? %>
       <% YANDEX_LANGUAGES.each do |language| %>
         <li>
           <%= "#{language}: #{@word.yandex_translation_cache[language]}" %>
@@ -92,13 +117,6 @@
       <%= link_to 'Powered by Yandex.Translate', 'https://translate.yandex.com', target: "_blank" %>
     </div>
   </div>
-
-  <div id="word_as_image_section">
-    <div id="word_as_image_wrapper">
-      <h1><%= @word.name %></h1>
-    </div>
-  </div>
-
 
 </div>
 
