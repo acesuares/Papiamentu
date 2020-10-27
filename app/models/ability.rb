@@ -7,8 +7,11 @@ class Ability
     # alias_action(:read, :palabra, :tra_palabra, :search, :check_text, :my_profile, :glosario, :to => :do_frontend_stuff)
     # alias_action(:index, :play, :check, :session_results, to: :can_play_spelling)
 
-    can :read, [Word, Glossary] # permissions for every user, even if not logged in
+    can :read, [Word, Glossary, Source] # permissions for every user, even if not logged in
     can :autocomplete_word_name, Word
+    can :show_glossary, Glossary
+    can :show_source, Source
+
     can :play_game,                   [MemoryGame, SlideGame]
     can :play_random_game,            [MemoryGame, SlideGame]
 

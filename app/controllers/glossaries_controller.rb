@@ -1,18 +1,14 @@
 class GlossariesController < InlineFormsController
   set_tab :glossary
-  layout 'frontends'
   autocomplete :word, :name, full: true
 
-  def index
-    super
-  end
-
-  def show
+  def show_glossary
     @glossary = referenced_object
     redirect_to '/' if @glossary.nil?
 
     respond_to do |format|
       format.html {
+        render layout: 'frontends'
       }
       format.pdf {
         html = render_to_string(layout: 'glosario')
@@ -55,6 +51,7 @@ class GlossariesController < InlineFormsController
       words_to_remove = remove_words.map{ |word| Word.find_by_name(word) }.compact.uniq
       @glossary.words.delete words_to_remove
     end
+    render layout: 'frontends'
   end
 
 end

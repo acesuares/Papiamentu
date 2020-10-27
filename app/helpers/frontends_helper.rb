@@ -12,9 +12,12 @@ module FrontendsHelper
   end
 
   def link_to_glossary(glossary)
-    link_to glossary.name, "/glossaries/#{glossary.id}" unless glossary.nil?
+    link_to glossary.name, "/glosario/#{glossary.id}" unless glossary.nil?
   end
 
+  def link_to_source(source)
+    link_to source.name, "/fuente/#{source.id}" unless source.nil?
+  end
 
   def link_to_memory_game_play(memory_game)
     link_to memory_game.title, "/memory_games/#{memory_game.id}/play_game" unless memory_game.nil?

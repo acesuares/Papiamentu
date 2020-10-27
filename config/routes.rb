@@ -89,6 +89,12 @@ Rails.application.routes.draw do
   # post 'check_text', to: 'frontends#check_text'
 
   post 'glossaries/:id/edit/', to: 'glossaries#edit'
+
+  get 'glosario/:id', to: 'glossaries#show_glossary'
+  get 'fuente/:id', to: 'sources#show_source'
+
+
+
   get 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
   get 'memory_games/:id/play_game', to: 'memory_games#play_game'
   post 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
@@ -98,5 +104,8 @@ Rails.application.routes.draw do
   get 'slide_games/:id/play_game', to: 'slide_games#play_game'
   post 'slide_games/:id/edit_game', to: 'slide_games#edit_game'
   root :to => 'frontends#index'
+
+
+
 
 end
