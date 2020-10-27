@@ -1,11 +1,28 @@
 <div class="columns small-12 medium-12 large-12 topper" id="left-side">
-  <h2><%= @glossary.name %></h2>
-  <h3><%= @glossary.user.name%></h3>
-  <ul>
-    <% @glossary.words.each do |word| %>
-      <li>
-        <%= link_to_word word %>
-      </li>
-    <% end %>
-  </ul>
+  <h2><%= @glossary.title %></h2>
+  <p><%= @glossary.user.name%></p>
+  <p><%= @glossary.description %></p>
+  <div id="glossary">
+  <% @glossary.words.order("name ASC").group_by{|u| u.name[0]}.each do |letter, items| %>
+    <h3><%= letter %></h3>
+    <table>
+      <% items.each do |item| %>
+        <tr>
+          <td>
+            <%= link_to_word item %>
+          </td>
+          <td>
+            <%= item.wordtypes.map(&:name).to_sentence %>
+          </td>
+          <td>
+            <%= item.tr_nl %>&nbsp;
+          </td>
+          <td>
+            <%= item.description_pap_cw %>&nbsp;
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  </div>
 </div>
