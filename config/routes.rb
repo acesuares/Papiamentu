@@ -92,6 +92,7 @@ Rails.application.routes.draw do
 
   get 'glosario/:id', to: 'glossaries#show_glossary'
   get 'fuente/:id', to: 'sources#show_source'
+  get 'meta/:id', to: 'goals#show_goal'
 
 
 

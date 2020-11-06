@@ -1,7 +1,7 @@
 <div class="columns small-12 medium-12 large-12 topper" id="left-side">
-  <h2><%= @source.name %></h2>
-  <div id="source">
-  <% @source.words.order("name ASC").group_by{|u| u.name[0]}.each do |letter, items| %>
+  <h2><%= @goal.name %></h2>
+  <div id="goal">
+  <% @goal.words.order("name ASC").group_by{|u| u.name[0]}.each do |letter, items| %>
     <h3><%= letter %></h3>
     <table>
       <% items.each do |item| %>

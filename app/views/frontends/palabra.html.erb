@@ -101,7 +101,7 @@
     <%= content_tag(:li, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
     <%= content_tag(:li, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
     <%= content_tag(:li, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
-    <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: #{@word.glossaries.map { |g| link_to_glossary g }.join(' ') }".html_safe ) unless @word.glossaries.empty? %>
+    <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: <br />#{@word.glossaries.uniq.map { |g| link_to_glossary g }.join(' | ') }".html_safe ) unless @word.glossaries.empty? %>
   </ul>
   <div class="yandex_section section">
     <strong>Tradukshon di Yandex. Kisas no ta presis.</strong>

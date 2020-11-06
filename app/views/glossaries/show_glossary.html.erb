@@ -9,7 +9,7 @@
       <% items.each do |item| %>
         <tr>
           <td>
-            <%= link_to_word item %>
+            <%= link_to_word_with_admin item %>
           </td>
           <td>
             <%= item.wordtypes.map(&:name).to_sentence %>
