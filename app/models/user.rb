@@ -16,7 +16,7 @@ class User < ApplicationRecord
   devise :confirmable
   # devise :lockable
   # devise :timeoutable
-  #devise :omniauthable
+  devise :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :locale
