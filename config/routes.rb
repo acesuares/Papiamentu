@@ -94,7 +94,8 @@ Rails.application.routes.draw do
   get 'fuente/:id', to: 'sources#show_source'
   get 'meta/:id', to: 'goals#show_goal'
 
-
+get '/flora', to: 'frontends#flora'
+get '/fauna', to: 'frontends#fauna'
 
   get 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
   get 'memory_games/:id/play_game', to: 'memory_games#play_game'

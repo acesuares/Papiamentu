@@ -37,6 +37,9 @@ class Word < ApplicationRecord
   scope :has_pictures, -> { joins(:pictures).where.not(pictures: {id: nil }) }
   scope :has_recordings, -> { joins(:recordings).where.not(recordings: {id: nil }) }
 
+  scope :is_flora, -> { where(is_flora: 2) }
+  scope :is_fauna, -> { where(is_fauna: 2) }
+
   enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
 

@@ -50,6 +50,12 @@ class FrontendsController < ApplicationController
     end
   end
 
+  def flora
+  end
+
+  def fauna
+  end
+
   def check_text
     text = params[:text]
     redirect_to '/' if text.blank?
