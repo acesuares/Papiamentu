@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_000007) do
+ActiveRecord::Schema.define(version: 2020_11_21_000005) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_000007) do
     t.integer "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", default: 1
     t.index ["word_id"], name: "index_recordings_on_word_id"
   end
 

@@ -7,6 +7,7 @@ class Recording < ApplicationRecord
   mount_uploader :audio, AudioUploader
 
   belongs_to :word
+  belongs_to :user
 
   def _presentation
     name
@@ -16,7 +17,6 @@ class Recording < ApplicationRecord
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
       [ :name , "name", :text_field ],
-      [ :author , "author", :text_field ],
       [ :audio , "audio", :audio_field ],
     ]
   end
