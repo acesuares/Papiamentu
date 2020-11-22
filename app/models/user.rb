@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :memory_games
   has_many :slide_games
   has_many :pictures
+  has_many :recordings
 
   has_many :spelling_sessions
   has_many :spelling_tries, through: :spelling_sessions
