@@ -53,7 +53,7 @@ class FrontendsController < ApplicationController
   def flora
   end
 
-  def fauna
+  def founa
   end
 
   def check_text

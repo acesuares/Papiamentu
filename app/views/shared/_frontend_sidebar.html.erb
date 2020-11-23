@@ -10,18 +10,19 @@
   <div id='lenk_importante'>
     <%= render 'lenk' %>
   </div>
-  <% if 1 == 1 %>
-    <h3><%= t :glossaries, scope: translation_scope %></h3>
-    <div id='glosario'>
-      <%= render 'glossaries' %>
-    </div>
-  <% end %>
-  <% if 1 == 1 %>
-    <h3><%= t :memory_games, scope: translation_scope %></h3>
-    <div id='memory_games'>
-      <%= render 'memory_games' %>
-    </div>
-  <% end %>
+  <h3><%= t :galeries, scope: translation_scope %></h3>
+  <div id='galeria'>
+    <%= link_to 'Galeria di founa', '/founa' %><br />
+    <%= link_to 'Galeria di flora', '/flora' %>
+  </div>
+  <h3><%= t :glossaries, scope: translation_scope %></h3>
+  <div id='glosario'>
+    <%= render 'glossaries' %>
+  </div>
+  <h3><%= t :memory_games, scope: translation_scope %></h3>
+  <div id='memory_games'>
+    <%= render 'memory_games' %>
+  </div>
   <h3><%= t :recent_words, scope: translation_scope %></h3>
   <div id='palabra_mas_resien'>
     <%= render 'palabra_mas_resien' %>

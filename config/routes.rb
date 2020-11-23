@@ -95,7 +95,7 @@ Rails.application.routes.draw do
   get 'meta/:id', to: 'goals#show_goal'
 
 get '/flora', to: 'frontends#flora'
-get '/fauna', to: 'frontends#fauna'
+get '/founa', to: 'frontends#founa'
 
   get 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
   get 'memory_games/:id/play_game', to: 'memory_games#play_game'
