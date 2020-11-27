@@ -1,7 +1,7 @@
 class MemoryGamesController < InlineFormsController
   set_tab :memory_game
   layout 'frontends'
-  autocomplete :word, :name, full: true, :scopes => [:has_pictures]
+  autocomplete :word, :name, full: false, limit: 12, scopes: [:has_pictures]
 
   def new
     @object = @Klass.new

@@ -37,6 +37,10 @@ Rails.application.routes.draw do
 
   mount Commontator::Engine => '/commontator'
 
+  resources :memory_games do
+    get :"autocomplete_word_name", :on => :collection
+  end
+
   MODEL_TABS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
@@ -47,12 +51,16 @@ Rails.application.routes.draw do
     end
   end
 
+
+
   HIDDEN_MODELS.each do |model|
     resources model.to_sym do
       post 'revert', :on => :member
       get 'list_versions', :on => :member
     end
   end
+
+
 
   devise_for :users, path_prefix: 'auth', controllers: {omniauth_callbacks: "omniauth_callbacks",
                                                         registrations: 'registrations',

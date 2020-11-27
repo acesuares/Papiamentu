@@ -16,7 +16,7 @@
   <%= form_tag request.path, :method => 'post' do %>
     <div class="row">
       <div class="large-3 small-3 columns">
-        <%= autocomplete_field_tag :add_word, '', send("autocomplete_word_name_words_path"), :placeholder => 'buska palabra...', :id => 'input_search' %>
+        <%= autocomplete_field_tag :add_word, '', send("autocomplete_word_name_memory_games_path"), :placeholder => 'buska palabra...', :id => 'input_search' %>
       </div>
       <div class="large-2 small-2 columns">
         <%= submit_tag :add_word, :class => "button expand inline_forms_model_top_bar_buttons" %>
