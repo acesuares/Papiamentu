@@ -4,8 +4,13 @@
     <%= link_to(  image_tag(picture.image.palm.url, alt: @word.name, title: @word.name),
                   picture.image.url, "data-lightbox": "image-1", "data-title": picture.title_license_attribution, "data-alt": @word.name) %>
     <%= @word.name %>
+  <% end %>
+  <% unless @word.recordings.empty? %>
+    <% @word.recordings.each do |recording| %>
+      <%= audio_tag(recording.audio.url, autoplay: false, controls: true) %>
+      <br />
     <% end %>
-  <%= audio_tag(@word.recordings.first.audio.url, autoplay: false, controls: true) unless @word.recordings.empty? %>
+  <% end %>
 </div>
 <div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
   <div class='word_section section'>
