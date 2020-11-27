@@ -18,7 +18,7 @@ class MemoryGame < ApplicationRecord
       [ :user , "user", :info],
       [ :name , "name", :text_field ],
       [ :title , "name", :text_field ],
-      [ :description, "name", :text_area ],
+      [ :description, "name", :text_area_without_ckeditor ],
       [ :words, 'words_in_glossary', :info_list ],
     ]
   end

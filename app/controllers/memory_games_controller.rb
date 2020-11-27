@@ -25,6 +25,7 @@ class MemoryGamesController < InlineFormsController
       words_to_remove = remove_words.map{ |word| Word.find_by_name(word) }.compact.uniq
       @memory_game.words.delete words_to_remove
     end
+    @memory_game.words = @memory_game.words.uniq
   end
 
   def play_game
