@@ -15,7 +15,7 @@ class MemoryGamesController < InlineFormsController
     super
   end
 
-  def edit_game
+  def edit_memory_game
     @memory_game = referenced_object
     redirect_to '/' if @memory_game.nil?
     word_to_add = Word.find_by_name(params[:add_word])
@@ -28,14 +28,14 @@ class MemoryGamesController < InlineFormsController
     @memory_game.words = @memory_game.words.uniq
   end
 
-  def play_game
-    authorize!(:play_game, MemoryGame)
+  def play_memory_game
+    authorize!(:play_memory_game, MemoryGame)
     @memory_game = referenced_object
     render layout: false
   end
 
-  def play_random_game
-    authorize!(:play_random_game, MemoryGame)
+  def play_random_memory_game
+    authorize!(:play_random_memory_game, MemoryGame)
     render layout: false
   end
 

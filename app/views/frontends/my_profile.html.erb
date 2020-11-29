@@ -32,8 +32,7 @@
 <ul>
   <% current_user.memory_games.each do |memory_game| %>
     <li>
-      <%= link_to_memory_game_play memory_game %>
-      (<%= link_to_memory_game_edit memory_game %>)
+      <%= link_to_memory_game_with_edit memory_game %>
     </li>
   <% end %>
 </ul>

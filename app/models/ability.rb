@@ -13,8 +13,8 @@ class Ability
     can :show_source, Source
     can :show_goal, Goal
 
-    can :play_game,                   [MemoryGame, SlideGame]
-    can :play_random_game,            [MemoryGame, SlideGame]
+    can :play_memory_game,                   [MemoryGame, SlideGame]
+    can :play_random_memory_game,            [MemoryGame, SlideGame]
 
     if user.present?
       if user.role? :superadmin
