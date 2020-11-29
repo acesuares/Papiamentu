@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic' rel='stylesheet' type='text/css' />
+
+    <title><%= t('application_name') + "Memory Game v" + InlineForms::VERSION -%></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "memory/MemoryGame" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="frontend">
+      <% @logo_right = 'papiamentu-home.png' %>
+      <%= render "/shared/frontend_header" %>
+      <div class="row">
+        <%= render "shared/flash" %>
+
+        <div id="ExplainModal" class="reveal-modal small" data-reveal aria-labelledby="ExplainModalTitle" aria-hidden="false" role="dialog">
+          <h2 class="memory_game_title_and_ownder">Memory Game: <%= @memory_game.title %> (by <%= @memory_game.user.name %>)</h2>
+          <div class="memory_game_description">
+            <%= @memory_game.description %>
+          </div>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+        <div id="memory--game">
+          <section id="memory--end-game-modal" class="valign-table modal">
+            <div class="valign-cell">
+              <div class="wrapper">
+                <h2 id="memory--end-game-message"></h2>
+                <h3 id="memory--end-game-score"></h3>
+              </div>
+            </div>
+          </section>
+          <section id="memory--app-container">
+            <ul id="memory--cards">
+            </ul>
+          </section>
+          <section id="memory--menu-bar">
+            <div class="inner">
+              <div class="left">
+                <h1 id="memory--app-name">
+                  Klek e plachinan i buska sèt di dos plachi ku ta igual
+                </h1>
+              </div>
+              <div class="right">
+                <%= link_to image_tag("games/start-again-button.png", id: "restart"), '' %>
+                <%= link_to image_tag("games/back-button.png", id: "back"), '/' %>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+    <%= render "/shared/frontend_footer" %>
+    <%= javascript_include_tag 'application' %>
+
+    <script>
+      <% @memory_game.words.each_with_index do |word, index| %>
+        $("<%= ".back.card-#{index+1}" %>").css("background-image", 'url(<%= "#{word.pictures.first.image.palm.url}" %>)');
+        $("<%= ".back.matching.card-#{index+1}" %>").css("background-image", 'url(<%= "/uploads/word/tr_pap_cw/#{word.id}/#{url_encode(word.tr_pap_cw.squish.gsub(CHARACTER_REGEX,''))}.png" %>)');
+      <% end %>
+
+      $('#ExplainModal').foundation('reveal', 'open');
+    </script>
+
+  </body>
+</html>

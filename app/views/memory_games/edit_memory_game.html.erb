@@ -1,0 +1,71 @@
+<div class="columns small-12 medium-12 large-12 topper" id="left-side">
+  <h1>Wega di Memoria</h1>
+  <h2>
+    <%= link_to "Hunga e wega!", "/memory_games/#{@memory_game.id}/play_memory_game", target: "_blank"  %>
+  </h2>
+  <!-- Interne naam: <%= @memory_game.name %> -->
+  <div class="row">
+    <div class="columns small-2 large-2">
+      Autor:
+    </div>
+    <div class="columns small-10 large-10">
+      <%= @memory_game.user.name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns small-2 large-2">
+      Título:
+    </div>
+    <% css_class_id = "#{@memory_game.class.name.underscore}_#{@memory_game.id}_title" -%>
+    <div class="columns small-10 large-10" id="<%= css_class_id %>">
+      <%= send("text_field_show", @memory_game, :title) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns small-2 large-2">
+      Deskripshon:
+    </div>
+    <% css_class_id = "#{@memory_game.class.name.underscore}_#{@memory_game.id}_description" -%>
+    <div class="columns small-10 large-10" id="<%= css_class_id %>">
+      <%= send("text_area_without_ckeditor_show", @memory_game, :description) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns small-12 large-12">
+      Instrukshon: Voeg woorden toe of verwijder woorden.
+    </div>
+  </div>
+
+  <%= form_tag request.path, :method => 'post' do %>
+    <div class="row" id="memory_game_add_word">
+      <div class="large-5 small-5 columns">
+        <%= autocomplete_field_tag :add_word, '', send("autocomplete_word_name_memory_games_path"), :placeholder => 'buska palabra...', :id => 'input_search' %>
+      </div>
+      <div class="large-3 small-3 columns">
+        <%= submit_tag :add_word, value: "Ortoga Palabra", class: "button" %>
+      </div>
+      <div class="large-4 small-4 columns">
+        &nbsp;
+      </div>
+    </div>
+  <% end %>
+
+
+    <%= form_tag request.path, :method => 'post' do %>
+      <ul class="large-block-grid-3 medium-block-grid-2">
+        <% @memory_game.words.order(:name).each do |word| %>
+          <li class="memory_game_list_item">
+            <%= image_tag word.pictures.first.image.palm.url if word.has_pictures? %>
+            <br />
+            <%= check_box_tag 'remove_words[]', word.name %>
+            <%= link_to_word word %>
+          </li>
+        <% end %>
+      </ul>
+      <%= submit_tag :remove_word, value: 'Kai palabra afo', :class => "button" %>
+    <% end %>
+
+</div>
