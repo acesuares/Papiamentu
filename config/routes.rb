@@ -89,25 +89,22 @@ Rails.application.routes.draw do
   get 'palabra/:word', to: 'frontends#palabra'
   post 'palabra', to: 'frontends#search'
 
-  # get 'glosario/:glossary', to: 'frontends#glosario'
-
   get 'my_profile', to: 'frontends#my_profile'
 
   # post 'tra_palabra', to: 'frontends#tra_palabra'
   # post 'check_text', to: 'frontends#check_text'
 
-  post 'glossaries/:id/edit/', to: 'glossaries#edit'
 
   get 'glosario/:id', to: 'glossaries#show_glossary'
+  match 'glosario/:id/edit_glossary', to: 'glossaries#edit_glossary', via: [:get, :post]
   get 'fuente/:id', to: 'sources#show_source'
   get 'meta/:id', to: 'goals#show_goal'
 
-get '/flora', to: 'frontends#flora'
-get '/founa', to: 'frontends#founa'
+  get '/flora', to: 'frontends#flora'
+  get '/founa', to: 'frontends#founa'
 
-  get 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
+  match 'memory_games/:id/edit_game', to: 'memory_games#edit_game', via: [:get, :post]
   get 'memory_games/:id/play_game', to: 'memory_games#play_game'
-  post 'memory_games/:id/edit_game', to: 'memory_games#edit_game'
   get 'memory_game', to: 'memory_games#play_random_game'
 
   get 'slide_games/:id/edit_game', to: 'slide_games#edit_game'
