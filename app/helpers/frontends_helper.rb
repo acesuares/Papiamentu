@@ -24,10 +24,12 @@ module FrontendsHelper
   end
 
   def link_to_word_with_admin(word)
-    if current_user && (current_user.role?(:admin) || current_user.role?(:superadmin))
-      link_to word.name, "/words?search=#{word.name}" unless word.nil?
-    else
-      link_to word.name, "/palabra/#{word.name}" unless word.nil?
+    unless word.nil?
+      if current_user && (current_user.role?(:admin) || current_user.role?(:superadmin))
+        link_to(word.name, "/palabra/#{word.name}", target: "_blank") + " " + link_to("<i class='fi-page-edit'></i>".html_safe, "/words?search=#{word.name}", target: "_blank")
+      else
+        link_to word.name, "/palabra/#{word.name}", target: "_blank"
+      end
     end
   end
 
