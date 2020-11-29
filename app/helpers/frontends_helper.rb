@@ -33,8 +33,14 @@ module FrontendsHelper
     end
   end
 
-  def link_to_glossary(glossary)
-    link_to glossary.name, "/glosario/#{glossary.id}" unless glossary.nil?
+  def link_to_glossary_with_edit(glossary)
+    unless glossary.nil?
+      if current_user
+        link_to(glossary.name, "/glosario/#{glossary.id}", target: "_blank") + " " + link_to("<i class='fi-page-edit'></i>".html_safe, "/glosario/#{glossary.id}/edit_glossary", target: "_blank")
+      else
+        link_to glossary.name, "/glosario/#{glossary.id}", target: "_blank"
+      end
+    end
   end
 
   def link_to_source(source)

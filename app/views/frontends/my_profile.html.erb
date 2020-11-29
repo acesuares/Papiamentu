@@ -21,7 +21,7 @@
 <ul>
   <% current_user.glossaries.each do |glossary| %>
     <li>
-      <%= link_to_glossary glossary %>
+      <%= link_to_glossary_with_edit glossary %>
     </li>
   <% end %>
 </ul>
