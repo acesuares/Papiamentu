@@ -1,0 +1,29 @@
+<div class="columns small-12 medium-12 large-12 topper" id="left-side">
+  <h2>Dijkhoff</h2>
+  <div id="goal">
+  <% Word.joins(:goals).where("goals.name like '%Dijkhoff%'").order("words.name ASC").group_by{|u| u.name[0]}.each do |letter, items| %>
+    <h3><%= letter %></h3>
+    <table>
+      <% items.each do |item| %>
+        <tr>
+          <td>
+            <%= link_to_word_with_admin item %>
+          </td>
+          <td>
+            <%= item.wordtypes.map(&:name).to_sentence %>
+          </td>
+          <td>
+            <%= item.tr_nl %>&nbsp;
+          </td>
+          <td>
+            <%= item.description_pap_cw %>&nbsp;
+          </td>
+          <td>
+            <%= item.goals.where("goals.name like '%Dijkhoff%'").map{|g|g.name.gsub(" Dijkhoff","")}.uniq.to_sentence %>&nbsp;
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  </div>
+</div>

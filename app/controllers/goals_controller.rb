@@ -29,5 +29,13 @@ class GoalsController < InlineFormsController
     end
   end
 
+  def show_dijkhoff_goals
+    respond_to do |format|
+      format.html {
+        render layout: 'frontends'
+      }
+    end
+  end
+
 
 end

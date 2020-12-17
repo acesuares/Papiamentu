@@ -12,7 +12,8 @@ class Ability
     can :show_glossary, Glossary
     can :show_source, Source
     can :show_goal, Goal
-
+    can :show_dijkhoff_goals, Goal
+    
     can :play_memory_game,                   [MemoryGame, SlideGame]
     can :play_random_memory_game,            [MemoryGame, SlideGame]
 

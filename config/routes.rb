@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   get 'frontends/_palabra_mas_mira', to: 'frontends#_palabra_mas_mira'
   get 'frontends/rapport', to: 'frontends#rapport'
 
+
   get 'palabra/:word', to: 'frontends#palabra'
   post 'palabra', to: 'frontends#search'
 
@@ -99,6 +100,9 @@ Rails.application.routes.draw do
   match 'glosario/:id/edit_glossary', to: 'glossaries#edit_glossary', via: [:get, :post]
   get 'fuente/:id', to: 'sources#show_source'
   get 'meta/:id', to: 'goals#show_goal'
+
+  get 'dijkhoff_goals', to: 'goals#show_dijkhoff_goals'
+
 
   get '/flora', to: 'frontends#flora'
   get '/founa', to: 'frontends#founa'
