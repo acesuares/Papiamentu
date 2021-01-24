@@ -16,7 +16,7 @@ class User < ApplicationRecord
   devise :confirmable
   # devise :lockable
   # devise :timeoutable
-  devise :omniauthable
+  # devise :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :locale
@@ -145,15 +145,15 @@ class User < ApplicationRecord
 
 
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.skip_confirmation!
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.name
-      user.email = auth.info.email
-    end
-  end
+  # def self.from_omniauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.skip_confirmation!
+  #     user.provider = auth.provider
+  #     user.uid = auth.uid
+  #     user.name = auth.info.name
+  #     user.email = auth.info.email
+  #   end
+  # end
 
   def own_words_immediately?
     self.own_words == 2

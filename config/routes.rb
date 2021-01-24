@@ -62,8 +62,7 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :users, path_prefix: 'auth', controllers: {omniauth_callbacks: "omniauth_callbacks",
-                                                        registrations: 'registrations',
+  devise_for :users, path_prefix: 'auth', controllers: {registrations: 'registrations',
                                                         confirmations: 'confirmations' ,
                                                         passwords: 'passwords' }
 
