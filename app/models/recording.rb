@@ -10,7 +10,7 @@ class Recording < ApplicationRecord
   belongs_to :user
 
   def _presentation
-    name
+    "#{name} #{ActionController::Base.helpers.audio_tag(audio.url, autoplay: false, controls: true)}".html_safe
   end
 
 

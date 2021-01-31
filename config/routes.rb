@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :slide_games do
-    post 'revert', :on => :member
-    get 'list_versions', :on => :member
-  end
   mount Ckeditor::Engine => '/ckeditor'
   get 'spelling', to: 'spellings#index'
   get 'spelling/play', to: 'spellings#play'
@@ -12,28 +8,12 @@ Rails.application.routes.draw do
   get 'spelling/siguiente', to: 'spellings#siguiente'
 
 
-  resources :pictures do
-    get 'close_versions_list', :on => :member
-  end
-
   # API
   namespace :api do
     namespace :v1 do
       get 'palabra/:word', to: 'endpoints#palabra'
     end
   end
-
-  resources :variants do
-    post 'revert', :on => :member
-    get 'list_versions', :on => :member
-  end
-
-
-  resources :fshp_categories do
-    post 'revert', :on => :member
-    get 'list_versions', :on => :member
-  end
-
 
   mount Commontator::Engine => '/commontator'
 

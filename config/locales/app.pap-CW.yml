@@ -87,18 +87,23 @@ pap-CW:
       word:
         name: entrada
         synonym: sinonimo
+        deleted: eliminá
+        deleter: eliminá pa
         variants: Variante ortográfiko
         wordtypes: kategoria
+        created_at: kreá
         glossaries: E palabra aki ta den e siguiente glosarionan
         goals: aréa di edukashon
         sources: fuente
-        countable: telbaar
+        countable: kontabel
         specific: spesífiko
         school_language: idioma di skol
         description_nl: deskripshon (hul)
         description_pap_cw: deskripshon (pap)
-        tr_nl: tradukshon (hul)
-        tr_en: tradukshon (eng)
+        fshp_categories:  lista di palabra FSHP
+        tr_nl: tradukshon (hulandes)
+        tr_en: tradukshon (ingles)
+        tr_es: tradukshon (spañó)
         source: fuente
         user: usadó
         attested: standarisá
@@ -108,9 +113,11 @@ pap-CW:
         header_fuente: fuente
         header_splikashon: splikashon
         header_glosario: glosario
-        created_at: created
         buki_di_oro: Buki di Oro
-        buki_di_oro_text: Tekst volgens Buki di Oro
+        buki_di_oro_text: teksto di Buki di Oro
+        context: konteksto
+        varianten: variante
+        is_element: elemento kímiko
         pictures: potrèt
         recordings: zonido
         header_spel_spel_group: Grupo di palabra pa Spèl-spèl

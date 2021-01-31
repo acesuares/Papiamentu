@@ -10,7 +10,7 @@ class Picture < ApplicationRecord
   belongs_to :user
 
   def _presentation
-    name
+    "#{name} #{ActionController::Base.helpers.image_tag(image.thumb.url)}".html_safe # FIXME
   end
 
   def title_license_attribution
