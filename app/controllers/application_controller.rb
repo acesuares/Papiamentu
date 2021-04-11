@@ -2,7 +2,8 @@ class ApplicationController < InlineFormsApplicationController
   protect_from_forgery
   check_authorization :unless => :devise_controller?
   before_action :set_locale
-
+  before_action :set_paper_trail_whodunnit
+  
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden, content_type: 'text/html' }
