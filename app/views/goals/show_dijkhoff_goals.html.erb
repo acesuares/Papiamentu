@@ -30,13 +30,13 @@
                   goals_names = []
                 else
                   goals_names = item_goals.map do |goal_name|
-                    if goal_name.include?("Dijkhoff")
+                    if (goal_name.include?("Dijkhoff") rescue false)
                       goal_name.gsub(" Dijkhoff","")
                     end
                   end
                 end
             %>
-            <%= goals_names.sort.uniq.to_sentence %>               &nbsp;
+            <%= goals_names.sort.uniq.to_sentence rescue '' %>               &nbsp;
           </td>
         </tr>
       <% end %>
