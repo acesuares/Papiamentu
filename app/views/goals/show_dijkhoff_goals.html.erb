@@ -26,6 +26,9 @@
           </td>
           <td>
             <%  item_goals = item.goals.map(&:name)
+                if item_goals.empty?
+                  goals_names = [];
+                else
                 goals_names = item_goals.map do |goal_name|
                   if goal_name.include?("Dijkhoff")
                     goal_name.gsub(" Dijkhoff","")
