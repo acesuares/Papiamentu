@@ -25,6 +25,7 @@
             <%= item.description_pap_cw %>&nbsp;
           </td>
           <td>
+            <%= item.goals.where("goals.name like '%Dijkhoff%'").map{|g|g.name.gsub(" Dijkhoff","")}.uniq.to_sentence %>&nbsp;
           </td>
         </tr>
       <% end %>
