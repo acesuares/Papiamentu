@@ -27,7 +27,7 @@
           <td>
             <%  item_goals = item.goals.map(&:name)
                 goals_names = item_goals.map do |goal_name|
-                  if goal_name.include("Dijkhoff")
+                  if goal_name.include?("Dijkhoff")
                     goal_name.gsub(" Dijkhoff","")
                   end
                 end
