@@ -98,13 +98,14 @@ class Word < ApplicationRecord
   end
 
   def get_yandex_translations(force=false)
-    if yandex_translation_cache.empty?
-      translator = Yandex::Translator.new(ENV["YANDEX_TRANSLATE_KEY"])
-      YANDEX_LANGUAGES.each do |language|
-        yandex_translation_cache[language] = translator.translate(self.name, from: 'pap', to: language)
-      end
-      save unless yandex_translation_cache.empty?
-    end
+    ## get new yandex key!!! 2021-06-10
+    # if yandex_translation_cache.empty?
+    #   translator = Yandex::Translator.new(ENV["YANDEX_TRANSLATE_KEY"])
+    #   YANDEX_LANGUAGES.each do |language|
+    #     yandex_translation_cache[language] = translator.translate(self.name, from: 'pap', to: language)
+    #   end
+    #   save unless yandex_translation_cache.empty?
+    # end
   end
 
   def is_money?
