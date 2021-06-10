@@ -12,7 +12,7 @@ stderr_path "#{app_path}/log/unicorn.err.log"
 stdout_path "#{app_path}/log/unicorn.out.log"
 
 worker_processes 3
-timeout 30
+timeout 300
 preload_app true
 
 listen "#{app_path}/tmp/sockets/unicorn.sock", backlog: 64
