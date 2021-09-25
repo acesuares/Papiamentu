@@ -85,6 +85,7 @@ Rails.application.routes.draw do
 
   get '/flora', to: 'frontends#flora'
   get '/founa', to: 'frontends#founa'
+  get '/músika', to: 'frontends#músika'
 
   get 'memory_games/:id/play_memory_game', to: 'memory_games#play_memory_game'
   match 'memory_games/:id/edit_memory_game', to: 'memory_games#edit_memory_game', via: [:get, :post]
