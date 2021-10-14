@@ -38,7 +38,7 @@ gem 'sass-rails'
 gem 'coffee-rails'
 #gem 'compass-rails'
 gem 'figaro'
-gem 'therubyracer'
+gem 'mini_racer', platforms: :ruby
 gem 'uglifier'
 gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers', branch: '0-9-stable'
 gem 'pdfkit'

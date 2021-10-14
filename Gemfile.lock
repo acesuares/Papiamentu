@@ -254,7 +254,7 @@ GEM
     kgio (2.11.4)
     launchy (2.5.0)
       addressable (~> 2.7)
-    libv8 (3.16.14.19)
+    libv8-node (15.14.0.1)
     lightbox2-rails (2.8.2.1)
       railties (>= 3.1)
     listen (3.7.0)
@@ -273,6 +273,8 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
+    mini_racer (0.4.0)
+      libv8-node (~> 15.14.0.0)
     minitest (5.14.4)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -350,7 +352,6 @@ GEM
     rchardet (1.8.0)
     rdoc (6.3.2)
     redis (4.5.0)
-    ref (2.0.0)
     regexp_parser (2.1.1)
     remotipart (1.4.4)
     request_store (1.5.0)
@@ -429,9 +430,6 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     test-unit (3.4.8)
       power_assert
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (1.1.0)
     thread_safe (0.3.6)
     thumbs_up (0.6.10)
@@ -498,6 +496,7 @@ DEPENDENCIES
   lightbox2-rails
   listen
   mini_magick
+  mini_racer
   mysql2
   paper_trail
   pdfkit
@@ -520,7 +519,6 @@ DEPENDENCIES
   switch_user
   tabs_on_rails
   test-unit
-  therubyracer
   thumbs_up
   uglifier
   unicorn
