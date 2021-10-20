@@ -1,0 +1,10 @@
+    <li>
+      <div class='yes_no'>
+        spesífiko
+          <% if @word.specific? %>
+            <%= image_tag 'yes.png' %>
+          <% else %>
+            <%= image_tag 'no.png'  %>
+          <% end %>
+      </div>
+    </li>

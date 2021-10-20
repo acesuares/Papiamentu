@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_202253) do
+ActiveRecord::Schema.define(version: 2021_10_20_150907) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -129,6 +129,15 @@ ActiveRecord::Schema.define(version: 2021_09_21_202253) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "licenses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.text "comment"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "memories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -161,6 +170,8 @@ ActiveRecord::Schema.define(version: 2021_09_21_202253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 1
+    t.string "artist"
+    t.integer "license_id", default: 1
     t.index ["word_id"], name: "index_pictures_on_word_id"
   end
 

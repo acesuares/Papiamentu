@@ -1,7 +1,13 @@
 <ul>
   <% MemoryGame.all.each do |memory_game| %>
     <li>
-      <%= link_to 'Wega di memória', '/memory_game' %>
+      <%= link_to 'Wega di memória (founa)', '/memory_game_founa' %>
+    </li>
+    <li>
+      <%= link_to 'Wega di memória (flora)', '/memory_game_flora' %>
+    </li>
+    <li>
+      <%= link_to 'Wega di memória (músika)', '/memory_game_musika' %>
     </li>
   <% end %>
 </ul>

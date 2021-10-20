@@ -1,0 +1,7 @@
+rails g inline_forms License \
+    name:string \
+    title:string \
+    comment:text \
+    url:string \
+    _enabled:yes \
+    _presentation:'#{name}'

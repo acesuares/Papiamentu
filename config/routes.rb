@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :licenses do
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+  end
   mount Ckeditor::Engine => '/ckeditor'
   get 'spelling', to: 'spellings#index'
   get 'spelling/play', to: 'spellings#play'
@@ -91,6 +95,9 @@ Rails.application.routes.draw do
   get 'memory_games/:id/play_memory_game', to: 'memory_games#play_memory_game'
   match 'memory_games/:id/edit_memory_game', to: 'memory_games#edit_memory_game', via: [:get, :post]
   get 'memory_game', to: 'memory_games#play_random_memory_game'
+  get 'memory_game_flora', to: 'memory_games#play_random_memory_game_flora'
+  get 'memory_game_founa', to: 'memory_games#play_random_memory_game_founa'
+  get 'memory_game_musika', to: 'memory_games#play_random_memory_game_musika'
 
   get 'slide_games/:id/edit_game', to: 'slide_games#edit_game'
   get 'slide_games/:id/play_game', to: 'slide_games#play_game'

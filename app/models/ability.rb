@@ -13,9 +13,12 @@ class Ability
     can :show_source, Source
     can :show_goal, Goal
     can :show_dijkhoff_goals, Goal
-    
+
     can :play_memory_game,                   [MemoryGame, SlideGame]
     can :play_random_memory_game,            [MemoryGame, SlideGame]
+    can :play_random_memory_game_flora,      [MemoryGame, SlideGame]
+    can :play_random_memory_game_founa,      [MemoryGame, SlideGame]
+    can :play_random_memory_game_musika,     [MemoryGame, SlideGame]
 
     if user.present?
       if user.role? :superadmin

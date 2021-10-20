@@ -34,8 +34,27 @@ class MemoryGamesController < InlineFormsController
     render layout: false
   end
 
+  def play_random_memory_game_flora
+    authorize!(:play_random_memory_game_flora, MemoryGame)
+    @memory_game_words = Word.is_flora.has_pictures.order('rand()').limit(6)
+    render "play_random_memory_game", layout: false
+  end
+
+  def play_random_memory_game_founa
+    authorize!(:play_random_memory_game_founa, MemoryGame)
+    @memory_game_words = Word.is_fauna.has_pictures.order('rand()').limit(6)
+    render "play_random_memory_game", layout: false
+  end
+
+  def play_random_memory_game_musika
+    authorize!(:play_random_memory_game_musika, MemoryGame)
+    @memory_game_words = Word.is_music.has_pictures.order('rand()').limit(6)
+    render "play_random_memory_game", layout: false
+  end
+
   def play_random_memory_game
     authorize!(:play_random_memory_game, MemoryGame)
+    @memory_game_words ||= Word.random_with_pictures(6)
     render layout: false
   end
 

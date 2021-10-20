@@ -8,13 +8,14 @@ class Picture < ApplicationRecord
 
   belongs_to :word
   belongs_to :user
+  belongs_to :license
 
   def _presentation
     "#{name} #{ActionController::Base.helpers.image_tag(image.thumb.url)}".html_safe # FIXME
   end
 
   def title_license_attribution
-    "#{word.name} ⓒ #{user.name}, #{LICENSE}"
+    "#{word.name} ⓒ #{artist || user.name}, #{license.title}"
   end
 
   def inline_forms_attribute_list
@@ -23,6 +24,8 @@ class Picture < ApplicationRecord
       [ :caption , "caption", :text_field ],
       [ :image , "image", :image_field ],
       [ :description , "description", :text_area ],
+      [ :artist , "caption", :text_field ],
+      [ :license , "caption", :dropdown ],
     ]
   end
 

@@ -108,20 +108,6 @@
     <%= content_tag(:li, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
     <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: <br />#{@word.glossaries.uniq.map { |g| link_to_glossary_with_edit g }.join(' | ') }".html_safe ) unless @word.glossaries.empty? %>
   </ul>
-  <div class="yandex_section section">
-    <strong>Tradukshon di Yandex. Kisas no ta presis.</strong>
-    <ul>
-      <% @word.get_yandex_translations unless Rails.env.development? %>
-      <% YANDEX_LANGUAGES.each do |language| %>
-        <li>
-          <%= "#{language}: #{@word.yandex_translation_cache[language]}" %>
-        </li>
-      <% end %>
-    </ul>
-    <div class="source">
-      <%= link_to 'Powered by Yandex.Translate', 'https://translate.yandex.com', target: "_blank" %>
-    </div>
-  </div>
 
 </div>
 
@@ -162,12 +148,6 @@
       <%= link_to "#{@word.name}", "http://dcdp.uoc.cw/results/?text=#{@word.name}", target: :_blank %>
     </li>
   </ul>
-  <h3>Tradukshon Majstro</h3>
-  <ul>
-    <li>
-      <%= link_to 'tradukshon Majstro', "https://www.majstro.com/Web/Majstro/bdict.php?gebrTaal=dut&bronTaal=pap&doelTaal=dut&teVertalen=#{@word.name}", target: :_blank %>
-    </li>
-  </ul>
   <h3>anterior/siguiente/buska</h3>
     <ul>
       <li>
@@ -197,16 +177,6 @@
       <div class='yes_no'>
         kontabel
           <% if @word.countable? %>
-            <%= image_tag 'yes.png' %>
-          <% else %>
-            <%= image_tag 'no.png'  %>
-          <% end %>
-      </div>
-    </li>
-    <li>
-      <div class='yes_no'>
-        spesífiko
-          <% if @word.specific? %>
             <%= image_tag 'yes.png' %>
           <% else %>
             <%= image_tag 'no.png'  %>

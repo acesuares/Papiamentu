@@ -1,0 +1,14 @@
+  <div class="yandex_section section">
+    <strong>Tradukshon di Yandex. Kisas no ta presis.</strong>
+    <ul>
+      <% @word.get_yandex_translations unless Rails.env.development? %>
+      <% YANDEX_LANGUAGES.each do |language| %>
+        <li>
+          <%= "#{language}: #{@word.yandex_translation_cache[language]}" %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="source">
+      <%= link_to 'Powered by Yandex.Translate', 'https://translate.yandex.com', target: "_blank" %>
+    </div>
+  </div>
