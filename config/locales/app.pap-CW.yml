@@ -104,6 +104,8 @@ pap-CW:
         tr_nl: tradukshon (hulandes)
         tr_en: tradukshon (ingles)
         tr_es: tradukshon (spañó)
+        tr_pap_cw: lema (pap_CW)
+        tr_pap_aw: lema (pap_AW)
         source: fuente
         user: usadó
         attested: standarisá

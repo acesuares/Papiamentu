@@ -3,7 +3,7 @@ class ApplicationController < InlineFormsApplicationController
   check_authorization :unless => :devise_controller?
   before_action :set_locale
   before_action :set_paper_trail_whodunnit
-  
+
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden, content_type: 'text/html' }
@@ -11,6 +11,14 @@ class ApplicationController < InlineFormsApplicationController
       format.js   { head :forbidden, content_type: 'text/html' }
     end
   end
+
+  @port = 14
+  # if Rails.env.development?
+  #   Rails.request.port
+  # else
+  #   3
+  # end
+
 
   I18n.available_locales = AVAILABLE_LOCALES
   I18n.default_locale = DEFAULT_LOCALE

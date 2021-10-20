@@ -1,9 +1,9 @@
 <div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
   <% if @word.pictures.first %>
     <% picture = @word.pictures.first %>
-    <%= link_to(  image_tag(picture.image.palm.url, alt: @word.name, title: @word.name),
-                  picture.image.url, "data-lightbox": "image-1", "data-title": picture.title_license_attribution, "data-alt": @word.name) %>
-    <%= @word.name %>
+    <%= link_to(  image_tag(picture.image.palm.url, alt: @main_lemma_switched, title: @main_lemma_switched),
+                  picture.image.url, "data-lightbox": "image-1", "data-title": picture.title_license_attribution, "data-alt": @main_lemma_switched) %>
+    <%= @main_lemma_switched %>
   <% end %>
   <% unless @word.recordings.empty? %>
     <% @word.recordings.each do |recording| %>
@@ -14,14 +14,14 @@
 </div>
 <div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
   <div class='word_section section'>
-      <%= @word.name %>
+      <%= @main_lemma_switched %>
       <% if @word.approved? %>
         <%= image_tag 'yes.png', size: '32x32' %>
       <% else %>
         <%= image_tag 'no.png',  size: '32x32'  %>
       <% end %>
   </div>
-  <% wiki = Wikipedia.find(@word.name) %>
+  <% wiki = Wikipedia.find(@main_lemma_switched) %>
   <% if wiki.main_image_url || wiki.summary %>
     <div class="wikipedia_section section">
       <strong>Informashon di Wikipedia.</strong>
@@ -45,7 +45,7 @@
       <strong>E palabra ta indiká moneda (sèn).</strong>
       <ul>
         <li>
-        "<%= @word.name %>" tin un balor di: <%= @word.monetary_value_nice %>
+        "<%= @main_lemma_switched %>" tin un balor di: <%= @word.monetary_value_nice %>
         </li>
       </ul>
       <div class="source">
@@ -145,7 +145,7 @@
   <ul>
     <li>
       Pa mira e palabra aki usá den konteksto den e biblioteka digital (por ehèmpel den buki i artíkulo), klek riba e siguiente konekshon:
-      <%= link_to "#{@word.name}", "http://dcdp.uoc.cw/results/?text=#{@word.name}", target: :_blank %>
+      <%= link_to "#{@main_lemma_switched}", "http://dcdp.uoc.cw/results/?text=#{@main_lemma_switched}", target: :_blank %>
     </li>
   </ul>
   <h3>anterior/siguiente/buska</h3>

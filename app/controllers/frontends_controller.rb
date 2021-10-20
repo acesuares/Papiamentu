@@ -28,6 +28,11 @@ class FrontendsController < ApplicationController
       # WordMailer.own_word_liked_or_visited_email(self.id, 'ace@suares.com').deliver
       # OwnWordLikedOrVisitedWorker.perform_async(@word.id, 2)
       # commontator_thread_show(@word)
+      if Rails.env.development?
+        @main_lemma_switched = @word.main_lemma_switched(request.port)
+      else
+        @main_lemma_switched = @word.main_lemma_switched(request.domain)
+      end
       respond_to do |format|
         format.html {
         }

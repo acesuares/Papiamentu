@@ -4,7 +4,12 @@ class Word < ApplicationRecord
   enum deleted: { active: 1, deleted: 2 }
 
   store :yandex_translation_cache, accessors: [ YANDEX_LANGUAGES ], coder: JSON, prefix: :yandex
-  before_create :add_variant
+  before_create do
+    self.tr_pap_cw = name if tr_pap_cw.blank?
+    self.tr_pap_aw = name if tr_pap_aw.blank?
+  end
+
+
   acts_as_voteable
   acts_as_commontable
   attr_reader :per_page
@@ -44,10 +49,26 @@ class Word < ApplicationRecord
   enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
 
+  def main_lemma_switched(domain)
+    if Rails.env.development?
+      if domain == 3001
+        tr_pap_aw
+      else
+        tr_pap_cw
+      end
+    else
+      if domain == 'bancodipalabra.com'
+        tr_pap_aw
+      else
+        tr_pap_cw
+      end
+    end
+  end
+
   def _presentation
-    created_ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} ago)" rescue ""
+    created_ago = " (#{ActionController::Base.helpers.time_ago_in_words(created_at)} pasá)" rescue ""
     # wordtype = " (#{wordtypes.map(&:name).to_sentence})" rescue ''
-    deleted_ago = " (#{ActionController::Base.helpers.time_ago_in_words(deleted_at)} ago)" rescue ""
+    deleted_ago = " (#{ActionController::Base.helpers.time_ago_in_words(deleted_at)} pasá)" rescue ""
     deleted_nice = deleted? ? "deleted by #{deleter.name} #{deleted_ago}" : ""
     "#{name} #{created_ago} #{deleted_nice}"
   end
@@ -79,15 +100,16 @@ class Word < ApplicationRecord
       [ :varianten, "description_nl", :text_field ],
       [ :description_nl , "description_nl", :text_area_without_ckeditor ],
       [ :description_pap_cw , "description_pap_cw", :text_area_without_ckeditor ],
+      [ :comment , "description_nl", :text_area_without_ckeditor ],
       [ :tr_nl , "tr_nl", :text_field ],
       # [ :tr_nl_variant , "tr_nl", :text_field ],
       [ :tr_en , "tr_en", :text_field ],
       [ :tr_es , "tr_es", :text_field ],
-      # [ :tr_pap_cw , "tr_pap_cw", :text_field ],
-      # [ :tr_pap_aw , "tr_pap_aw", :text_field ],
-      # [ :symbool , "tr_nl", :text_field ],
-      # [ :atoomnummer , "tr_nl", :text_field ],
-      [ :is_element , "tr_nl", :text_field ],
+      [ :tr_pap_cw , "tr_pap_cw", :text_field ],
+      [ :tr_pap_aw , "tr_pap_aw", :text_field ],
+      [ :symbool , "tr_nl", :info ],
+      [ :atoomnummer , "tr_nl", :info ],
+      [ :is_element , "tr_nl", :info ],
       [ :buki_di_oro_text, '', :info ],
       [ :pictures , "pictures", :associated ],
       [ :recordings , "recordings", :associated ],
@@ -269,9 +291,7 @@ class Word < ApplicationRecord
 
 
   protected
-    def add_variant
-      variants << Variant.create(lemma: name, orthographic_type: 'cw')
-    end
+    # variants << Variant.create(lemma: name, orthographic_type: 'cw')
 
   private
 
