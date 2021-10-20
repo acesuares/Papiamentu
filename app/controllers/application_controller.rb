@@ -12,14 +12,6 @@ class ApplicationController < InlineFormsApplicationController
     end
   end
 
-  @port = 14
-  # if Rails.env.development?
-  #   Rails.request.port
-  # else
-  #   3
-  # end
-
-
   I18n.available_locales = AVAILABLE_LOCALES
   I18n.default_locale = DEFAULT_LOCALE
 

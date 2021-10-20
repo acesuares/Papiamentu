@@ -54,8 +54,8 @@ class MemoryGamesController < InlineFormsController
 
   def play_random_memory_game
     authorize!(:play_random_memory_game, MemoryGame)
-    @memory_game_words ||= Word.random_with_pictures(6)
-    render layout: false
+    @memory_game_words ||= Word.is_fauna.has_pictures.order('rand()').limit(6)
+    render "play_random_memory_game_picture2pap_cw", layout: false
   end
 
 end
