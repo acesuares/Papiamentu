@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'palabra/:word', to: 'endpoints#palabra'
+      get 'list_words_with_this_length/:length', to: 'list_words_with_this_length#list'
     end
   end
 

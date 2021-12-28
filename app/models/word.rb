@@ -120,6 +120,14 @@ class Word < ApplicationRecord
     ]
   end
 
+  def self.list_words_with_this_length(length)
+    if length == 1
+      []
+    else
+      buki_di_oro.where("LENGTH(name)=%s", length)
+    end
+  end
+
   def get_yandex_translations(force=false)
     ## get new yandex key!!! 2021-06-10
     # if yandex_translation_cache.empty?
