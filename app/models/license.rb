@@ -5,7 +5,7 @@ class License < ApplicationRecord
   has_paper_trail
 
   has_many :pictures
-  
+
   def _presentation
     "#{name}"
   end
@@ -26,7 +26,7 @@ class License < ApplicationRecord
   end
 
   def self.order_by_clause
-    "name"
+    nil
   end
 
 

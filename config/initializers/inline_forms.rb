@@ -1,4 +1,4 @@
-MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games slide_games recordings pictures)
+MODEL_TABS = %w(words sources wordtypes goals users roles glossaries spelling_groups memory_games slide_games recordings pictures licenses)
 HIDDEN_MODELS = %w()
 
 MARTA_WOORDTYPES = {
