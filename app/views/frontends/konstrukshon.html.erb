@@ -1,0 +1,18 @@
+<div class="columns small-12 medium-12 large-12 topper" id="left-side">
+<div class="row">
+  <div class="columns">
+    <h2>Konstrukshon</h2>
+    <ul class="large-block-grid-3 medium-block-grid-2">
+      <% Word.has_pictures.is_construction.each do |word| %>
+        <% picture = word.pictures.first %>
+        <li>
+          <%= link_to(  image_tag(picture.image.palm.url, alt: word.name, title: word.name),
+                        picture.image.medium.url, "data-lightbox": "image-1", "data-title": picture.title_license_attribution, "data-alt": word.name) %>
+          <br />
+          <%= link_to_word word %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>

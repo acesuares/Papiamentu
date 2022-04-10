@@ -15,7 +15,7 @@ class Picture < ApplicationRecord
   end
 
   def title_license_attribution
-    "#{word.name} ⓒ #{artist || user.name}, #{license.title}, #{ActionController::Base.helpers.link_to('Orígen: Wikdata', wikidata_url, target: '_blank', rel: 'nofollow') if wikidata_url}"
+    "#{word.name} ⓒ #{artist || user.name}, #{license.title}#{ActionController::Base.helpers.link_to(', Orígen: Wikdata', wikidata_url, target: '_blank', rel: 'nofollow') if wikidata_url}"
   end
 
   def inline_forms_attribute_list

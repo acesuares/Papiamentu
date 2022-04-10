@@ -45,6 +45,7 @@ class Word < ApplicationRecord
   scope :is_flora, -> { where(is_flora: 2) }
   scope :is_fauna, -> { where(is_fauna: 2) }
   scope :is_music, -> { where(is_music: 2) }
+  scope :is_construction, -> { where(is_construction: 2) }
 
   enum buki_di_oro: { not_approved: 0, approved: 1 }
   enum attested: { not_standarized: 0, standarized: 1 }
@@ -141,6 +142,14 @@ class Word < ApplicationRecord
 
   def is_money?
     is_money == 2
+  end
+
+  def is_music?
+    is_music == 2
+  end
+
+  def is_construction?
+    is_construction == 2
   end
 
   def is_fauna?
