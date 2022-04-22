@@ -507,6 +507,7 @@ DEPENDENCIES
   jquery-timepicker-rails
   jquery-ui-sass-rails
   launchy
+  libv8-node
   lightbox2-rails
   listen
   mini_magick
