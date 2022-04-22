@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_10_120500) do
+ActiveRecord::Schema.define(version: 2022_04_22_173025) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -369,6 +369,9 @@ ActiveRecord::Schema.define(version: 2022_04_10_120500) do
     t.integer "is_music", default: 1
     t.text "comment"
     t.integer "is_construction", default: 1
+    t.text "description_pap_aw"
+    t.text "description_en"
+    t.text "description_es"
     t.index ["views"], name: "index_words_on_views"
   end
 

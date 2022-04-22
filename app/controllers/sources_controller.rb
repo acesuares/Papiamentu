@@ -10,6 +10,10 @@ class SourcesController < InlineFormsController
       format.html {
         render layout: 'frontends'
       }
+      format.csv {
+        send_data @source.to_csv, filename: "#{@source.name}.csv"
+      }
+
       # format.pdf {
       #   html = render_to_string(layout: 'glosario')
       #   filename = "#{Time.now.to_s(:db)[0..9]}_#{@source.name}.pdf"
