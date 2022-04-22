@@ -57,6 +57,15 @@ namespace :rvm1 do # https://github.com/rvm/rvm1-capistrano3/issues/45
   task :install_bundler do
     on release_roles :all do
       execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . gem install bundler"
+      execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . bundle config --local deployment true"
+      execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . bundle config --local path /var/www/ror/Papiamentu/shared/bundle"
+      execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . bundle config --local without development:test"
+      execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . bundle install"
+      execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . bundle check"
+      # execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . gem uninstall -I --all mini_racer libv8-node"
+      # execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . gem install libv8-node --platform x86_64-linux"
+      # execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . gem install mini_racer  --platform x86_64-linux"
+      # execute "cd #{release_path} && #{fetch(:rvm1_auto_script_path)}/rvm-auto.sh . bundle install"
     end
   end
 end
