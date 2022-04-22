@@ -39,9 +39,9 @@ gem 'coffee-rails'
 #gem 'compass-rails'
 gem 'figaro'
 # gem 'libv8-node'
-# gem 'mini_racer', platforms: :ruby
+#gem 'mini_racer', platforms: :ruby
 gem 'therubyracer'
-gem 'execjs'
+#gem 'execjs'
 gem 'uglifier'
 gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers', branch: '0-9-stable'
 gem 'pdfkit'

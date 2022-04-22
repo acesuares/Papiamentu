@@ -499,7 +499,6 @@ DEPENDENCIES
   commontator!
   devise
   devise-i18n!
-  execjs
   figaro
   foundation-icons-sass-rails
   foundation-rails (~> 5.5)
