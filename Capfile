@@ -40,5 +40,8 @@ require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 require "capistrano3/unicorn"
 
+# sitemap_generator
+require 'capistrano/sitemap_generator'
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }

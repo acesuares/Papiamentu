@@ -69,6 +69,8 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano3-unicorn'
+  gem 'sitemap_generator'
+  
 end
 
 group :development, :test do
