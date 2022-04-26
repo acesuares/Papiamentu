@@ -48,6 +48,7 @@ gem 'yandex-translator'
 gem 'jquery-timepicker-rails'
 gem 'rails-jquery-autocomplete'
 gem 'lightbox2-rails'
+gem 'sitemap_generator'
 
 
 # Include everything needed to run rake, tests, features, etc.
@@ -69,8 +70,6 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano3-unicorn'
-  gem 'sitemap_generator'
-  
 end
 
 group :development, :test do
