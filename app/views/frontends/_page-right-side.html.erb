@@ -1,0 +1,41 @@
+    <% word = @words.last %>
+    <h3>Dutch Caribbean Platform (DCDP)</h3>
+    <ul>
+      <li>
+        Pa mira e palabra aki usá den konteksto den e biblioteka digital (por ehèmpel den buki i artíkulo), klek riba e siguiente konekshon:
+        <%= link_to "#{@main_lemma_switched}", "http://dcdp.uoc.cw/results/?text=#{@main_lemma_switched}", target: :_blank %>
+      </li>
+    </ul>
+    <h3>anterior i siguiente</h3>
+      <ul>
+        <li>
+          anterior: <%= link_to_word(word.previous_words.first) %>
+        </li>
+        <li>
+          siguiente: <%= link_to_word(word.next_words.first) %>
+        </li>
+      <ul>
+    <h3>buska</h3>
+      <ul>
+        <li>
+          <%= render "search_form" %>
+        </li>
+      </ul>
+
+    <h3>palabra mas resien</h3>
+    <ul>
+      <% Word.recently_updated.each do |word| %>
+        <li>
+          <%= link_to word.word_max_length(20), "/palabra/#{word.name}", :title => word.name  %>
+        </li>
+      <% end %>
+    </ul>
+
+    <h3>palabra mas mirá</h3>
+    <ul>
+      <% Word.most_viewed.each do |word| %>
+        <li>
+          <%= link_to word.word_max_length(20), "/palabra/#{word.name}", :title => word.name  %>
+        </li>
+      <% end %>
+    </ul>

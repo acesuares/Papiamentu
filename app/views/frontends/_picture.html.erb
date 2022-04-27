@@ -1,0 +1,4 @@
+<% picture = @word.pictures.first %>
+<%= link_to(  image_tag(picture.image.palm.url, alt: @main_lemma_switched, title: @main_lemma_switched),
+              picture.image.url, "data-lightbox": "image-1", "data-title": picture.title_license_attribution, "data-alt": @main_lemma_switched, class: "left-side-picture") %>
+<%= @main_lemma_switched %>

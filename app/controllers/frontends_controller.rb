@@ -19,20 +19,14 @@ class FrontendsController < ApplicationController
     if params[:word].blank?
       redirect_to '/'
     else
-      @search_word = params[:word].squish.gsub(CHARACTER_REGEX,'')
-      @word = Word.find_by_name(@search_word)
-      if @word.nil?
+      @search_word = params[:word] #.squish.gsub(CHARACTER_REGEX,'')
+      @words = Word.where('name = ?', @search_word)
+      if @words.empty?
         render 'palabra_not_found' and return
       end
-      @word.increment_views
       # WordMailer.own_word_liked_or_visited_email(self.id, 'ace@suares.com').deliver
       # OwnWordLikedOrVisitedWorker.perform_async(@word.id, 2)
       # commontator_thread_show(@word)
-      if Rails.env.development?
-        @main_lemma_switched = @word.main_lemma_switched(request.port)
-      else
-        @main_lemma_switched = @word.main_lemma_switched(request.domain)
-      end
       respond_to do |format|
         format.html {
         }

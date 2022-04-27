@@ -1,0 +1,4 @@
+<% @word.recordings.each do |recording| %>
+  <%= audio_tag(recording.audio.url, autoplay: false, controls: true, class: "audio-control") %>
+  <br />
+<% end %>

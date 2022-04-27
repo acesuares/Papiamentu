@@ -1,205 +1,170 @@
-<div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
-  <% if @word.pictures.first %>
-    <% picture = @word.pictures.first %>
-    <%= link_to(  image_tag(picture.image.palm.url, alt: @main_lemma_switched, title: @main_lemma_switched),
-                  picture.image.url, "data-lightbox": "image-1", "data-title": picture.title_license_attribution, "data-alt": @main_lemma_switched) %>
-    <%= @main_lemma_switched %>
-  <% end %>
-  <% unless @word.recordings.empty? %>
-    <% @word.recordings.each do |recording| %>
-      <%= audio_tag(recording.audio.url, autoplay: false, controls: true) %>
-      <br />
+  <div id="page-left-side" class="columns small-12 medium-9 large-9">
+    <% @words.each do |word| %>
+      <% @word = word %>
+      <div class="row">
+        <div id="left-side" class="columns small-12 medium-4 large-4">
+          <%  @word.increment_views %>
+          <%  if Rails.env.development?
+                @main_lemma_switched = @word.main_lemma_switched(request.port)
+              else
+                @main_lemma_switched = @word.main_lemma_switched(request.domain)
+              end
+          %>
+          <% if @word.pictures.first %>
+            <%= render 'picture' %>
+          <% end %>
+          <% unless @word.recordings.empty? %>
+            <%= render 'pronounciation' %>
+          <% end %>
+        </div>
+        <div id="middle" class="columns small-12 medium-8 large-8">
+          <div class='word_section section'>
+              <%= @main_lemma_switched %> <span class='wordtype'>(<%= word.wordtypes.map(&:name).to_sentence %>)</span>
+              <% if word.approved? %>
+                <%= image_tag 'yes.png', size: '32x32' %>
+              <% else %>
+                <%= image_tag 'no.png',  size: '32x32'  %>
+              <% end %>
+          </div>
+          <ul>
+            <li>
+              <div class='yes_no'>
+                buki di oro
+                  <% if word.approved? %>
+                    <%= image_tag 'yes.png' %>
+                  <% else %>
+                    <%= image_tag 'no.png'  %>
+                  <% end %>
+              </div>
+            </li>
+            <li>
+              <div class='yes_no'>
+                standarisá
+                  <% if word.standarized? %>
+                    <%= image_tag 'yes.png' %>
+                    <%= time_ago_in_words(word.attested_on) %> ago
+                  <% else %>
+                    <%= image_tag 'no.png' %>
+                  <% end %>
+              </div>
+            </li>
+            <li>
+              tipo di palabra: <%= word.wordtypes.map(&:name).to_sentence %>
+            </li>
+            <li>
+              <div class='yes_no'>
+                kontabel
+                  <% if word.countable? %>
+                    <%= image_tag 'yes.png' %>
+                  <% else %>
+                    <%= image_tag 'no.png'  %>
+                  <% end %>
+              </div>
+            </li>
+            <li>
+              <div class='yes_no'>
+                mirá: <%= word.views %> bia
+              </div>
+            </li>
+          </ul>
+          <% unless true # word.approved? %>
+            <h3>Vota</h3>
+            agregá pa: <%= word.user.name %> (<%= time_ago_in_words(word.created_at) %> pasá)<br />
+            pro: <%= word.votes_for %><br />
+            kontra: <%= word.votes_against %>
+          <% end %>
+          <% wiki = Wikipedia.find(@main_lemma_switched) %>
+          <% if wiki.main_image_url || wiki.summary %>
+            <div class="wikipedia_section section">
+              <h3>Informashon di Wikipedia.</h3>
+              <ul>
+                <li>
+                  <div class="wiki_image">
+                    <%= image_tag wiki.main_image_url unless wiki.main_image_url.nil? %>
+                  </div>
+                  <div class="wiki_summary">
+                    <%= wiki.summary %>
+                  </div>
+                </li>
+              </ul>
+              <div class="source">
+                Fuente: <%= link_to 'Wikipedia na Papiamentu', wiki.fullurl, target: "_blank" %>
+              </div>
+            </div>
+          <% end %>
+          <% if word.is_money? %>
+            <div class="money_section section">
+              <strong>E palabra ta indiká moneda (sèn).</strong>
+              <ul>
+                <li>
+                "<%= @main_lemma_switched %>" tin un balor di: <%= word.monetary_value_nice %>
+                </li>
+              </ul>
+              <div class="source">
+                Fuente: © 2017 Lista kompilá pa Delno Tromp (den kuadro di proyekto Dòmpereré); revisá pa Ini Statia i Lucille Berry-Haseth (01-03-2018)
+              </div>
+            </div>
+          <% end %>
+          <% if word.is_fauna? %>
+            <div class="fauna_section section">
+              <strong>E palabra ta indiká un animál (fauna).</strong>
+              <ul>
+                <li>
+                Nòmber sientífiko : <%= word.scientific_name %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+          <% if word.is_element? %>
+            <div class="kimika_section section">
+              <strong>E palabra ta indiká un elemento kímika.</strong>
+              <ul>
+                <li>
+                  Number : <%= word.atoomnummer %>
+                </li>
+                <li>
+                  Símbolo : <%= word.symbool %>
+                </li>
+                <li>
+                  Hulandes: <%= link_to word.tr_nl, "https://nl.wikipedia.org/wiki/#{word.tr_nl}" %>
+                </li>
+                <li>
+                  Spaño: <%= link_to word.tr_es, "https://es.wikipedia.org/wiki/#{word.tr_es}" %>
+                </li>
+                <li>
+                  Inglès: <%= link_to word.tr_en, "https://en.wikipedia.org/wiki/#{word.tr_en}" %>
+                </li>
+              </ul>
+              <div class="source">
+                Lijst van Elementen, Gertrude Franca e.a., 2019
+              </div>
+            </div>
+          <% end %>
+          <% if word.is_flora? %>
+            <div class="flora_section section">
+              <strong>E palabra ta indiká un mata (flora).</strong>
+              <ul>
+                <li>
+                Nòmber sientífiko : <%= word.scientific_name %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+          <ul class='main_section section'>
+            <%# <%= content_tag :li, word.variants_nice if word.varies? %>
+            <%= content_tag(:li, word.description_pap_cw_nice) unless word.description_pap_cw.blank? %>
+            <%= content_tag(:li, word.synonym) unless word.synonym.blank? %>
+            <%= content_tag(:li, "deskripshon hulandes: #{word.description_nl}") unless word.description_nl.blank? %>
+            <%= content_tag(:li, "hulandes: #{word.tr_nl}") unless word.tr_nl.blank? %>
+            <%= content_tag(:li, "inglès: #{word.tr_en}") unless word.tr_en.blank? %>
+            <%= content_tag(:li, "spañjo: #{word.tr_es}") unless word.tr_es.blank? %>
+            <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: <br />#{word.glossaries.uniq.map { |g| link_to_glossary_with_edit g }.join(' | ') }".html_safe ) unless word.glossaries.empty? %>
+          </ul>
+        </div>
+      </div>
     <% end %>
-  <% end %>
-</div>
-<div id="middle" class="columns small-12 medium-6 large-5 topper  bordered">
-  <div class='word_section section'>
-      <%= @main_lemma_switched %>
-      <% if @word.approved? %>
-        <%= image_tag 'yes.png', size: '32x32' %>
-      <% else %>
-        <%= image_tag 'no.png',  size: '32x32'  %>
-      <% end %>
   </div>
-  <% wiki = Wikipedia.find(@main_lemma_switched) %>
-  <% if wiki.main_image_url || wiki.summary %>
-    <div class="wikipedia_section section">
-      <strong>Informashon di Wikipedia.</strong>
-      <ul>
-        <li>
-          <div class="wiki_image">
-            <%= image_tag wiki.main_image_url unless wiki.main_image_url.nil? %>
-          </div>
-          <div class="wiki_summary">
-            <%= wiki.summary %>
-          </div>
-        </li>
-      </ul>
-      <div class="source">
-        Fuente: <%= link_to 'Wikipedia na Papiamentu', wiki.fullurl, target: "_blank" %>
-      </div>
-    </div>
-  <% end %>
-  <% if @word.is_money? %>
-    <div class="money_section section">
-      <strong>E palabra ta indiká moneda (sèn).</strong>
-      <ul>
-        <li>
-        "<%= @main_lemma_switched %>" tin un balor di: <%= @word.monetary_value_nice %>
-        </li>
-      </ul>
-      <div class="source">
-        Fuente: © 2017 Lista kompilá pa Delno Tromp (den kuadro di proyekto Dòmpereré); revisá pa Ini Statia i Lucille Berry-Haseth (01-03-2018)
-      </div>
-    </div>
-  <% end %>
-  <% if @word.is_fauna? %>
-    <div class="fauna_section section">
-      <strong>E palabra ta indiká un animál (fauna).</strong>
-      <ul>
-        <li>
-        Nòmber sientífiko : <%= @word.scientific_name %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
-  <% if @word.is_element? %>
-    <div class="kimika_section section">
-      <strong>E palabra ta indiká un elemento kímika.</strong>
-      <ul>
-        <li>
-          Number : <%= @word.atoomnummer %>
-        </li>
-        <li>
-          Símbolo : <%= @word.symbool %>
-        </li>
-        <li>
-          Hulandes: <%= link_to @word.tr_nl, "https://nl.wikipedia.org/wiki/#{@word.tr_nl}" %>
-        </li>
-        <li>
-          Spaño: <%= link_to @word.tr_es, "https://es.wikipedia.org/wiki/#{@word.tr_es}" %>
-        </li>
-        <li>
-          Inglès: <%= link_to @word.tr_en, "https://en.wikipedia.org/wiki/#{@word.tr_en}" %>
-        </li>
-      </ul>
-      <div class="source">
-        Lijst van Elementen, Gertrude Franca e.a., 2019
-      </div>
-    </div>
-  <% end %>
-  <% if @word.is_flora? %>
-    <div class="flora_section section">
-      <strong>E palabra ta indiká un mata (flora).</strong>
-      <ul>
-        <li>
-        Nòmber sientífiko : <%= @word.scientific_name %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
-  <ul class='main_section section'>
-    <%# <%= content_tag :li, @word.variants_nice if @word.varies? %>
-    <%= content_tag(:li, @word.description_pap_cw_nice) unless @word.description_pap_cw.blank? %>
-    <%= content_tag(:li, @word.synonym) unless @word.synonym.blank? %>
-    <%= content_tag(:li, "deskripshon hulandes: #{@word.description_nl}") unless @word.description_nl.blank? %>
-    <%= content_tag(:li, "hulandes: #{@word.tr_nl}") unless @word.tr_nl.blank? %>
-    <%= content_tag(:li, "inglès: #{@word.tr_en}") unless @word.tr_en.blank? %>
-    <%= content_tag(:li, "spañjo: #{@word.tr_es}") unless @word.tr_es.blank? %>
-    <%= content_tag(:li, "E palabra aki ta parti di e siguiente glosarionan: <br />#{@word.glossaries.uniq.map { |g| link_to_glossary_with_edit g }.join(' | ') }".html_safe ) unless @word.glossaries.empty? %>
-  </ul>
 
-</div>
-
-<div id="right-side" class="columns small-12 medium-6 large-4 topper bordered">
-  <h3>informashon</h3>
-  <ul>
-    <li>
-      <div class='yes_no'>
-        aprobá
-          <% if @word.approved? %>
-            <%= image_tag 'yes.png' %>
-          <% else %>
-            <%= image_tag 'no.png'  %>
-          <% end %>
-      </div>
-    </li>
-    <li>
-      <div class='yes_no'>
-        standarisá
-          <% if @word.standarized? %>
-            <%= image_tag 'yes.png' %>
-            <%= time_ago_in_words(@word.attested_on) %> ago
-          <% else %>
-            <%= image_tag 'no.png' %>
-          <% end %>
-      </div>
-    </li>
-    <li>
-      <div class='yes_no'>
-        views: <%= @word.views %>
-      </div>
-    </li>
-  </ul>
-  <h3>Dutch Caribbean Platform (DCDP)</h3>
-  <ul>
-    <li>
-      Pa mira e palabra aki usá den konteksto den e biblioteka digital (por ehèmpel den buki i artíkulo), klek riba e siguiente konekshon:
-      <%= link_to "#{@main_lemma_switched}", "http://dcdp.uoc.cw/results/?text=#{@main_lemma_switched}", target: :_blank %>
-    </li>
-  </ul>
-  <h3>anterior/siguiente/buska</h3>
-    <ul>
-      <li>
-        anterior: <%= link_to_word(@word.previous_words.first) %>
-      </li>
-      <li>
-        siguiente: <%= link_to_word(@word.next_words.first) %>
-      </li>
-      <li>
-        <%= render "search_form" %>
-      </li>
-    </ul>
-
-  <% unless @word.approved? %>
-    <h3>Vota</h3>
-    agregá pa: <%= @word.user.name %> (<%= time_ago_in_words(@word.created_at) %> pasá)
-    pro: <%= @word.votes_for %><br />
-    kontra: <%= @word.votes_against %>
-  <% end %>
-
-  <h3>lingwístiko</h3>
-  <ul>
-    <li>
-      tipo di palabra: <%= @word.wordtypes.map(&:name).to_sentence %>
-    </li>
-    <li>
-      <div class='yes_no'>
-        kontabel
-          <% if @word.countable? %>
-            <%= image_tag 'yes.png' %>
-          <% else %>
-            <%= image_tag 'no.png'  %>
-          <% end %>
-      </div>
-    </li>
-  </ul>
-
-  <h3>palabra mas resien</h3>
-  <ul>
-    <% Word.recently_updated.each do |word| %>
-      <li>
-        <%= link_to word.word_max_length(20), "/palabra/#{word.name}", :title => word.name  %>
-      </li>
-    <% end %>
-  </ul>
-
-  <h3>palabra mas mirá</h3>
-  <ul>
-    <% Word.most_viewed.each do |word| %>
-      <li>
-        <%= link_to word.word_max_length(20), "/palabra/#{word.name}", :title => word.name  %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+  <div id="page-right-side" class="columns small-12 medium-3 large-3">
+    <%= render 'page-right-side' %>
+  </div>
