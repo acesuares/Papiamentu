@@ -10,7 +10,7 @@ class WordsController < InlineFormsController
     @objects = @objects.accessible_by(current_ability) if cancan_enabled?
     @objects = @objects.unscoped.order("created_at desc") if params[:newest_words] == "1"
     if params[:only_standardized]
-      @objects = @objects.standardized
+      @objects = @objects.standarized
     end
     if params[:only_buki_di_oro]
       @objects = @objects.buki_di_oro

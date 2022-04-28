@@ -39,6 +39,7 @@ class Word < ApplicationRecord
   validates :name, :uniqueness => true, on: :create
 
   scope :buki_di_oro, -> {where(buki_di_oro: 1)}
+  scope :standarized, -> {where(attested: 1)}
   scope :has_pictures, -> { joins(:pictures).where.not(pictures: {id: nil }) }
   scope :has_recordings, -> { joins(:recordings).where.not(recordings: {id: nil }) }
 
