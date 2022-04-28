@@ -13,7 +13,7 @@ class Word < ApplicationRecord
   acts_as_voteable
   acts_as_commontable
   attr_reader :per_page
-  @per_page = 7
+  @per_page = 99
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
