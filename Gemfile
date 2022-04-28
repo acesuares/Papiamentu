@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0.4.8'
+gem 'rails', '~> 6.1.5.1'
 gem 'rake'
 gem 'will_paginate'
 gem 'tabs_on_rails'
