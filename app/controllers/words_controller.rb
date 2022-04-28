@@ -5,7 +5,19 @@ class WordsController < InlineFormsController
   def index
     @objects ||= @Klass
     search = params[:search] || ""
-    search = '%' + search + '%'
+    case params[:search_options]
+      when "beginning"
+        search = search + '%'
+        @search_options = "beginning"
+      when "end"
+        search = '%' + search
+        @search_options = "end"
+      when "whole word"
+        @search_options = "whole word"
+      else
+        search = '%' + search + '%'
+        @search_options = "middle"
+    end
     @objects = @objects.where("name LIKE ? ", search )
     @objects = @objects.accessible_by(current_ability) if cancan_enabled?
     @objects = @objects.unscoped.order("created_at desc") if params[:newest_words] == "1"

@@ -22,15 +22,19 @@
         <li class="has-form">
           <%= form_tag request.path, :method => 'get' do %>
             <div class="row">
-              <div class="large-2 small-2 columns">
-                <%= check_box_tag :only_standardized, true, params[:only_standardized] %><label for="only_standardized">std</label>
+              <div class="large-1 small-1 columns">
+                <%= check_box_tag :only_standardized, true, params[:only_standardized] %>std
               </div>
-              <div class="large-2 small-2 columns">
-                <%= check_box_tag :only_buki_di_oro, true, params[:only_buki_di_oro] %><label for="only_buki_di_oro">oro</label>
+              <div class="large-1 small-1 columns">
+                <%= check_box_tag :only_buki_di_oro, true, params[:only_buki_di_oro] %>oro
               </div>
-              <div class="large-2 small-2 columns">
-                <%= check_box_tag :only_deleted, true, params[:only_deleted] %><label for="only_deleted">del</label>
+              <div class="large-1 small-1 columns">
+                <%= check_box_tag :only_deleted, true, params[:only_deleted] %>del
               </div>
+              <div class="large-3 small-3 columns">
+                <%= select_tag "search_options", options_for_select([ "beginning", "end", "whole word", "middle" ], @search_options) %>
+              </div>
+
               <div class="large-1 small-1 columns">
                 <%= link_to "<i class='fi-x'></i>".html_safe, '/', :title => 'reset', :class => "button expand inline_forms_model_top_bar_buttons" %>
               </div>
