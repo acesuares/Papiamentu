@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0.4.1'
+gem 'rails', '~> 6.0.4.8'
 gem 'rake'
 gem 'will_paginate'
 gem 'tabs_on_rails'
@@ -26,7 +26,7 @@ gem 'mysql2'
 # gem 'omniauth-facebook'
 # gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'thumbs_up'
-gem 'commontator', :git => 'https://github.com/lml/commontator.git', :branch => 'master'
+gem 'commontator'#, :git => 'https://github.com/lml/commontator.git', :branch => 'master'
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'whenever', :require => false
