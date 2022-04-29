@@ -88,11 +88,11 @@ Rails.application.routes.draw do
   get 'dijkhoff_goals', to: 'goals#show_dijkhoff_goals'
 
 
-  get '/flora', to: 'frontends#flora'
-  get '/founa', to: 'frontends#founa'
-  get '/músika', to: 'frontends#músika'
-  get '/musika', to: 'frontends#músika'
-  get '/konstrukshon', to: 'frontends#konstrukshon'
+  get '/flora', to: 'frontends#galeria'
+  get '/founa', to: 'frontends#galeria'
+  get '/músika', to: 'frontends#galeria'
+  get '/musika', to: redirect(CGI.escape('músika'))
+  get '/konstrukshon', to: 'frontends#galeria'
 
   get 'memory_games/:id/play_memory_game', to: 'memory_games#play_memory_game'
   match 'memory_games/:id/edit_memory_game', to: 'memory_games#edit_memory_game', via: [:get, :post]

@@ -1,4 +1,4 @@
-<div id="left-side" class="columns small-12 medium-6 large-3 topper bordered">
+<div id="left-side" class="columns small-12 medium-6 large-3 bordered">
   <h5>Picture</h5>
   <%= render "first_picture" %>
   <h5>audio</h5>
@@ -6,7 +6,7 @@
     <%= send("audio_field_show", @word.recordings.first, :audio) -%>
   <% end %>
 </div>
-<div class="columns small-12 medium-6 large-5 topper  bordered">
+<div class="columns small-12 medium-6 large-5  bordered">
   <h2>
     <%= @word.name %>
     <% if @word.approved? %>
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<div class="columns small-12 medium-6 large-4 topper bordered" id="right-side">
+<div class="columns small-12 medium-6 large-4 bordered" id="right-side">
   <h3>informashon</h3>
   <ul>
     <li>

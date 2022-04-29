@@ -1,5 +1,5 @@
 <%= render 'shared/state' %>
-<div class="columns small-12 medium-8 large-8 topper" id="left-side">
+<div class="columns small-12 medium-8 large-8" id="left-side">
   <div class="row">
     <div class="columns">
       <h2>Palabra di dia: <%= link_to_word Word.random_from_buki_di_oro(1).first %></h2>
@@ -24,6 +24,6 @@
     </div>
   </div>
 </div>
-<div class="columns small-12 medium-4 large-4 topper" id="right-side">
+<div class="columns small-12 medium-4 large-4" id="right-side">
   <%= render 'shared/frontend_sidebar' %>
 </div>

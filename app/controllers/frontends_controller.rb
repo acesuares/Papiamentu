@@ -29,6 +29,7 @@ class FrontendsController < ApplicationController
       # commontator_thread_show(@word)
       respond_to do |format|
         format.html {
+          render layout: "palabra"
         }
       end
     end
@@ -101,6 +102,26 @@ class FrontendsController < ApplicationController
       format.js { }
     end
   end
+
+  def galeria
+    @galeria = CGI.unescape(request.original_fullpath.gsub('/',''))
+    @masonry_picture_width = 320
+    @masonry_column_width = @masonry_picture_width + 20
+    case @galeria
+    when 'flora'
+      @words = Word.has_pictures.is_flora
+    when 'konstrukshon'
+      @words = Word.has_pictures.is_construction
+    when 'founa'
+      @words = Word.has_pictures.is_fauna
+    when 'músika'
+      @words = Word.has_pictures.is_music
+    else
+      redirect_to '/'
+    end
+    render layout: "galeria"
+  end
+
 
   def my_profile
     authorize! :my_profile, FrontendsController

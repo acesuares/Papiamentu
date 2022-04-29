@@ -50,7 +50,6 @@ gem 'rails-jquery-autocomplete'
 gem 'lightbox2-rails'
 gem 'sitemap_generator'
 
-
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem 'yaml_db'

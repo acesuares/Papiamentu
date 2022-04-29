@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic' rel='stylesheet' type='text/css' />
 
-    <title><%= t('inline_forms.general.application_title') + " - Bon Bini!" %></title>
+    <title><%= "Galeria: " + @galeria + " - " + t('inline_forms.general.application_title') %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -24,6 +24,9 @@
 
     <%= render "/shared/frontend_footer" %>
     <%= javascript_include_tag 'application' %>
-
+    <%= javascript_include_tag "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js", 'data-turbolinks-track' => true %>
+    <script>
+      <%= yield :javascript %>
+    </script>
   </body>
 </html>

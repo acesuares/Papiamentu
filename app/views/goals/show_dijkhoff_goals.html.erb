@@ -1,4 +1,4 @@
-<div class="columns small-12 medium-12 large-12 topper" id="left-side">
+<div class="columns small-12 medium-12 large-12" id="left-side">
   <h2>Dijkhoff</h2>
   <div id="goal">
   <% Word.joins(:goals).where("goals.name like '%Dijkhoff%'").order("words.name ASC").group_by{|u| u.name[0]}.each do |letter, items| %>

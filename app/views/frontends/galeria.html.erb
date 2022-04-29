@@ -1,0 +1,22 @@
+<div class="columns small-12 medium-12 large-12" id="left-side">
+
+  <h2>Galeria: <%= @galeria %></h2>
+  <div class="masonry" data-masonry='{ "itemSelector": ".masonry_image_container", "columnWidth": <%= @masonry_column_width %> }'>
+    <% @words.each do |word| %>
+      <% picture = word.pictures.first %>
+      <div class="masonry_image_container">
+        <a class="masonry_image_link" data-title="<%= picture.title_license_attribution %>" href="<%= picture.image.large.url %>" data-lightbox="masonry_images_<%= word.id %>">
+          <%= image_tag picture.image.very_small.url, width: @masonry_picture_width, class: "masonry_image" %>
+        </a>
+        <div class="masonry_image_title"><%= link_to_word word %></div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+<% content_for :javascript do %>
+  // Needed reinitialization in order to fix overlapping item elements
+  $( window ).load(function() {
+    $('.masonry').masonry({ "itemSelector": ".masonry_image_container", "columnWidth": <%= @masonry_column_width %>, gutter: 1 })
+  });
+<% end %>

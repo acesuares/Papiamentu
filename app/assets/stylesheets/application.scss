@@ -125,10 +125,18 @@ ul {
   width:90%;
 }
 
-.checkboxes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-  word-wrap: break-word;
+.masonry {
+}
+
+.masonry_image_container {
+}
+
+.masonry_image {
+  margin-top: 14px !important;
+}
+
+.masonry_image_title {
+  margin-left: 5px;
+  margin-top: 3px;
+  font-size: 120%;
 }

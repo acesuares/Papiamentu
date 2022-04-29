@@ -1,11 +1,11 @@
-<div class="columns small-12 medium-6 large-3 topper  bordered">
+<div class="columns small-12 medium-6 large-3  bordered">
   <h2>Spèl-spèl</h2>
   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
   <div class="text-center">
     <%= link_to "Play", spelling_play_path, class: [:button, :rounded] %>
   </div>
 </div>
-<div class="columns small-12 medium-6 large-6 topper  bordered">
+<div class="columns small-12 medium-6 large-6  bordered">
   <% @spelling_groups.each do |spelling_group| %>
     <div class="columns panel large-4">
       <%= image_tag spelling_group.image.palm.url, class: 'spelling-group-picture' %>
@@ -16,7 +16,7 @@
     </div>
   <% end %>
 </div>
-<div class="columns small-12 medium-6 large-3 topper  bordered ">
+<div class="columns small-12 medium-6 large-3  bordered ">
   <h2>Leaderboard</h2>
   <table>
     <thead>
