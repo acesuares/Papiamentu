@@ -9,6 +9,18 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <% if thumbnail = @words.first.pictures.first %>
+        <!--
+          <PageMap>
+            <DataObject type="thumbnail">
+              <Attribute name="src" value="https://bankodipalabra.com<%= thumbnail.image.palm.url %>"/>
+              <Attribute name="width" value="250"/>
+              <Attribute name="height" value="250"/>
+            </DataObject>
+          </PageMap>
+        -->
+    <% end %>
+
     <%= csrf_meta_tags %>
   </head>
 
