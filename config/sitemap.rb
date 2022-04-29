@@ -7,7 +7,7 @@ SitemapGenerator.verbose = true
 SitemapGenerator::Sitemap.create do
   add "/founa"
   add "/flora"
-  add "/musiká"
+  add "/músika"
   add "/konstrukshon"
 
   Word.find_each do |word|
