@@ -2,7 +2,7 @@
 SitemapGenerator::Sitemap.default_host = "https://bankodipalabra.com"
 
 SitemapGenerator.verbose = true
-#SitemapGenerator::Sitemap.sitemaps_path = 'shared/'
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 SitemapGenerator::Sitemap.create do
   add "/founa"
@@ -10,7 +10,7 @@ SitemapGenerator::Sitemap.create do
   add "/músika"
   add "/konstrukshon"
 
-  Word.find_each do |word|
+  Word.active.each do |word|
     images = word
     if word.has_pictures?
       image = word.pictures.first
