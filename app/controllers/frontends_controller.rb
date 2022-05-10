@@ -75,6 +75,11 @@ class FrontendsController < ApplicationController
     @words_missing = words_in_text - Word.all.map(&:name)
   end
 
+  def endings
+    @endings = Word.select(:name).distinct.where('LENGTH(name)>8').where("name not like '% %'").group_by{
+      |w|w.name.reverse[0..3]}.map{|reverse_ending,words|[words.count,reverse_ending.reverse,words.map(&:name).sort.join(', ')]}.sort{|a,b|b[0]<=>a[0]}
+  end
+
   def _palabra_mas_resien
     @update_span = params[:update]
     @palabra_mas_resien_limit = params[:palabra_mas_resien_limit].to_i    || 15

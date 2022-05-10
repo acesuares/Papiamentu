@@ -94,6 +94,10 @@ Rails.application.routes.draw do
   get '/musika', to: redirect(CGI.escape('músika'))
   get '/konstrukshon', to: 'frontends#galeria'
 
+  get '/endings', to: 'frontends#endings'
+
+
+
   get 'memory_games/:id/play_memory_game', to: 'memory_games#play_memory_game'
   match 'memory_games/:id/edit_memory_game', to: 'memory_games#edit_memory_game', via: [:get, :post]
   get 'memory_game', to: 'memory_games#play_random_memory_game'
