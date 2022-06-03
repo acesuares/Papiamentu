@@ -49,6 +49,7 @@ gem 'jquery-timepicker-rails'
 gem 'rails-jquery-autocomplete'
 gem 'lightbox2-rails'
 gem 'sitemap_generator'
+gem 'ahoy_matey'
 
 # Include everything needed to run rake, tests, features, etc.
 group :development do

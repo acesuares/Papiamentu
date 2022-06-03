@@ -2,17 +2,58 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_24_151908) do
+ActiveRecord::Schema.define(version: 2022_06_03_203819) do
 
-  create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "ahoy_events", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "visit_id"
+    t.bigint "user_id"
+    t.string "name"
+    t.json "properties"
+    t.datetime "time"
+    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
+    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
+    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
+  end
+
+  create_table "ahoy_visits", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "visit_token"
+    t.string "visitor_token"
+    t.bigint "user_id"
+    t.string "ip"
+    t.text "user_agent"
+    t.text "referrer"
+    t.string "referring_domain"
+    t.text "landing_page"
+    t.string "browser"
+    t.string "os"
+    t.string "device_type"
+    t.string "country"
+    t.string "region"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "utm_source"
+    t.string "utm_medium"
+    t.string "utm_term"
+    t.string "utm_content"
+    t.string "utm_campaign"
+    t.string "app_version"
+    t.string "os_version"
+    t.string "platform"
+    t.datetime "started_at"
+    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
+    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
+  end
+
+  create_table "ckeditor_assets", charset: "latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -23,7 +64,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "commontator_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "commontator_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "creator_type"
     t.integer "creator_id"
     t.string "editor_type"
@@ -41,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["thread_id", "created_at"], name: "index_commontator_comments_on_thread_id_and_created_at"
   end
 
-  create_table "commontator_subscriptions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "commontator_subscriptions", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "subscriber_type", null: false
     t.integer "subscriber_id", null: false
     t.integer "thread_id", null: false
@@ -51,7 +92,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["thread_id"], name: "index_commontator_subscriptions_on_thread_id"
   end
 
-  create_table "commontator_threads", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "commontator_threads", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "commontable_type"
     t.integer "commontable_id"
     t.datetime "closed_at"
@@ -62,19 +103,19 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
   end
 
-  create_table "fshp_categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "fshp_categories", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "fshp_categories_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "fshp_categories_words", id: false, charset: "latin1", force: :cascade do |t|
     t.integer "fshp_category_id"
     t.integer "word_id"
   end
 
-  create_table "glossaries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "glossaries", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.text "description"
@@ -83,14 +124,14 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.integer "user_id", default: 1
   end
 
-  create_table "glossaries_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "glossaries_words", id: false, charset: "latin1", force: :cascade do |t|
     t.bigint "word_id"
     t.bigint "glossary_id"
     t.index ["glossary_id"], name: "index_glossaries_words_on_glossary_id"
     t.index ["word_id"], name: "index_glossaries_words_on_word_id"
   end
 
-  create_table "goals", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "goals", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "title_nl"
     t.string "title_en"
@@ -101,25 +142,25 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "goals_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "goals_words", id: false, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.integer "goal_id"
     t.integer "word_id"
   end
 
-  create_table "inline_forms_keys", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "inline_forms_keys", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "inline_forms_locales", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "inline_forms_locales", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.integer "inline_forms_translations_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "inline_forms_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "inline_forms_translations", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.integer "inline_forms_key_id"
     t.integer "inline_forms_locale_id"
     t.text "value"
@@ -129,7 +170,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "licenses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "licenses", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.text "comment"
@@ -138,13 +179,13 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "memories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "memories", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "memory_games", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "memory_games", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -154,14 +195,14 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["user_id"], name: "index_memory_games_on_user_id"
   end
 
-  create_table "memory_games_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "memory_games_words", id: false, charset: "latin1", force: :cascade do |t|
     t.bigint "memory_game_id", null: false
     t.bigint "word_id", null: false
     t.index ["memory_game_id", "word_id"], name: "index_memory_games_words_on_memory_game_id_and_word_id"
     t.index ["word_id", "memory_game_id"], name: "index_memory_games_words_on_word_id_and_memory_game_id"
   end
 
-  create_table "pictures", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "pictures", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "caption"
     t.string "image"
@@ -176,7 +217,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["word_id"], name: "index_pictures_on_word_id"
   end
 
-  create_table "recordings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "recordings", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "author"
     t.string "audio"
@@ -187,19 +228,19 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["word_id"], name: "index_recordings_on_word_id"
   end
 
-  create_table "roles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "roles", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "roles_users", id: false, charset: "latin1", force: :cascade do |t|
     t.integer "role_id"
     t.integer "user_id"
   end
 
-  create_table "slide_games", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "slide_games", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.text "description"
@@ -209,26 +250,26 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["user_id"], name: "index_slide_games_on_user_id"
   end
 
-  create_table "slide_games_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "slide_games_words", id: false, charset: "latin1", force: :cascade do |t|
     t.bigint "slide_game_id", null: false
     t.bigint "word_id", null: false
     t.index ["slide_game_id", "word_id"], name: "index_slide_games_words_on_slide_game_id_and_word_id"
     t.index ["word_id", "slide_game_id"], name: "index_slide_games_words_on_word_id_and_slide_game_id"
   end
 
-  create_table "sources", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "sources", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sources_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "sources_words", id: false, charset: "latin1", force: :cascade do |t|
     t.integer "source_id"
     t.integer "word_id"
   end
 
-  create_table "spelling_groups", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "spelling_groups", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "name"
     t.string "caption"
     t.string "image"
@@ -237,21 +278,21 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "spelling_groups_words", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "spelling_groups_words", id: false, charset: "latin1", force: :cascade do |t|
     t.bigint "word_id"
     t.bigint "spelling_group_id"
     t.index ["spelling_group_id"], name: "index_spelling_groups_words_on_spelling_group_id"
     t.index ["word_id"], name: "index_spelling_groups_words_on_word_id"
   end
 
-  create_table "spelling_sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "spelling_sessions", charset: "latin1", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_spelling_sessions_on_user_id"
   end
 
-  create_table "spelling_tries", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "spelling_tries", charset: "latin1", force: :cascade do |t|
     t.string "user_input"
     t.boolean "correct"
     t.integer "points"
@@ -263,7 +304,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["word_id"], name: "index_spelling_tries_on_word_id"
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "users", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -295,7 +336,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "variants", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "variants", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "lemma"
     t.string "orthographic_type"
     t.integer "word_id"
@@ -304,7 +345,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["word_id"], name: "index_variants_on_word_id"
   end
 
-  create_table "versions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "versions", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "item_type", null: false
     t.integer "item_id", null: false
     t.string "event", null: false
@@ -315,7 +356,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  create_table "votes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "votes", id: :integer, charset: "latin1", force: :cascade do |t|
     t.boolean "vote", default: false, null: false
     t.integer "voteable_id", null: false
     t.string "voteable_type", null: false
@@ -328,7 +369,7 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type"
   end
 
-  create_table "words", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "words", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "synonym"
     t.integer "source_id", default: 1
@@ -375,12 +416,12 @@ ActiveRecord::Schema.define(version: 2022_04_24_151908) do
     t.index ["views"], name: "index_words_on_views"
   end
 
-  create_table "words_wordtypes", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "words_wordtypes", id: false, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.integer "word_id"
     t.integer "wordtype_id"
   end
 
-  create_table "wordtypes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "wordtypes", id: :integer, charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "title_nl"
     t.string "title_en"
