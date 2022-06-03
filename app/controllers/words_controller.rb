@@ -18,7 +18,14 @@ class WordsController < InlineFormsController
         search = '%' + search + '%'
         @search_options = "middle"
     end
-    @objects = @objects.where("name LIKE ? ", search )
+ 
+    if ["tr_en", "tr_es", "tr_pap_aw", "tr_pap_cw", "tr_nl"].include? params[:search_language]
+      @search_language = params[:search_language]
+    else
+      @search_language = "name"
+    end
+
+    @objects = @objects.where("#{@search_language} LIKE ? ", search )
     @objects = @objects.accessible_by(current_ability) if cancan_enabled?
     @objects = @objects.unscoped.order("created_at desc") if params[:newest_words] == "1"
     if params[:only_standardized]

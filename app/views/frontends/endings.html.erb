@@ -1,0 +1,21 @@
+  <h2>
+    4 letter endings with words longer than 8 letters and no spaces in the words (bula pipa does not end as -pipa)
+  </h2>
+
+  <div class="pap_description bordered">
+
+    <% @endings.each do |qty, ending, words| %>
+      <div class="columns large-1  bordered">
+        <%= qty %>
+      </div>
+
+      <div class="columns large-1  bordered">
+        -<%= ending %>
+      </div>
+      
+      <div class="columns large-10  bordered">
+          <%= words %>
+      </div>
+    <% end %>
+
+  </div>
