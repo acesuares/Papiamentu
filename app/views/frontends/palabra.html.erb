@@ -16,6 +16,13 @@
           <% unless @word.recordings.empty? %>
             <%= render 'pronounciation' %>
           <% end %>
+          <% if current_user %>
+          Work in Progress! Converting to phonetic alphabet (IPA).<br />
+          <% ipa = XSConverter.convert(@word.tr_pap_cw,'pap_cw') %>
+          <%# <%= link_to "/#{ipa}/", "https://itinerarium.github.io/phoneme-synthesis/?w=/#{ipa}/" %><br />
+          <%= link_to "/#{ipa}/", "http://ipa-reader.xyz/?text=#{ipa}/",target: '_blank' %><br />
+          <% end %>
+
         </div>
         <div id="middle" class="columns small-12 medium-8 large-8">
           <div class='word_section section'>
